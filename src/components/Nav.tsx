@@ -12,7 +12,7 @@ import {
   Menu,
   Newspaper,
   Settings,
-  FileCode, Github 
+  FileCode, Github, Users, Smartphone, LayoutGrid 
 } from "lucide-react";
 import {
   useParams,
@@ -95,17 +95,19 @@ export default function Nav({ children }: { children: ReactNode }) {
         icon: <LayoutDashboard width={18} />,
       },
       {
-        name: "Sites",
-        href: "/sites",
-        isActive: segments[0] === "sites",
-        icon: <Globe width={18} />,
+        name: "Usuários",
+        href: "/users",
+        isActive: segments[0] === "users",
+        icon: <Users width={18} />,
       },
       {
-        name: "Settings",
+        name: "Configuração",
         href: "/settings",
         isActive: segments[0] === "settings",
         icon: <Settings width={18} />,
       },
+      
+     
     ];
   }, [segments, id, siteId]);
 
