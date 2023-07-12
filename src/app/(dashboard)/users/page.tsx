@@ -11,13 +11,7 @@ export default function AllUsers({ params }: { params: { id: string } }) {
         </h1>
         <Suspense
           fallback={
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i}>
-                <p>oi</p>
-                </div>
-            ))}
-          </div>
+            <p>carregando</p>
           }
         >
           {/* @ts-expect-error Server Component */}
