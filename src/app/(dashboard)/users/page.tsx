@@ -1,29 +1,23 @@
-import prisma from "@/lib/prisma";
+import Users from "@/components/Users";
+import { Suspense } from "react";
 
-export default async function Users() {
-  const data = await prisma.user.findMany({})
-  // const newUser = await prisma.user.create({
-  //   data: {
-  //     name: 'Alice',
-  //     email: 'alice@prisma.io',
-  //   },
-  // })
+export default async function AllUsers() {
 
-  console.log(data)
-  // if (!data ) {
-  //   return <p>tem nada</p>
-  // }
   return (
     <div className="flex max-w-screen-xl flex-col space-y-12 p-8">
       <div className="flex flex-col space-y-6">
         <h1 className="font-cal text-3xl font-bold dark:text-white">
           Página de Usuários
         </h1>
-      {data.map((item) => (
-        <div key={item.id}>
-            <p>{item.name}</p>
-        </div>
-      ))}
+        <Suspense
+          fallback={
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+             <p>Carregando</p>
+            </div>
+          }
+        >
+          <Users />
+        </Suspense>
       </div>
     </div>
   );
