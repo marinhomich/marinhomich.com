@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest} from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 import { getToken } from "next-auth/jwt";
 
 export const config = {
@@ -9,7 +9,6 @@ export default async function middleware(req: NextRequest) {
   const url = req.nextUrl;
   const path = url.pathname;
   const session = await getToken({ req });
-  console.log(session)
 
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
   if (!session && path !== "/login") {

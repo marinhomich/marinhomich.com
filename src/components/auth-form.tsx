@@ -1,8 +1,8 @@
 "use client";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { TextInput } from "@tremor/react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 type Inputs = {
   username: string;
@@ -10,6 +10,8 @@ type Inputs = {
 };
 
 export default function AuthForm() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -24,14 +26,14 @@ export default function AuthForm() {
     const signInResult = await signIn("credentials", {
       username: data.username,
       password: data.password,
+      redirect: false,
     });
-    console.log(signInResult);
     setIsLoading(false);
 
-    if (!signInResult?.ok) {
+    if (signInResult?.error) {
       return alert("Deu errado");
     }
-    return alert("Deu Certo");
+    router.refresh();
   }
 
   return (
