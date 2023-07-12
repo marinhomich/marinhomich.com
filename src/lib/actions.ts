@@ -2,12 +2,12 @@
 
 import prisma from "@/lib/prisma"
 
-export const createUser = async () => {
+export const createUser = async (data: any) => {
   try {
     const response = await prisma.user.create({
       data: {
-        name: 'Novo Usuário',
-        email: 'michel@gmail.com'
+        name: data.name,
+        email: data.email
       }
     })
     return response
