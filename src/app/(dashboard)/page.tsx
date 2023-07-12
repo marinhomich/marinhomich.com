@@ -1,11 +1,15 @@
-export default function Overview() {
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+
+export default async function Overview() {
+  const session = await getServerSession(authOptions)
   return (
     <div className="flex max-w-screen-xl flex-col space-y-12 p-8">
       <div className="flex flex-col space-y-6">
         <h1 className="font-cal text-3xl font-bold dark:text-white">
           Overview
         </h1>
-        {/* <OverviewStats /> */}
+        <pre>{JSON.stringify(session)}</pre>
       </div>
     </div>
   );
