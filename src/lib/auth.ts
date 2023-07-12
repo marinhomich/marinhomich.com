@@ -12,25 +12,25 @@ export const authOptions: NextAuthOptions = {
 
       type: "credentials",
       credentials: {
-        username: { label: "Username", type: "text",  },
+        username: { label: "Username", type: "text", },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-     
+
         if (!credentials?.username || !credentials.password) {
           return null
-        } 
+        }
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.username
           }
         })
-        if(!user){
+        if (!user) {
           return null
         }
-    
+
         const isPasswordValid = await compare(credentials.password, user.password)
-        if(!isPasswordValid){
+        if (!isPasswordValid) {
           return null
         }
 
@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
     error: "/login", // Error code passed in query string as ?error=
   },
   callbacks: {
-    session: ({session, token}) => {
+    session: ({ session, token }) => {
       return {
         ...session,
         user: {
@@ -60,14 +60,14 @@ export const authOptions: NextAuthOptions = {
       }
 
     },
-    jwt: ({token, user}) => {
+    jwt: ({ token, user }) => {
 
-      if(user){
+      if (user) {
         const u = user as unknown as any
         return {
-          ...token, 
-        id: u.id,
-       
+          ...token,
+          id: u.id,
+
         }
       }
       return token
@@ -78,7 +78,9 @@ export const authOptions: NextAuthOptions = {
 export function getSession() {
   return getServerSession() as Promise<{
     user: {
-      id: string;
+      name: string;
+      email: string;
+      image: string
     };
   } | null>
 }
