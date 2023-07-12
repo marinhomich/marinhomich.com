@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { TextInput, Button } from "@tremor/react";
 
 type Inputs = {
   username: string;
@@ -34,6 +35,7 @@ export default function AuthForm() {
       return alert("Deu errado");
     }
     router.refresh();
+    router.push("/");
   }
 
   return (
@@ -45,23 +47,20 @@ export default function AuthForm() {
               <label className="sr-only" htmlFor="email">
                 Email
               </label>
-              <input
-                className="bg-dark"
-                disabled={isLoading}
-                {...register("username")}
-              />
-              {errors?.username && (
-                <p className="px-1 text-xs text-red-600">
-                  {errors.username.message}
-                </p>
-              )}
-              <input
-                className="bg-dark"
-                disabled={isLoading}
+              <TextInput placeholder="Email" {...register("username")} />
+              <TextInput
+                type="password"
+                placeholder="Senha"
                 {...register("password")}
               />
             </div>
-            <button>Sign In with Email</button>
+            <Button
+              variant="primary"
+              className="text-red-600"
+              loading={isLoading}
+            >
+              Entrar
+            </Button>
           </div>
         </form>
       </div>
