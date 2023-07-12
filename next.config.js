@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: true,
+  },
   images: {
     domains: [
       "public.blob.vercel-storage.com",
@@ -12,6 +15,8 @@ const nextConfig = {
       "illustrations.popsy.co",
     ],
   },
+  reactStrictMode: false,
+
 }
 
 module.exports = nextConfig

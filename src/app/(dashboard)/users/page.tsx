@@ -1,7 +1,7 @@
 import Users from "@/components/Users";
 import { Suspense } from "react";
 
-export default async function AllUsers() {
+export default function AllUsers({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex max-w-screen-xl flex-col space-y-12 p-8">
@@ -12,11 +12,16 @@ export default async function AllUsers() {
         <Suspense
           fallback={
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-             <p>Carregando</p>
-            </div>
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i}>
+                <p>oi</p>
+                </div>
+            ))}
+          </div>
           }
         >
-          <Users />
+          {/* @ts-expect-error Server Component */}
+          <Users userId={params.id}/>
         </Suspense>
       </div>
     </div>
