@@ -1,19 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import {
   ArrowLeft,
   BarChart3,
   Edit3,
-  Globe,
   Layout,
   LayoutDashboard,
-  Megaphone,
   Menu,
   Newspaper,
   Settings,
-  FileCode, Github, Users, Smartphone, LayoutGrid 
+  Users,
 } from "lucide-react";
+import Link from "next/link";
 import {
   useParams,
   usePathname,
@@ -24,13 +22,11 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 const externalLinks = [
-
   {
     name: "View demo site",
     href: "https://nextjs.org/",
     icon: <Layout width={18} />,
   },
-  
 ];
 
 export default function Nav({ children }: { children: ReactNode }) {
@@ -106,8 +102,6 @@ export default function Nav({ children }: { children: ReactNode }) {
         isActive: segments[0] === "settings",
         icon: <Settings width={18} />,
       },
-      
-     
     ];
   }, [segments, id, siteId]);
 
