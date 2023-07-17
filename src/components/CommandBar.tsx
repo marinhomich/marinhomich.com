@@ -29,7 +29,7 @@ export default function CommandBar({
     },
     {
       id: "create-user",
-      name: "Crir Usuário",
+      name: "Criar Usuário",
       keywords: "create-user",
       section: "Geral",
       perform: () => router.push("/users/new"),
