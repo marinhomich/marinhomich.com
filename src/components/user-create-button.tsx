@@ -20,12 +20,6 @@ export default function CreateUserButton() {
     formState: { errors },
   } = useForm<Inputs>();
 
-  // const data = {
-  //   name: "Outro",
-  //   email: `${Math.random()}@gmail.com`,
-  //   password: "1234",
-  // };
-
   function onSubmit(data: Inputs) {
     createUser(data).then((res: any) => {
       toast.success("Usuário criado com sucesso", {
