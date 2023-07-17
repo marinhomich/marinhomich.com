@@ -3,6 +3,7 @@ import { createUser } from "@/lib/actions";
 import { Button, TextInput } from "@tremor/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
 
 type Inputs = {
   name: string;
@@ -27,8 +28,17 @@ export default function CreateUserButton() {
 
   function onSubmit(data: Inputs) {
     createUser(data).then((res: any) => {
-      alert("Usuário Criado com sucesso");
-      console.log(res);
+      toast.success("Usuário criado com sucesso", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+
       router.refresh();
       router.push(`/users`);
     });

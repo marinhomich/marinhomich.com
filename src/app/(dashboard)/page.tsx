@@ -1,6 +1,3 @@
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
-
 export default async function Overview() {
   return (
     <div className="flex max-w-screen-xl flex-col space-y-12 p-8">
