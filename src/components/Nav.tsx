@@ -1,5 +1,4 @@
 "use client";
-
 import {
   ArrowLeft,
   BarChart3,
@@ -139,9 +138,9 @@ export default function Nav({ children }: { children: ReactNode }) {
               className="rounded-lg p-2 hover:bg-stone-200 dark:hover:bg-stone-700"
             >
               <Image
-                src="/logo.png"
-                width={24}
-                height={24}
+                src="/vercel-logotype-light.png"
+                width={36}
+                height={32}
                 alt="Logo"
                 className="dark:scale-110 dark:rounded-full dark:border dark:border-stone-400"
               />
