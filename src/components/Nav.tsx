@@ -3,6 +3,7 @@ import {
   ArrowLeft,
   BarChart3,
   Edit3,
+  FileText,
   Layout,
   LayoutDashboard,
   Menu,
@@ -96,6 +97,12 @@ export default function Nav({ children }: { children: ReactNode }) {
         icon: <Users width={18} />,
       },
       {
+        name: "Cautela",
+        href: "/document",
+        isActive: segments[0] === "document",
+        icon: <FileText width={18} />,
+      },
+      {
         name: "Configuração",
         href: "/settings",
         isActive: segments[0] === "settings",
@@ -163,7 +170,7 @@ export default function Nav({ children }: { children: ReactNode }) {
         </div>
         <div>
           <div className="grid gap-1">
-            {externalLinks.map(({ name, href, icon }) => (
+            {/* {externalLinks.map(({ name, href, icon }) => (
               <a
                 key={name}
                 href={href}
@@ -177,7 +184,7 @@ export default function Nav({ children }: { children: ReactNode }) {
                 </div>
                 <p>↗</p>
               </a>
-            ))}
+            ))} */}
           </div>
           <div className="my-2 border-t border-stone-200 dark:border-stone-700" />
           {children}

@@ -42,22 +42,6 @@ export default function CommandBar({
       section: "Ir Para",
       perform: () => router.push("/"),
     },
-    {
-      id: "sobre",
-      name: "Sobre",
-      shortcut: ["g", "s"],
-      keywords: "go-sobre",
-      section: "Ir Para",
-      perform: () => router.push("/sobre"),
-    },
-    {
-      id: "projetos",
-      name: "Projetos",
-      shortcut: ["g", "p"],
-      keywords: "go-projetos",
-      section: "Ir Para",
-      perform: () => router.push("/projetos"),
-    },
   ];
 
   return (

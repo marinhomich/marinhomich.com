@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-/* eslint-disable max-len */
-const { blackA, green, mauve, slate, violet } = require("@radix-ui/colors");
 
 module.exports = {
   content: [
@@ -12,11 +10,6 @@ module.exports = {
     current: "currentColor",
     extend: {
       colors: {
-        ...blackA,
-        ...green,
-        ...mauve,
-        ...slate,
-        ...violet,
         // light mode
         tremor: {
           brand: {
@@ -60,18 +53,18 @@ module.exports = {
           background: {
             muted: "#131A2B", // custom
             subtle: "#1f2937", // gray-800
-            DEFAULT: "#111827", // gray-900
+            DEFAULT: "#1c1917", // bg-stone-900
             emphasis: "#d1d5db", // gray-300
           },
           border: {
-            DEFAULT: "#1f2937", // gray-800
+            DEFAULT: "#44403c", // bg-stone-700
           },
           ring: {
-            DEFAULT: "#1f2937", // gray-800
+            DEFAULT: "#44403c", // bg-stone-700
           },
           content: {
             subtle: "#4b5563", // gray-600
-            DEFAULT: "#6b7280", // gray-600
+            DEFAULT: "#ffffff", // gray-600
             emphasis: "#e5e7eb", // gray-200
             strong: "#f9fafb", // gray-50
             inverted: "#000000", // black
@@ -102,27 +95,6 @@ module.exports = {
         "tremor-default": ["0.875rem", { lineHeight: "1.25rem" }],
         "tremor-title": ["1.125rem", { lineHeight: "1.75rem" }],
         "tremor-metric": ["1.875rem", { lineHeight: "2.25rem" }],
-      },
-      keyframes: {
-        hide: {
-          from: { opacity: 1 },
-          to: { opacity: 0 },
-        },
-        slideIn: {
-          from: {
-            transform: "translateX(calc(100% + var(--viewport-padding)))",
-          },
-          to: { transform: "translateX(0)" },
-        },
-        swipeOut: {
-          from: { transform: "translateX(var(--radix-toast-swipe-end-x))" },
-          to: { transform: "translateX(calc(100% + var(--viewport-padding)))" },
-        },
-      },
-      animation: {
-        hide: "hide 100ms ease-in",
-        slideIn: "slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1)",
-        swipeOut: "swipeOut 100ms ease-out",
       },
     },
   },
