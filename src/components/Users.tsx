@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@tremor/react";
 import Link from "next/link";
+import DeleteUserButton from "./user-delete-button";
 
 export default async function Users() {
   const session = await getSession();
@@ -39,6 +40,9 @@ export default async function Users() {
               <TableCell>{item.email}</TableCell>
               <TableCell>
                 <Link href={`/users/${item.id}`}>Detalhes</Link>
+              </TableCell>
+              <TableCell>
+                <DeleteUserButton id={item.id} />
               </TableCell>
             </TableRow>
           ))}

@@ -36,7 +36,7 @@ export default function CommandBar({
     },
     {
       id: "home",
-      name: "Home",
+      name: "Home :)",
       shortcut: ["g", "h"],
       keywords: "go-home",
       section: "Ir Para",
