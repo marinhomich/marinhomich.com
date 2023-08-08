@@ -1,13 +1,13 @@
-import CreateUserButton from "@/components/User/UserCreateButton";
+import { ReactNode } from "react";
 
-export default function CreateUser() {
+export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex max-w-screen-xl flex-col space-y-12 p-8">
       <div className="flex flex-col space-y-6">
         <h1 className="font-cal text-3xl font-bold dark:text-white">
-          Novo Usuário
+          Configuração
+          {children}
         </h1>
-        <CreateUserButton />
       </div>
     </div>
   );

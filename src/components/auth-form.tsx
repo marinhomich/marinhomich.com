@@ -1,9 +1,10 @@
 "use client";
+import { Button, TextInput } from "@tremor/react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { TextInput, Button } from "@tremor/react";
+import { toast } from "react-toastify";
 
 type Inputs = {
   username: string;
@@ -29,10 +30,10 @@ export default function AuthForm() {
       password: data.password,
       redirect: false,
     });
-    setIsLoading(false);
 
     if (signInResult?.error) {
-      return alert("Deu errado");
+      setIsLoading(false);
+      toast.error("Erro");
     }
     router.refresh();
     router.push("/");

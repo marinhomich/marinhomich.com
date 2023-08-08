@@ -3,7 +3,7 @@ import { createUser } from "@/lib/actions";
 import { Button, TextInput } from "@tremor/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 type Inputs = {
   name: string;

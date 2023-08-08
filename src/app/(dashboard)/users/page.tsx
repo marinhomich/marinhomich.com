@@ -1,6 +1,11 @@
-import Users from "@/components/Users";
+import Users from "@/components/User/UserList";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Usuários - Michel Marinho",
+};
 
 export default function AllUsers({ params }: { params: { id: string } }) {
   return (

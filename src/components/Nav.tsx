@@ -103,6 +103,12 @@ export default function Nav({ children }: { children: ReactNode }) {
         icon: <FileText width={18} />,
       },
       {
+        name: "Sales",
+        href: "/sales",
+        isActive: segments[0] === "sales",
+        icon: <FileText width={18} />,
+      },
+      {
         name: "Configuração",
         href: "/settings",
         isActive: segments[0] === "settings",

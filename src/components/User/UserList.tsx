@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@tremor/react";
 import Link from "next/link";
-import DeleteUserButton from "./user-delete-button";
+import DeleteUserButton from "./UserDeleteButton";
 
 export default async function Users() {
   const session = await getSession();
