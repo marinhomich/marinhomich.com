@@ -152,10 +152,9 @@ export default function Nav({ children }: { children: ReactNode }) {
             >
               <Image
                 src="/vercel-logotype-light.png"
-                width={36}
+                width={32}
                 height={32}
                 alt="Logo"
-                className="dark:scale-110 dark:rounded-full dark:border dark:border-stone-400"
               />
             </Link>
           </div>

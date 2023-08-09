@@ -5,11 +5,11 @@ export default function LoginPage() {
   return (
     <div className="mx-5 border border-stone-200 py-10 dark:border-stone-700 sm:mx-auto sm:w-full sm:max-w-md sm:rounded-lg sm:shadow-md">
       <Image
-        alt="Michel Marinho"
+        alt="Logo"
         width={100}
         height={100}
-        className="relative mx-auto h-12 w-auto dark:scale-110 dark:rounded-full dark:border dark:border-stone-400"
-        src="/logo.png"
+        className="relative mx-auto h-12 w-auto"
+        src="/vercel-logotype-light.png"
       />
       <h1 className="mt-6 text-center font-cal text-3xl dark:text-white">
         Dashboard
