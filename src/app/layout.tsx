@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Dashboard - Michel Marinho",
@@ -19,7 +20,10 @@ export default function RootLayout({
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <body className={"min-h-screen font-sans antialiased"}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );
