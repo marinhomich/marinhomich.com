@@ -42,7 +42,9 @@ export default async function Users() {
                 <Link href={`/users/${item.id}`}>Detalhes</Link>
               </TableCell>
               <TableCell>
-                <DeleteUserButton id={item.id} />
+                {item.email !== "demo@marinhomich.dev" && (
+                  <DeleteUserButton id={item.id} />
+                )}
               </TableCell>
             </TableRow>
           ))}

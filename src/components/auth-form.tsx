@@ -40,31 +40,29 @@ export default function AuthForm() {
   }
 
   return (
-    <div>
-      <div className="relative mt-2 rounded-md shadow-sm">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid gap-2">
-            <div className="grid gap-1">
-              <label className="sr-only" htmlFor="email">
-                Email
-              </label>
-              <TextInput placeholder="Email" {...register("username")} />
-              <TextInput
-                type="password"
-                placeholder="Senha"
-                {...register("password")}
-              />
-            </div>
-            <Button
-              variant="primary"
-              className="text-red-600"
-              loading={isLoading}
-            >
-              Entrar
-            </Button>
+    <div className="relative mt-2 rounded-md shadow-sm">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="grid gap-2">
+          <div className="grid gap-1">
+            <label className="sr-only" htmlFor="email">
+              Email
+            </label>
+            <TextInput placeholder="Email" {...register("username")} />
+            <TextInput
+              type="password"
+              placeholder="Senha"
+              {...register("password")}
+            />
           </div>
-        </form>
-      </div>
+          <Button
+            variant="primary"
+            className="text-red-600"
+            loading={isLoading}
+          >
+            Entrar
+          </Button>
+        </div>
+      </form>
     </div>
   );
 }

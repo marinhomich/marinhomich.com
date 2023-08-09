@@ -1,8 +1,8 @@
 "use client";
 import { createUser, deleteUser } from "@/lib/actions";
-import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { Trash2, Loader2 } from "lucide-react";
 
 export default function DeleteUserButton({ id }: { id: number }) {
   const router = useRouter();
