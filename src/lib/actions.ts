@@ -18,8 +18,8 @@ export const createUser = async (data: any) => {
     await resend.emails.send({
       from: 'Michel Marinho <contato@marinhomich.dev>',
       to: [data.email],
-      subject: "Novo Usuário",
-      react: EmailTemplate({}) as React.ReactElement,
+      subject: "Bem-Vindo",
+      react: EmailTemplate({ userName: data.name }) as React.ReactElement,
     });
   }
   catch (error: any) {
