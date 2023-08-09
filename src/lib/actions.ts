@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma"
 import { hash } from "bcrypt";
 import resend from "./resend";
-import { EmailTemplate } from "@/components/email-template";
+import { EmailTemplate } from "@/components/email/email-template";
 
 export const createUser = async (data: any) => {
   const password = await hash(data.password, 12)

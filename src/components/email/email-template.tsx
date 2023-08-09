@@ -4,7 +4,6 @@ import {
   Head,
   Hr,
   Html,
-  Img,
   Preview,
   Text,
 } from "@react-email/components";
@@ -12,10 +11,6 @@ import {
 interface EmailTemplateProps {
   userName: string;
 }
-
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
 
 export const EmailTemplate = ({ userName }: EmailTemplateProps) => (
   <Html>

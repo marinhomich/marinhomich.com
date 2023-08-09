@@ -96,24 +96,6 @@ export default function Nav({ children }: { children: ReactNode }) {
         isActive: segments[0] === "users",
         icon: <Users width={18} />,
       },
-      // {
-      //   name: "Cautela",
-      //   href: "/document",
-      //   isActive: segments[0] === "document",
-      //   icon: <FileText width={18} />,
-      // },
-      // {
-      //   name: "Sales",
-      //   href: "/sales",
-      //   isActive: segments[0] === "sales",
-      //   icon: <FileText width={18} />,
-      // },
-      // {
-      //   name: "Configuração",
-      //   href: "/settings",
-      //   isActive: segments[0] === "settings",
-      //   icon: <Settings width={18} />,
-      // },
     ];
   }, [segments, id, siteId]);
 

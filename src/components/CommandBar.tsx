@@ -28,7 +28,7 @@ export default function CommandBar({
       perform: () => navigator.clipboard.writeText(window.location.href),
     },
     {
-      id: "create-user",
+      id: "user",
       name: "Criar Usuário",
       keywords: "create-user",
       section: "Geral",
@@ -36,7 +36,7 @@ export default function CommandBar({
     },
     {
       id: "home",
-      name: "Home :)",
+      name: "Home",
       shortcut: ["g", "h"],
       keywords: "go-home",
       section: "Ir Para",
@@ -47,8 +47,8 @@ export default function CommandBar({
   return (
     <KBarProvider actions={actions}>
       <KBarPortal>
-        <KBarPositioner className="fixed flex items-start justify-center w-full inset-0 p-[14vh_16px_16px] bg-[#000000cc] box-border">
-          <KBarAnimator className="bg-[#ffffff0d] max-w-[600px] w-full rounded-lg overflow-hidden text-[#f2f2f2]">
+        <KBarPositioner className="z-30 fixed flex items-start justify-center w-full inset-0 p-[14vh_16px_16px] bg-[#00000080] box-border">
+          <KBarAnimator className="bg-[#000] max-w-[600px] w-full rounded-lg overflow-hidden text-[#f2f2f2]">
             <KBarSearch
               className="p-[12px_16px] text-[16px] w-full box-border outline-none border-none m-0 bg-[#ffffff0d] text-[#f2f2f2]"
               defaultPlaceholder="Digite um comando ou pesquise..."

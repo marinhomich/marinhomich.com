@@ -41,17 +41,38 @@ export default function CreateUserButton() {
     });
   }
 
+  console.log(errors);
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <TextInput placeholder="name" {...register("name")} />
-            <TextInput placeholder="email" {...register("email")} />
+            <TextInput
+              type="text"
+              placeholder="name"
+              error={errors.name && errors.name.type === "required"}
+              errorMessage={errors.name?.message}
+              {...register("name", {
+                required: { value: true, message: "Campo Obrigatório" },
+              })}
+            />
+            <TextInput
+              placeholder="email"
+              type="email"
+              error={errors.email && errors.email.type === "required"}
+              errorMessage={errors.email?.message}
+              {...register("email", {
+                required: { value: true, message: "Campo Obrigatório" },
+              })}
+            />
             <TextInput
               type="password"
+              error={errors.password && errors.password.type === "required"}
+              errorMessage={errors.password?.message}
               placeholder="password"
-              {...register("password")}
+              {...register("password", {
+                required: { value: true, message: "Campo Obrigatório" },
+              })}
             />
           </div>
           <Button
