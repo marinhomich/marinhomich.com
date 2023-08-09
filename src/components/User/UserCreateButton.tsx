@@ -2,6 +2,7 @@
 import { createUser } from "@/lib/actions";
 import { Button, TextInput } from "@tremor/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
@@ -19,9 +20,11 @@ export default function CreateUserButton() {
     control,
     formState: { errors },
   } = useForm<Inputs>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function onSubmit(data: Inputs) {
-    createUser(data).then((res: any) => {
+    setIsLoading(true);
+    createUser(data).then(() => {
       toast.success("Usuário criado com sucesso", {
         position: "bottom-right",
         autoClose: 2000,
@@ -51,7 +54,11 @@ export default function CreateUserButton() {
               {...register("password")}
             />
           </div>
-          <Button variant="primary" className="text-red-600">
+          <Button
+            variant="primary"
+            className="text-red-600"
+            loading={isLoading}
+          >
             Criar
           </Button>
         </div>

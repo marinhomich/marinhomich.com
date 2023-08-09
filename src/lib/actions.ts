@@ -2,18 +2,25 @@
 
 import prisma from "@/lib/prisma"
 import { hash } from "bcrypt";
+import resend from "./resend";
+import { EmailTemplate } from "@/components/email-template";
 
 export const createUser = async (data: any) => {
   const password = await hash(data.password, 12)
   try {
-    const response = await prisma.user.create({
+    await prisma.user.create({
       data: {
         name: data.name,
         email: data.email,
         password
       }
     })
-    return response
+    await resend.emails.send({
+      from: 'Michel Marinho <contato@marinhomich.dev>',
+      to: [data.email],
+      subject: "Novo Usuário",
+      react: EmailTemplate({}) as React.ReactElement,
+    });
   }
   catch (error: any) {
     return {
