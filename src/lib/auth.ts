@@ -5,7 +5,8 @@ import { compare } from 'bcrypt'
 
 export const authOptions: NextAuthOptions = {
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt',
+    maxAge: 3600
   },
   providers: [
     CredentialsProvider({

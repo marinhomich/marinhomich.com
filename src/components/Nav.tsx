@@ -3,8 +3,6 @@ import {
   ArrowLeft,
   BarChart3,
   Edit3,
-  FileText,
-  Layout,
   LayoutDashboard,
   Menu,
   Newspaper,
@@ -20,14 +18,7 @@ import {
 import { ReactNode, useEffect, useMemo, useState } from "react";
 
 import Image from "next/image";
-
-const externalLinks = [
-  {
-    name: "View demo site",
-    href: "https://nextjs.org/",
-    icon: <Layout width={18} />,
-  },
-];
+import ButtonSponsor from "./button-sponsor";
 
 export default function Nav({ children }: { children: ReactNode }) {
   const segments = useSelectedLayoutSegments();
@@ -157,21 +148,7 @@ export default function Nav({ children }: { children: ReactNode }) {
         </div>
         <div>
           <div className="grid gap-1">
-            {/* {externalLinks.map(({ name, href, icon }) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800"
-              >
-                <div className="flex items-center space-x-3">
-                  {icon}
-                  <span className="text-sm font-medium">{name}</span>
-                </div>
-                <p>↗</p>
-              </a>
-            ))} */}
+            <ButtonSponsor />
           </div>
           <div className="my-2 border-t border-stone-200 dark:border-stone-700" />
           {children}
