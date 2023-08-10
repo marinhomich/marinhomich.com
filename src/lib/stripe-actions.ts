@@ -12,8 +12,8 @@ export const stripeSession = async () => {
 
     ],
     mode: 'payment',
-    success_url: `https://${process.env.VERCEL_URL}`,
-    cancel_url: `https://${process.env.VERCEL_URL}`,
+    success_url: process.env.NEXT_PUBLIC_APP_URL || '',
+    cancel_url: process.env.NEXT_PUBLIC_APP_URL,
   })
 
   if (stripeSession.url) {
