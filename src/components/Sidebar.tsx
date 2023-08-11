@@ -20,7 +20,7 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import ButtonSponsor from "./button-sponsor";
 
-export default function Nav({ children }: { children: ReactNode }) {
+export default function Sidebar({ children }: { children: ReactNode }) {
   const segments = useSelectedLayoutSegments();
   const { id } = useParams() as { id?: string };
 
