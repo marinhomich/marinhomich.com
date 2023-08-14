@@ -1,4 +1,3 @@
-import { DocsSearch } from "@/components/Search";
 import Sidebar from "@/components/Sidebar";
 import Profile from "@/components/profile";
 import { ReactNode } from "react";

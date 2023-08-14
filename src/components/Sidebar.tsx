@@ -72,7 +72,6 @@ export default function Sidebar({ children }: { children: ReactNode }) {
           isActive: segments.includes("settings"),
           icon: <Settings width={18} />,
         },
-        
       ];
     }
     return [
@@ -102,7 +101,6 @@ export default function Sidebar({ children }: { children: ReactNode }) {
 
   return (
     <>
-    
       <button
         className={`fixed z-20 ${
           // left align for Editor, right align for other pages
