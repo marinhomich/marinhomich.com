@@ -19,36 +19,37 @@ export default function CommandBar({
   const router = useRouter();
 
   const actions = [
+
     {
-      id: "copy",
-      name: "Copiar URL",
-      shortcut: ["u"],
-      keywords: "copy-url",
-      section: "Geral",
-      perform: () => navigator.clipboard.writeText(window.location.href),
+      id: 'create-user',
+      name: 'Criar Usuário',
+      keywords: 'create-user',
+      section: 'Actions',
+      perform: () => router.push('/users/new'),
     },
     {
-      id: "user",
-      name: "Criar Usuário",
-      keywords: "create-user",
-      section: "Geral",
-      perform: () => router.push("/users/new"),
+      id: 'home',
+      name: 'Home',
+      shortcut: ['g', 'h'],
+      keywords: 'go-home',
+      section: 'Ir Para',
+      perform: () => router.push('/'),
     },
     {
-      id: "home",
-      name: "Home",
-      shortcut: ["g", "h"],
-      keywords: "go-home",
-      section: "Ir Para",
-      perform: () => router.push("/"),
-    },
+      id: 'users',
+      name: 'Usuários',
+      shortcut: ['g', 'u'],
+      keywords: 'go-users',
+      section: 'Ir Para',
+      perform: () => router.push('/users'),
+    }
   ];
 
   return (
     <KBarProvider actions={actions}>
       <KBarPortal>
         <KBarPositioner className="z-30 fixed flex items-start justify-center w-full inset-0 p-[14vh_16px_16px] bg-[#00000080] box-border">
-          <KBarAnimator className="bg-[#000] max-w-[600px] w-full rounded-lg overflow-hidden text-[#f2f2f2]">
+          <KBarAnimator className="bg-[#000] max-w-[600px] w-full rounded-lg overflow-hidden text-[#f2f2f2] [&>div>div::-webkit-scrollbar]:hidden">
             <KBarSearch
               className="p-[12px_16px] text-[16px] w-full box-border outline-none border-none m-0 bg-[#ffffff0d] text-[#f2f2f2]"
               defaultPlaceholder="Digite um comando ou pesquise..."

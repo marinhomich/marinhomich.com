@@ -27,28 +27,28 @@ export default function Sidebar({ children }: { children: ReactNode }) {
   const [siteId, setSiteId] = useState<string | null>();
 
   const tabs = useMemo(() => {
-    if (segments[0] === "site" && id) {
+    if (segments[0] === "users" && id) {
       return [
         {
-          name: "Back to All Sites",
-          href: "/sites",
+          name: "Back to All Users",
+          href: "/users",
           icon: <ArrowLeft width={18} />,
         },
         {
-          name: "Posts",
-          href: `/site/${id}`,
+          name: "Details",
+          href: `/users/${id}`,
           isActive: segments.length === 2,
           icon: <Newspaper width={18} />,
         },
         {
           name: "Analytics",
-          href: `/site/${id}/analytics`,
+          href: `/users/${id}/analytics`,
           isActive: segments.includes("analytics"),
           icon: <BarChart3 width={18} />,
         },
         {
           name: "Settings",
-          href: `/site/${id}/settings`,
+          href: `/users/${id}/settings`,
           isActive: segments.includes("settings"),
           icon: <Settings width={18} />,
         },
