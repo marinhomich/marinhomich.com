@@ -19,6 +19,7 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 
 import Image from "next/image";
 import ButtonSponsor from "./sponsor-button";
+import Search from "./search";
 
 export default function Sidebar({ children }: { children: ReactNode }) {
   const segments = useSelectedLayoutSegments();
@@ -131,6 +132,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
               />
             </Link>
           </div>
+          <Search />
           <div className="grid gap-1">
             {tabs.map(({ name, href, isActive, icon }) => (
               <Link
