@@ -1,15 +1,18 @@
 "use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import type { z } from "zod";
+
+import { emailSchema } from "@/lib/validations/email";
+
 import { Button, TextInput } from "@tremor/react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-type Inputs = {
-  username: string;
-  password: string;
-};
+type Inputs = z.infer<typeof emailSchema>;
 
 export default function AuthForm() {
   const router = useRouter();
@@ -19,7 +22,10 @@ export default function AuthForm() {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({
+    resolver: zodResolver(emailSchema),
+  });
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function onSubmit(data: Inputs) {

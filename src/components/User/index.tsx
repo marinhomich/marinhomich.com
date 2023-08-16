@@ -1,6 +1,6 @@
-import CreateUserButton from "./UserCreateButton";
+import CreateUserForm from "../forms/create-user-form";
 
 export const User = {
-  Create: CreateUserButton,
-  Skeleton: CreateUserButton
+  Create: CreateUserForm,
+  Skeleton: CreateUserForm,
 };

@@ -7,7 +7,6 @@ import { Table } from "@/components/Table";
 import { TableCell, TableRow } from "@tremor/react";
 import DeleteUserButton from "@/components/User/UserDeleteButton";
 
-
 export const metadata: Metadata = {
   title: "Usuários - Michel Marinho",
 };
@@ -35,7 +34,7 @@ export default async function UsersPage() {
         </Link>
       </div>
       <Table.Root>
-        <Table.Head header={["Nome", "Email"]}/>
+        <Table.Head header={["Nome", "Email"]} />
         {users.map((item) => (
           <TableRow key={item.id}>
             <TableCell>{item.name}</TableCell>
@@ -51,7 +50,6 @@ export default async function UsersPage() {
           </TableRow>
         ))}
       </Table.Root>
-      
     </>
   );
 }

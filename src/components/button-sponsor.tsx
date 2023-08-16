@@ -9,16 +9,7 @@ export default function ButtonSponsor() {
         stripeSession()
           .then((res) => (window.location.href = res || ""))
           .catch(() => {
-            toast.error("Something went wrong.", {
-              position: "bottom-right",
-              autoClose: 2000,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "colored",
-            });
+            toast.error("Something went wrong.");
           })
       }
       className="flex items-center justify-between rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800"

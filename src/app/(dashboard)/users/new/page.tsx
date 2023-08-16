@@ -1,4 +1,4 @@
-import CreateUserButton from "@/components/User/UserCreateButton";
+import CreateUserForm from "@/components/forms/create-user-form";
 
 export default function CreateUser() {
   return (
@@ -6,7 +6,7 @@ export default function CreateUser() {
       <h1 className="font-cal text-3xl font-bold dark:text-white">
         Novo Usuário
       </h1>
-      <CreateUserButton />
+      <CreateUserForm />
     </>
   );
 }

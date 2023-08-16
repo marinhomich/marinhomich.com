@@ -11,19 +11,8 @@ export default function DeleteUserButton({ id }: { id: number }) {
     <Trash2
       onClick={() =>
         deleteUser(id).then((res: any) => {
-          toast.error("Usuário Deletado com sucesso", {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
-
+          toast.error("Usuário Deletado com sucesso");
           router.refresh();
-          // router.push(`/users`);
         })
       }
     >
