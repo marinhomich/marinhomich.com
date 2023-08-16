@@ -1,11 +1,8 @@
+import Users from "@/components/User/UserList";
+import { getSession } from "@/lib/auth";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import prisma from "@/lib/prisma";
-import { getSession } from "@/lib/auth";
-import { Table } from "@/components/Table";
-import { TableCell, TableRow } from "@tremor/react";
-import DeleteUserButton from "@/components/User/UserDeleteButton";
 
 export const metadata: Metadata = {
   title: "Usuários - Michel Marinho",
@@ -17,8 +14,6 @@ export default async function UsersPage() {
   if (!session) {
     redirect("/login");
   }
-
-  const users = await prisma.user.findMany({});
 
   return (
     <>
@@ -33,23 +28,7 @@ export default async function UsersPage() {
           Novo Usuário
         </Link>
       </div>
-      <Table.Root>
-        <Table.Head header={["Nome", "Email"]} />
-        {users.map((item) => (
-          <TableRow key={item.id}>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.email}</TableCell>
-            <TableCell>
-              <Link href={`/users/${item.id}`}>Detalhes</Link>
-            </TableCell>
-            <TableCell>
-              {item.email !== "demo@marinhomich.dev" && (
-                <DeleteUserButton id={item.id} />
-              )}
-            </TableCell>
-          </TableRow>
-        ))}
-      </Table.Root>
+      <Users />
     </>
   );
 }

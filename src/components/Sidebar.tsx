@@ -18,7 +18,7 @@ import {
 import { ReactNode, useEffect, useMemo, useState } from "react";
 
 import Image from "next/image";
-import ButtonSponsor from "./button-sponsor";
+import ButtonSponsor from "./sponsor-button";
 
 export default function Sidebar({ children }: { children: ReactNode }) {
   const segments = useSelectedLayoutSegments();

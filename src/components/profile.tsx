@@ -1,6 +1,6 @@
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import LogoutButton from "./logout-button";
+import LogoutButton from "./auth/logout-button";
 
 export default async function Profile() {
   const session = await getSession();
