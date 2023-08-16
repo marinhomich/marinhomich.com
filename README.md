@@ -1,59 +1,69 @@
-# Template Project
+# Dashboard
 
-Welcome to the React project! This repository contains the source code and files for a web application built using React, a popular JavaScript library for building user interfaces.
+> **Warning**
+> This is a work-in-progress and not the finished product.
+>
+> Feel free to leave feature suggestions but please don't open issues for bugs or support requests just yet.
 
-## Table of Contents
+[![Dashboard](./public/images/screenshot/login-page-screenshot.png)](https://dashboard.marinhomich.dev/)
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Folder Structure](#folder-structure)
-- [Contributing](#contributing)
-- [License](#license)
+<!-- ## Introduction
 
-## Introduction
+This project aims to showcase the power and flexibility of React for building modern, interactive, and responsive web applications. Whether you're a beginner or an experienced developer, this project can serve as a starting point for your React-based web application. -->
 
-This project aims to showcase the power and flexibility of React for building modern, interactive, and responsive web applications. Whether you're a beginner or an experienced developer, this project can serve as a starting point for your React-based web application.
+## Tech Stack
 
-## Features
+- **Framework:** [Next.js](https://nextjs.org)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **ORM:** [Prisma](https://www.prisma.io/)
+- **UI Components:** [Tremor](https://www.tremor.so/)
+- **Email:** [React Email](https://react.email)
+- **Payments infrastructure:** [Stripe](https://stripe.com)
+<!-- - **File Uploads:** [uploadthing](https://uploadthing.com) -->
 
-- [List key features of the project here]
-- [e.g., Responsive design, Smooth animations, Interactive user interface]
-
-## Installation
+## Running Locally
 
 Follow these steps to get the project up and running on your local machine:
 
 1. Clone this repository to your local machine using the following command:
 
 ```bash
-git clone
+git clone https://github.com/marinhomich/dashboard.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd template
+cd dashboard
 ```
 
-3. Install the required dependencies using npm or yarn:
+3. Install dependencies using pnpm:
 
 ```bash
-npm install
-
-#or
-
-yarn
+pnpm install
 ```
 
-## Usage
+4. Start the development server:
 
-To start the development server and view the application in your browser, run the following command:
+```bash
+pnpm run dev
+```
 
-This will launch the development server, and the application will be accessible at `http://localhost:3000`.
+## Using Docker
 
-## Folder Structure
+1. Build your container:
+
+```bash
+docker build -t nextjs-docker .
+```
+
+2. Run your container:
+
+```bash
+docker run -p 3000:3000 nextjs-docker
+```
+
+<!-- ## Folder Structure
 
 The project's folder structure is organized as follows:
 
@@ -79,7 +89,7 @@ The project's folder structure is organized as follows:
     ├── .gitignore             # List of files/folders to be ignored by Git
     ├── package.json           # Project configuration and dependencies
     ├── README.md              # Project documentation
-    └── vite.config.js         # Vite configuration file
+    └── vite.config.js         # Vite configuration file -->
 
 ## Contributing
 
