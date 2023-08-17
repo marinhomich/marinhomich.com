@@ -20,17 +20,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 type Inputs = z.infer<typeof emailSchema>;
 
 export default function AuthForm() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<Inputs>({
     resolver: zodResolver(emailSchema),
   });
 
   async function onSubmit(data: Inputs) {
+    setIsLoading(true);
+
     const signInResult = await signIn("credentials", {
       username: data.email,
       password: data.password,
@@ -38,6 +43,7 @@ export default function AuthForm() {
     });
 
     if (signInResult?.error) {
+      setIsLoading(false);
       toast.error("Erro");
     }
     router.refresh();
@@ -67,14 +73,17 @@ export default function AuthForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input type="password" {...field} />
               </FormControl>
 
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button disabled={isLoading} type="submit">
+          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Submit
+        </Button>
       </form>
     </Form>
   );

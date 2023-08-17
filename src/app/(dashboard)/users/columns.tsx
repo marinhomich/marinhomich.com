@@ -9,11 +9,24 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { deleteUser } from "@/lib/actions";
+import { toast } from "react-toastify";
 
 export type User = {
   id: number;
@@ -51,9 +64,39 @@ export const columns: ColumnDef<User>[] = [
               <DropdownMenuItem>View User</DropdownMenuItem>
             </Link>
             {item.email !== "demo@marinhomich.dev" && (
-              <DropdownMenuItem onClick={() => alert(item.name)}>
-                Delete User
-              </DropdownMenuItem>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <DropdownMenuItem onSelect={(e: any) => e.preventDefault()}>
+                    Delete User
+                  </DropdownMenuItem>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      Are you absolutely sure?
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone. This will permanently delete
+                      your account and remove your data from our servers.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction
+                      className="bg-red-500"
+                      onClick={() => {
+                        deleteUser(item.id).then((res: any) => {
+                          toast.error("Usuário Deletado com sucesso");
+                          window.location.reload();
+                          // router.refresh();
+                        });
+                      }}
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             )}
           </DropdownMenuContent>
         </DropdownMenu>
