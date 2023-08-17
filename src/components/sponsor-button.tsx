@@ -12,7 +12,7 @@ export default function ButtonSponsor() {
             toast.error("Something went wrong.");
           })
       }
-      className="flex items-center justify-between rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800"
+      className="flex items-center justify-between rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-700 active:bg-stone-800"
     >
       <div className="flex items-center space-x-3">
         <Heart width={18} />

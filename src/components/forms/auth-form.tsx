@@ -6,39 +6,38 @@ import type { z } from "zod";
 
 import { emailSchema } from "@/lib/validations/email";
 
-import { Button, TextInput } from "@tremor/react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { toast } from "react-toastify";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 type Inputs = z.infer<typeof emailSchema>;
 
 export default function AuthForm() {
   const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<Inputs>({
+  const form = useForm<Inputs>({
     resolver: zodResolver(emailSchema),
   });
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   async function onSubmit(data: Inputs) {
-    setIsLoading(true);
-
     const signInResult = await signIn("credentials", {
-      username: data.username,
+      username: data.email,
       password: data.password,
       redirect: false,
     });
 
     if (signInResult?.error) {
-      setIsLoading(false);
       toast.error("Erro");
     }
     router.refresh();
@@ -46,29 +45,37 @@ export default function AuthForm() {
   }
 
   return (
-    <div className="relative mt-2 rounded-md shadow-sm">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid gap-2">
-          <div className="grid gap-1">
-            <label className="sr-only" htmlFor="email">
-              Email
-            </label>
-            <TextInput placeholder="Email" {...register("username")} />
-            <TextInput
-              type="password"
-              placeholder="Senha"
-              {...register("password")}
-            />
-          </div>
-          <Button
-            variant="primary"
-            className="text-red-600"
-            loading={isLoading}
-          >
-            Entrar
-          </Button>
-        </div>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
       </form>
-    </div>
+    </Form>
   );
 }

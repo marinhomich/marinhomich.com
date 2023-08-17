@@ -1,30 +1,45 @@
 "use client";
-import { createUser } from "@/lib/actions";
-import { createUserSchema } from "@/lib/validations/email";
+"use client";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, TextInput } from "@tremor/react";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 import type { z } from "zod";
+
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { createUserSchema } from "@/lib/validations/email";
+import { useState } from "react";
+import { createUser } from "@/lib/actions";
+import { Loader2 } from "lucide-react";
 
 type Inputs = z.infer<typeof createUserSchema>;
 
 export default function CreateUserForm() {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm<Inputs>({
+  const form = useForm<Inputs>({
     resolver: zodResolver(createUserSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function onSubmit(data: Inputs) {
+    // alert("ok");
     setIsLoading(true);
     createUser(data).then(() => {
       toast.success("Usuário criado com sucesso");
@@ -34,35 +49,56 @@ export default function CreateUserForm() {
     });
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid gap-2">
-        <div className="grid gap-1">
-          <TextInput
-            type="text"
-            placeholder="name"
-            error={Boolean(errors.name)}
-            errorMessage={errors.name?.message}
-            {...register("name")}
-          />
-          <TextInput
-            placeholder="email"
-            type="email"
-            error={Boolean(errors.password)}
-            errorMessage={errors.email?.message}
-            {...register("email")}
-          />
-          <TextInput
-            type="password"
-            error={Boolean(errors.password)}
-            errorMessage={errors.password?.message}
-            placeholder="password"
-            {...register("password")}
-          />
-        </div>
-        <Button variant="primary" className="text-red-600" loading={isLoading}>
-          Criar
+    <Form {...form}>
+      <form
+        onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
+        className="space-y-2"
+      >
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input type="password" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button disabled={isLoading} type="submit">
+          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Submit
         </Button>
-      </div>
-    </form>
+      </form>
+    </Form>
   );
 }

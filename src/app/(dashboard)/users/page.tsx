@@ -3,6 +3,9 @@ import { getSession } from "@/lib/auth";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { DataTable } from "./data-table";
+import { columns } from "./columns";
+import prisma from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "Usuários - Michel Marinho",
@@ -15,12 +18,12 @@ export default async function UsersPage() {
     redirect("/login");
   }
 
+  const data = await prisma.user.findMany({});
+
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="font-cal text-3xl font-bold dark:text-white">
-          Usuários
-        </h1>
+        <h1 className="font-cal text-3xl font-bold">Usuários</h1>
         <Link
           href={"/users/new"}
           className="flex h-8 w-36 items-center justify-center space-x-2 rounded-lg border text-sm transition-all focus:outline-none sm:h-9  border-black bg-black text-white hover:bg-white hover:text-black active:bg-stone-100 dark:border-stone-700 dark:hover:border-stone-200 dark:hover:bg-black dark:hover:text-white dark:active:bg-stone-800"
@@ -28,7 +31,8 @@ export default async function UsersPage() {
           Novo Usuário
         </Link>
       </div>
-      <Users />
+      <DataTable columns={columns} data={data} />
+      {/* <Users /> */}
     </>
   );
 }

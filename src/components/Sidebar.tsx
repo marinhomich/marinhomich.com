@@ -20,6 +20,7 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import ButtonSponsor from "./sponsor-button";
 import Search from "./search";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Sidebar({ children }: { children: ReactNode }) {
   const segments = useSelectedLayoutSegments();
@@ -113,17 +114,15 @@ export default function Sidebar({ children }: { children: ReactNode }) {
       >
         <Menu width={20} />
       </button>
+
       <div
         className={`transform ${
           showSidebar ? "translate-x-0" : "-translate-x-full"
-        } fixed z-10 flex h-full w-full flex-col justify-between border-r border-stone-200 bg-stone-100 p-4 transition-all dark:border-stone-700 dark:bg-stone-900 sm:w-60 sm:translate-x-0`}
+        } fixed z-10 flex h-full w-full flex-col justify-between border-r border-stone-700 bg-stone-900 p-4 transition-all sm:w-60 sm:translate-x-0`}
       >
         <div className="grid gap-2">
           <div className="flex items-center space-x-2 rounded-lg px-2 py-1.5">
-            <Link
-              href="/"
-              className="rounded-lg p-2 hover:bg-stone-200 dark:hover:bg-stone-700"
-            >
+            <Link href="/" className="rounded-lg p-2 hover:bg-stone-700">
               <Image
                 src="/vercel-logotype-light.png"
                 width={32}
@@ -139,8 +138,8 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                 key={name}
                 href={href}
                 className={`flex items-center space-x-3 ${
-                  isActive ? "bg-stone-200 text-black dark:bg-stone-700" : ""
-                } rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out hover:bg-stone-200 active:bg-stone-300 dark:text-white dark:hover:bg-stone-700 dark:active:bg-stone-800`}
+                  isActive ? "bg-stone-700" : ""
+                } rounded-lg px-2 py-1.5 transition-all duration-150 ease-in-out text-white hover:bg-stone-700 active:bg-stone-800`}
               >
                 {icon}
                 <span className="text-sm font-medium">{name}</span>
@@ -152,7 +151,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
           <div className="grid gap-1">
             <ButtonSponsor />
           </div>
-          <div className="my-2 border-t border-stone-200 dark:border-stone-700" />
+          <div className="my-2 border-t border-stone-700" />
           {children}
         </div>
       </div>

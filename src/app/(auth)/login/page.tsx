@@ -1,6 +1,5 @@
 import AuthForm from "@/components/forms/auth-form";
 import Image from "next/image";
-import { Callout } from "@tremor/react";
 
 export const metadata = {
   title: "Login | Michel Marinho",
@@ -21,9 +20,6 @@ export default function LoginPage() {
       </h1>
 
       <div className="mx-auto mt-4 w-11/12 max-w-xs sm:w-full">
-        <Callout className="mt-4 " title="Informações de Acesso" color="teal">
-          Email: demo@marinhomich.dev / Senha : demo1234
-        </Callout>
         <AuthForm />
       </div>
     </div>

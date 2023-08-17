@@ -1,5 +1,3 @@
 export default async function Home() {
-  return (
-    <h1 className="font-cal text-3xl font-bold dark:text-white">Home</h1>
-  );
+  return <h1 className="font-cal text-3xl font-bold">Home</h1>;
 }
