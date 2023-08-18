@@ -117,7 +117,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
       <div
         className={`transform ${
           showSidebar ? "translate-x-0" : "-translate-x-full"
-        } fixed z-10 flex h-full w-full flex-col justify-between border-r p-4 transition-all sm:w-60 sm:translate-x-0`}
+        } fixed z-10 flex h-full w-full flex-col bg-background justify-between border-r p-4 transition-all sm:w-60 sm:translate-x-0`}
       >
         <div className="grid gap-2">
           <div className="flex items-center space-x-2 rounded-lg px-2 py-1.5">
