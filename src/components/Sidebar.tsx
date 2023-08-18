@@ -120,7 +120,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
         } fixed z-10 flex h-full w-full flex-col bg-background justify-between border-r p-4 transition-all sm:w-60 sm:translate-x-0`}
       >
         <div className="grid gap-2">
-          <div className="flex items-center space-x-2 rounded-lg px-2 py-1.5">
+          {/* <div className="flex items-center space-x-2 rounded-lg px-2 py-1.5">
             <Link href="/" className="rounded-lg p-2 hover:bg-secondary/80">
               <Image
                 src="/vercel-logotype-light.png"
@@ -129,7 +129,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                 alt="Logo"
               />
             </Link>
-          </div>
+          </div> */}
 
           <Combobox />
           <div className="grid gap-1">

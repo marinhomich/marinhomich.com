@@ -39,45 +39,6 @@ export type User = {
   createdAt: Date;
 };
 
-function UsersOperations() {
-  const router = useRouter();
-  const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false);
-  const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <DropdownMenuItem onSelect={(e: any) => e.preventDefault()}>
-          Delete User
-        </DropdownMenuItem>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            className="bg-red-500"
-            onClick={() => {
-              // deleteUser(i).then((res: any) => {
-              //   toast.error("Usuário Deletado com sucesso");
-              //   window.location.reload();
-              //   // router.refresh();
-              // });
-            }}
-          >
-            Delete
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-}
-
 export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
@@ -111,7 +72,7 @@ export const columns: ColumnDef<User>[] = [
               </Link>
               {item.email !== "demo@marinhomich.dev" && (
                 <DropdownMenuItem onSelect={() => setShowDeleteAlert(true)}>
-                  Delete User - {item.id}
+                  Delete User
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>

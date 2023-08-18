@@ -1,6 +1,8 @@
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import LogoutButton from "./auth/logout-button";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function Profile() {
   const session = await getSession();
@@ -10,8 +12,18 @@ export default async function Profile() {
   }
 
   return (
-    <div className="flex w-full items-center justify-between">
-      <span className="truncate text-sm font-medium">{session.user.name}</span>
+    <div className="flex items-center justify-between">
+      <Link href="/" className="flex items-center space-x-2 rounded-lg ">
+        <Image
+          src="/vercel-logotype-light.png"
+          width={32}
+          height={32}
+          alt="Logo"
+        />
+        <span className="truncate text-sm max-w-[140px] font-medium">
+          {session.user.name}
+        </span>
+      </Link>
       <LogoutButton />
     </div>
   );
