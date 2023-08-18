@@ -23,12 +23,12 @@ export default async function UsersPage() {
   return (
     <>
       <div className="flex items-center justify-between">
-        <h1 className="font-cal text-3xl font-bold">Usuários</h1>
+        <h1 className="font-cal text-3xl font-bold">Users</h1>
         <Link
           href={"/users/new"}
           className={buttonVariants({ variant: "outline" })}
         >
-          Novo Usuário
+          Add User
         </Link>
       </div>
       <DataTable columns={columns} data={data} />

@@ -83,7 +83,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
         icon: <LayoutDashboard width={18} />,
       },
       {
-        name: "Usuários",
+        name: "Users",
         href: "/users",
         isActive: segments[0] === "users",
         icon: <Users width={18} />,

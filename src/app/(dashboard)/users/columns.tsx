@@ -27,6 +27,9 @@ import {
 import Link from "next/link";
 import { deleteUser } from "@/lib/actions";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Icons } from "@/components/icons";
 
 export type User = {
   id: number;
@@ -36,10 +39,49 @@ export type User = {
   createdAt: Date;
 };
 
+function UsersOperations() {
+  const router = useRouter();
+  const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false);
+  const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <DropdownMenuItem onSelect={(e: any) => e.preventDefault()}>
+          Delete User
+        </DropdownMenuItem>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            className="bg-red-500"
+            onClick={() => {
+              // deleteUser(i).then((res: any) => {
+              //   toast.error("Usuário Deletado com sucesso");
+              //   window.location.reload();
+              //   // router.refresh();
+              // });
+            }}
+          >
+            Delete
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
+
 export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
-    header: "Nome",
+    header: "Name",
   },
   {
     accessorKey: "email",
@@ -47,59 +89,76 @@ export const columns: ColumnDef<User>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
+    cell: function Cell({ row }) {
       const item = row.original;
+      const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false);
+      const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
+      const router = useRouter();
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <span className="sr-only">Open menu</span>
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-            <Link href={`/users/${item.id}`}>
-              <DropdownMenuItem>View User</DropdownMenuItem>
-            </Link>
-            {item.email !== "demo@marinhomich.dev" && (
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <DropdownMenuItem onSelect={(e: any) => e.preventDefault()}>
-                    Delete User
-                  </DropdownMenuItem>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Are you absolutely sure?
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete
-                      your account and remove your data from our servers.
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      className="bg-red-500"
-                      onClick={() => {
-                        deleteUser(item.id).then((res: any) => {
-                          toast.error("Usuário Deletado com sucesso");
-                          window.location.reload();
-                          // router.refresh();
-                        });
-                      }}
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-            )}
-          </DropdownMenuContent>
-        </DropdownMenu>
+              <Link href={`/users/${item.id}`}>
+                <DropdownMenuItem>View User</DropdownMenuItem>
+              </Link>
+              {item.email !== "demo@marinhomich.dev" && (
+                <DropdownMenuItem onSelect={() => setShowDeleteAlert(true)}>
+                  Delete User - {item.id}
+                </DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  className="bg-red-500 focus:ring-red-500"
+                  onClick={async (event) => {
+                    event.preventDefault();
+                    setIsDeleteLoading(true);
+
+                    const deleted = await deleteUser(item.id).then(
+                      (res: any) => {
+                        return true;
+                      }
+                    );
+
+                    if (deleted) {
+                      setIsDeleteLoading(false);
+                      setShowDeleteAlert(false);
+                      toast.error("Usuário Deletado com sucesso");
+
+                      router.refresh();
+                    }
+                  }}
+                >
+                  {isDeleteLoading ? (
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Icons.trash className="mr-2 h-4 w-4" />
+                  )}
+                  <span>Delete</span>
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </>
       );
     },
   },
