@@ -89,6 +89,7 @@ export const columns: ColumnDef<User>[] = [
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
                 <AlertDialogAction
+                  disabled
                   className="bg-red-500 focus:ring-red-500"
                   onClick={async (event) => {
                     event.preventDefault();

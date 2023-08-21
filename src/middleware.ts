@@ -1,8 +1,8 @@
-import { NextResponse, NextRequest } from 'next/server'
+import { NextResponse, NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 
 export const config = {
-  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",],
+  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"],
 };
 
 export default async function middleware(req: NextRequest) {
@@ -11,13 +11,20 @@ export default async function middleware(req: NextRequest) {
   const session = await getToken({ req });
 
   // Get the pathname of the request (e.g. /, /about, /blog/first-post)
-  if (!session && path !== "/login") {
-    return NextResponse.redirect(new URL("/login", req.url));
-  } else if (session && path == "/login") {
+  if (
+    !session &&
+    (path == "/login" || path == "/signup" || path == "/reset-password")
+  ) {
+    return NextResponse.next();
+    // return NextResponse.redirect(new URL("/login", req.url));
+  } else if (
+    (session && path == "/login") ||
+    path == "/signup" ||
+    path == "/reset-password"
+  ) {
     return NextResponse.redirect(new URL("/", req.url));
   }
   // return NextResponse.rewrite(
   //   new URL(`/app${path === "/" ? "" : path}`, req.url),
   // );
-
 }

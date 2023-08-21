@@ -4,10 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
-import { emailSchema } from "@/lib/validations/email";
+import { createUserSchema, emailSchema } from "@/lib/validations/email";
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -31,19 +32,23 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-import { PasswordInput } from "../password-input";
+import { PasswordInput } from "@/components/password-input";
+import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
+import { createUser } from "@/lib/actions";
 
-type Inputs = z.infer<typeof emailSchema>;
+type Inputs = z.infer<typeof createUserSchema>;
 
-export default function AuthForm() {
+export default function SignUpForm() {
   const router = useRouter();
   const { toast } = useToast();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<Inputs>({
-    resolver: zodResolver(emailSchema),
+    resolver: zodResolver(createUserSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
     },
@@ -51,34 +56,48 @@ export default function AuthForm() {
 
   async function onSubmit(data: Inputs) {
     setIsLoading(true);
+    createUser(data)
+      .then((res) => {
+        toast({
+          title: "Check your email.",
+          description: "We sent you a 6-digit verification code.",
+        });
 
-    const signInResult = await signIn("credentials", {
-      username: data.email,
-      password: data.password,
-      redirect: false,
-    });
-
-    if (signInResult?.error) {
-      setIsLoading(false);
-      toast({
-        title: "Nome de usuário ou senha incorretos.",
-        variant: "destructive",
+        router.refresh();
+        router.push(`/login`);
+      })
+      .catch((err) => {
+        toast({
+          title: "Failed.",
+          description: err.message,
+          variant: "destructive",
+        });
+        setIsLoading(false);
       });
-    } else {
-      router.refresh();
-      router.push("/");
-    }
   }
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Dashboard</CardTitle>
+        <CardTitle>Sign up</CardTitle>
         <CardDescription>An open source dashboard.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Michel Marinho" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -99,32 +118,31 @@ export default function AuthForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <PasswordInput placeholder="demo1234" {...field} />
+                    <PasswordInput placeholder="**********" {...field} />
                   </FormControl>
-
                   <FormMessage />
                 </FormItem>
               )}
             />
             <Button className="w-full" disabled={isLoading} type="submit">
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Sign in
+              Sign up
             </Button>
-            <span className="sr-only">Sign in</span>
+            <span className="sr-only">Sign up</span>
           </form>
         </Form>
       </CardContent>
       <CardFooter className="flex flex-wrap items-center justify-between gap-2">
         <div className="text-sm text-muted-foreground">
           <span className="mr-1 hidden sm:inline-block">
-            Don&apos;t have an account?
+            Already have an account?
           </span>
           <Link
             aria-label="Sign up"
-            href="/signup"
+            href="/login"
             className="text-primary underline-offset-4 transition-colors hover:underline"
           >
-            Sign up
+            Sign in
           </Link>
         </div>
         {/* <Link

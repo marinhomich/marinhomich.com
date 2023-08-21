@@ -1,5 +1,4 @@
 "use client";
-"use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -39,7 +38,6 @@ export default function CreateUserForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function onSubmit(data: Inputs) {
-    // alert("ok");
     setIsLoading(true);
     createUser(data).then(() => {
       toast.success("Usuário criado com sucesso");

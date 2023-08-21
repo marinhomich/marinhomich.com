@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Dashboard - Michel Marinho",
@@ -26,6 +27,7 @@ export default function RootLayout({
             {children}
             <Analytics />
           </Providers>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
