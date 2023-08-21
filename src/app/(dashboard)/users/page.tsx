@@ -1,8 +1,7 @@
-import { buttonVariants } from "@/components/ui/button";
+import Container from "@/components/Container";
 import { getSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
@@ -21,17 +20,8 @@ export default async function UsersPage() {
   const data = await prisma.user.findMany({});
 
   return (
-    <>
-      <div className="flex items-center justify-between">
-        <h1 className="font-cal text-3xl font-bold">Users</h1>
-        <Link
-          href={"/users/new"}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Add User
-        </Link>
-      </div>
+    <Container title="Users" link="/users/new" linkTitle="Add User">
       <DataTable columns={columns} data={data} />
-    </>
+    </Container>
   );
 }

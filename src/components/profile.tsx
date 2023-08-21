@@ -12,7 +12,7 @@ export default async function Profile() {
   }
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between px-2 py-2 border-t border-stone-700">
       <Link href="/" className="flex items-center space-x-2 rounded-lg ">
         <Image
           src="/vercel-logotype-light.png"

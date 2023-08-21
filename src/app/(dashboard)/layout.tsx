@@ -1,23 +1,27 @@
 import Sidebar from "@/components/Sidebar";
-import Profile from "@/components/profile";
-import { ReactNode } from "react";
-import { Providers } from "./providers";
+import SidebarMobile from "@/components/Sidebar-mobile";
 import { Combobox } from "@/components/combobox";
+import Profile from "@/components/profile";
+import { Users } from "lucide-react";
+import { ReactNode } from "react";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    // <Providers>
-    <div>
+    <div className="flex">
       <Sidebar>
         <Profile />
       </Sidebar>
-
-      <div className="min-h-screen sm:pl-60 pt-12 sm:pt-0">
-        <div className="flex max-w-screen-xl flex-col space-y-12 p-8">
-          <div className="flex flex-col space-y-6">{children}</div>
+      <div className="w-full">
+        <div className="flex h-[60px] items-center justify-end border-b border-slate-6 px-6">
+          <SidebarMobile />
+          <div className="hidden items-center md:flex w-52">
+            <Combobox />
+          </div>
+        </div>
+        <div className="h-[calc(100vh-60px)] overflow-auto pb-10">
+          {children}
         </div>
       </div>
     </div>
-    // </Providers>
   );
 }
