@@ -1,8 +1,6 @@
+"use server";
 import { createUserSchema } from "@/lib/validations/email";
-("use server");
-
 import prisma from "@/lib/prisma";
-
 import NewUserEmail from "@/components/emails/new-user";
 import { hash } from "bcrypt";
 import { z } from "zod";
