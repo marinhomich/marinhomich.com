@@ -2,7 +2,6 @@ import Sidebar from "@/components/Sidebar";
 import SidebarMobile from "@/components/Sidebar-mobile";
 import { Combobox } from "@/components/combobox";
 import Profile from "@/components/profile";
-import { Users } from "lucide-react";
 import { ReactNode } from "react";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {

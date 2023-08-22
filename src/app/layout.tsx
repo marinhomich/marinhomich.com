@@ -17,16 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-      />
+      <head />
       <body className={"min-h-screen font-sans antialiased"}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Providers>
-            {children}
-            <Analytics />
-          </Providers>
+          <Providers>{children}</Providers>
+          <Analytics />
           <Toaster />
         </ThemeProvider>
       </body>

@@ -11,14 +11,6 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
   Card,
   CardContent,
   CardDescription,
@@ -26,13 +18,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import { PasswordInput } from "../password-input";
-import { useToast } from "@/components/ui/use-toast";
 
 type Inputs = z.infer<typeof emailSchema>;
 
@@ -127,13 +127,6 @@ export default function AuthForm() {
             Sign up
           </Link>
         </div>
-        {/* <Link
-          aria-label="Reset password"
-          href="/reset-password"
-          className="text-sm text-primary underline-offset-4 transition-colors hover:underline"
-        >
-          Reset password
-        </Link> */}
       </CardFooter>
     </Card>
   );
