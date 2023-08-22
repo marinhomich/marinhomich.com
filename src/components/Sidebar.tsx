@@ -67,10 +67,10 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
       <aside className="hidden h-screen w-[250px] flex-shrink-0 flex-col justify-between border-r border-slate-6 md:flex">
         <div>
           <div className="flex h-[60px] items-center px-4">
-            <Link href={"/"}>Minha Logo</Link>
+            <Link href={"/"}>Logo</Link>
           </div>
           <nav className="mt-6 px-4">
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1">
               {tabs.map(({ name, href, isActive, icon }) => (
                 <li key={name}>
                   <Link

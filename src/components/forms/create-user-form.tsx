@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,16 +15,29 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { PasswordInput } from "@/components/password-input";
 import { Input } from "@/components/ui/input";
 import { createUserSchema } from "@/lib/validations/email";
 import { useState } from "react";
 import { createUser } from "@/lib/actions";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
+import { useToast } from "@/components//ui/use-toast";
 
 type Inputs = z.infer<typeof createUserSchema>;
 
 export default function CreateUserForm() {
   const router = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<Inputs>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
@@ -39,19 +51,29 @@ export default function CreateUserForm() {
 
   function onSubmit(data: Inputs) {
     setIsLoading(true);
-    createUser(data).then(() => {
-      toast.success("Usuário criado com sucesso");
+    createUser(data)
+      .then(() => {
+        toast({
+          title: "User Created.",
+          description: "User Created.",
+        });
 
-      router.refresh();
-      router.push(`/users`);
-    });
+        router.refresh();
+        router.push(`/users`);
+      })
+      .catch((err) => {
+        toast({
+          title: "Failed.",
+          description: err.message,
+          variant: "destructive",
+        });
+        // console.log(err.message);
+        setIsLoading(false);
+      });
   }
   return (
     <Form {...form}>
-      <form
-        onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
-        className="space-y-2"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
         <FormField
           control={form.control}
           name="name"
@@ -59,7 +81,7 @@ export default function CreateUserForm() {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input placeholder="Michel Marinho" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -72,7 +94,7 @@ export default function CreateUserForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input placeholder="demo@marinhomich.dev" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -85,17 +107,18 @@ export default function CreateUserForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" {...field} />
+                <PasswordInput placeholder="**********" {...field} />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
         />
+
         <Button disabled={isLoading} type="submit">
           {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Submit
         </Button>
+        <span className="sr-only">Submit</span>
       </form>
     </Form>
   );

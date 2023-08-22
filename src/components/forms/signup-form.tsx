@@ -56,24 +56,23 @@ export default function SignUpForm() {
 
   async function onSubmit(data: Inputs) {
     setIsLoading(true);
-    createUser(data)
-      .then((res) => {
-        toast({
-          title: "Check your email.",
-          description: "We sent you a 6-digit verification code.",
-        });
-
-        router.refresh();
-        router.push(`/login`);
-      })
-      .catch((err) => {
+    createUser(data).then((res) => {
+      if (res?.error) {
         toast({
           title: "Failed.",
-          description: err.message,
+          description: res.error,
           variant: "destructive",
         });
         setIsLoading(false);
-      });
+      } else {
+        toast({
+          title: "User Created.",
+          description: "User Created.",
+        });
+        router.refresh();
+        router.push(`/login`);
+      }
+    });
   }
 
   return (

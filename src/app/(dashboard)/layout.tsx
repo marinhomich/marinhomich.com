@@ -9,6 +9,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex">
       <Sidebar>
+        <div className="my-2 border-t border-stone-700"></div>
         <Profile />
       </Sidebar>
       <div className="w-full">

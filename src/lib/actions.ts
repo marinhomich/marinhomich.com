@@ -1,13 +1,16 @@
-"use server";
+import { createUserSchema } from "@/lib/validations/email";
+("use server");
 
 import prisma from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
 
-import { hash } from "bcrypt";
-import resend from "./resend";
 import NewUserEmail from "@/components/emails/new-user";
+import { hash } from "bcrypt";
+import { z } from "zod";
+import resend from "./resend";
 
-export const createUser = async (data: any) => {
+type userData = z.infer<typeof createUserSchema>;
+
+export const createUser = async (data: userData) => {
   const password = await hash(data.password, 12);
   try {
     await prisma.user.create({
@@ -24,12 +27,15 @@ export const createUser = async (data: any) => {
       react: NewUserEmail({ userName: data.name }) as React.ReactElement,
     });
   } catch (error: any) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      if (error.code === "P2002") {
-        throw Error("A new user cannot be created with this email.");
-      }
+    if (error.code === "P2002") {
+      return {
+        error: `This user is already exists`,
+      };
+    } else {
+      return {
+        error: error.message,
+      };
     }
-    throw error;
   }
 };
 
