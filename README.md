@@ -16,7 +16,7 @@ This project aims to showcase the power and flexibility of React for building mo
 - **Framework:** [Next.js](https://nextjs.org)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com)
 - **ORM:** [Prisma](https://www.prisma.io/)
-- **UI Components:** [Tremor](https://www.tremor.so/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
 - **Email:** [React Email](https://react.email)
 - **Payments infrastructure:** [Stripe](https://stripe.com)
 <!-- - **File Uploads:** [uploadthing](https://uploadthing.com) -->
