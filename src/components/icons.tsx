@@ -65,6 +65,7 @@ import {
   X,
   Heart,
   Info,
+  Command,
   type LucideIcon,
   type LucideProps,
 } from "lucide-react";
@@ -108,6 +109,7 @@ export const Icons = {
   reset: RefreshCw,
   send: Send,
   copy: Copy,
+  command: Command,
   downlaod: Download,
   warning: AlertTriangle,
   search: Search,

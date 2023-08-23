@@ -53,6 +53,7 @@ export function Combobox() {
         {
           id: 1,
           icon: "add",
+
           myAction: function () {
             router.push("/users/new");
           },
@@ -108,13 +109,13 @@ export function Combobox() {
     <>
       <Button
         variant="outline"
-        className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border bg-secondary  hover:bg-secondary hover:text-accent-foreground relative h-9 p-0 xl:h-10 w-full xl:justify-start xl:px-3 xl:py-2"
+        className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border bg-secondary  hover:bg-secondary hover:text-accent-foreground relative h-9 p-0 md:h-10 w-full md:justify-start md:px-3 md:py-2"
         onClick={() => setOpen(true)}
       >
         <Icons.search className="h-4 w-4 mr-2" aria-hidden="true" />
         <span className="inline-flex">Search here...</span>
         <span className="sr-only">Search here</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 xl:flex">
+        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 md:flex">
           <abbr title={isMacOs() ? "Command" : "Control"}>
             {isMacOs() ? "⌘" : "Ctrl+"}
           </abbr>

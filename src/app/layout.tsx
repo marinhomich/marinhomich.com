@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
 
 export const metadata: Metadata = {
   // metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ""),
@@ -38,6 +39,7 @@ export default function RootLayout({
           <Providers>{children}</Providers>
           <Analytics />
           <Toaster />
+          {/* <TailwindIndicator /> */}
         </ThemeProvider>
       </body>
     </html>

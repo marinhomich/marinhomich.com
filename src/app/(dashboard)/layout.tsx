@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <div className="w-full">
         <div className="flex h-[60px] items-center justify-end border-b border-slate-6 px-6">
           <SidebarMobile />
-          <div className="hidden items-center md:flex w-52">
+          <div className="hidden md:flex w-52">
             <Combobox />
           </div>
         </div>
