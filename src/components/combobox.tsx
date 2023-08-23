@@ -17,9 +17,11 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { CommandBar } from "@/types";
+import { useTheme } from "next-themes";
 
 export function Combobox() {
   const router = useRouter();
+  const { setTheme } = useTheme();
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -51,14 +53,54 @@ export function Combobox() {
         {
           id: 1,
           icon: "add",
-          router: "/users/new",
+          myAction: function () {
+            router.push("/users/new");
+          },
           name: "Create New User...",
         },
       ],
     },
     {
       category: "Navigation",
-      items: [{ id: 1, icon: "chevronRight", router: "/", name: "Go to Home" }],
+      items: [
+        {
+          id: 1,
+          icon: "chevronRight",
+          myAction: function () {
+            router.push("/");
+          },
+          name: "Go to Home",
+        },
+      ],
+    },
+    {
+      category: "General",
+      items: [
+        {
+          id: 1,
+          icon: "moon",
+          myAction: function () {
+            setTheme("dark");
+          },
+          name: "Change Theme to Dark",
+        },
+        {
+          id: 2,
+          icon: "sun",
+          myAction: function () {
+            setTheme("light");
+          },
+          name: "Change Theme to Light",
+        },
+        {
+          id: 3,
+          icon: "monitor",
+          myAction: function () {
+            setTheme("system");
+          },
+          name: "Change Theme to System",
+        },
+      ],
     },
   ];
 
@@ -92,7 +134,9 @@ export function Combobox() {
                   <CommandItem
                     key={item.id}
                     onSelect={() =>
-                      handleSelect(() => router.push(item.router))
+                      handleSelect(() => {
+                        item.myAction();
+                      })
                     }
                   >
                     <Icon className="mr-2 h-4 w-4" aria-hidden="true" />

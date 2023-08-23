@@ -8,6 +8,7 @@ export interface CommandBar {
 export interface Item {
   id: number;
   icon: keyof typeof Icons;
-  router: string;
+  // router: string;
+  myAction: () => void;
   name: string;
 }
