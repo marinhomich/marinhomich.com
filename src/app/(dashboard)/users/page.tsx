@@ -5,7 +5,7 @@ import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
 export const metadata: Metadata = {
-  title: "Usuários - Michel Marinho",
+  title: "Users",
 };
 
 export default async function UsersPage() {

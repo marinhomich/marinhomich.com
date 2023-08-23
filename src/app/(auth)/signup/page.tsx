@@ -1,7 +1,7 @@
 import SignUpForm from "@/components/forms/signup-form";
 
 export const metadata = {
-  title: "Signup | Michel Marinho",
+  title: "Signup",
 };
 
 export default function SignupPage() {

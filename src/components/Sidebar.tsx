@@ -1,17 +1,9 @@
 "use client";
-import {
-  ArrowLeft,
-  BarChart3,
-  LayoutDashboard,
-  Newspaper,
-  Settings,
-  Users,
-} from "lucide-react";
+import { Icons } from "@/components/icons";
+import ButtonSponsor from "@/components/sponsor-button";
 import Link from "next/link";
 import { useParams, useSelectedLayoutSegments } from "next/navigation";
 import { useMemo } from "react";
-import Profile from "./profile";
-import ButtonSponsor from "./sponsor-button";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const segments = useSelectedLayoutSegments();
@@ -23,25 +15,25 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         {
           name: "Back to All Users",
           href: "/users",
-          icon: <ArrowLeft width={18} />,
+          icon: <Icons.arrowLeft width={18} />,
         },
         {
           name: "Details",
           href: `/users/${id}`,
           isActive: segments.length === 2,
-          icon: <Newspaper width={18} />,
+          icon: <Icons.newspaper width={18} />,
         },
         {
           name: "Analytics",
           href: `/users/${id}/analytics`,
           isActive: segments.includes("analytics"),
-          icon: <BarChart3 width={18} />,
+          icon: <Icons.chart width={18} />,
         },
         {
           name: "Settings",
           href: `/users/${id}/settings`,
           isActive: segments.includes("settings"),
-          icon: <Settings width={18} />,
+          icon: <Icons.settings width={18} />,
         },
       ];
     }
@@ -51,13 +43,13 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         name: "Overview",
         href: "/",
         isActive: segments.length === 0,
-        icon: <LayoutDashboard width={18} />,
+        icon: <Icons.layoutDashboard width={18} />,
       },
       {
         name: "Users",
         href: "/users",
         isActive: segments[0] === "users",
-        icon: <Users width={18} />,
+        icon: <Icons.users width={18} />,
       },
     ];
   }, [segments, id]);
@@ -91,7 +83,23 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="px-4 py-2">
-          <ButtonSponsor />
+          <ul className="flex flex-col gap-1">
+            <li>
+              <Link
+                className={`flex justify-between items-center space-x-3 ${
+                  segments.includes("about") ? "bg-secondary" : ""
+                } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
+                href={"/about"}
+              >
+                <span className="flex h-8 items-center gap-2 rounded-md px-2 text-sm bg-slate-6 text-slate-12">
+                  <Icons.info width={18} />
+                  About
+                </span>
+              </Link>
+            </li>
+            <ButtonSponsor />
+          </ul>
+
           {children}
         </div>
       </aside>
