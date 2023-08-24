@@ -5,13 +5,11 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2 } from "lucide-react"
-import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
-import { toast } from "react-toastify"
 import type { z } from "zod"
 
 import { createUser } from "@/lib/actions"
-import { createUserSchema, emailSchema } from "@/lib/validations/email"
+import { createUserSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -30,15 +28,13 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
+import { toast } from "@/components/ui/use-toast"
 import { PasswordInput } from "@/components/password-input"
 
 type Inputs = z.infer<typeof createUserSchema>
 
 export default function SignUpForm() {
   const router = useRouter()
-  const { toast } = useToast()
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 

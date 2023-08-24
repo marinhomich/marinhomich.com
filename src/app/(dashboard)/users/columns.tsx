@@ -5,7 +5,6 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
-import { toast } from "react-toastify"
 
 import { deleteUser } from "@/lib/actions"
 import {
@@ -27,6 +26,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
 export type User = {
@@ -102,7 +102,11 @@ export const columns: ColumnDef<User>[] = [
                     if (deleted) {
                       setIsDeleteLoading(false)
                       setShowDeleteAlert(false)
-                      toast.error("Usuário Deletado com sucesso")
+
+                      toast({
+                        title: "Usuário Deletado com sucesso.",
+                        variant: "destructive",
+                      })
 
                       router.refresh()
                     }
