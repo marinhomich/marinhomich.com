@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import {
   useParams,
@@ -17,64 +18,25 @@ import {
 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetFooter,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
-import { Combobox } from "./combobox"
+import SidebarItem from "./Sidebar-item"
+import LogoutButton from "./auth/logout-button"
 import { Icons } from "./icons"
 import { Button } from "./ui/button"
 import { ScrollArea } from "./ui/scroll-area"
 
-export default function SidebarMobile() {
-  const segments = useSelectedLayoutSegments()
+interface ProfileProps {
+  name: string | null | undefined
+}
+
+export default function SidebarMobile({ name }: ProfileProps) {
   const [showSidebar, setShowSidebar] = useState(false)
-
-  const { id } = useParams() as { id?: string }
-
-  const tabs = useMemo(() => {
-    if (segments[0] === "users" && id) {
-      return [
-        {
-          name: "Back to All Users",
-          href: "/users",
-          icon: <ArrowLeft width={18} />,
-        },
-        {
-          name: "Details",
-          href: `/users/${id}`,
-          isActive: segments.length === 2,
-          icon: <Newspaper width={18} />,
-        },
-        {
-          name: "Analytics",
-          href: `/users/${id}/analytics`,
-          isActive: segments.includes("analytics"),
-          icon: <BarChart3 width={18} />,
-        },
-        {
-          name: "Settings",
-          href: `/users/${id}/settings`,
-          isActive: segments.includes("settings"),
-          icon: <Settings width={18} />,
-        },
-      ]
-    }
-
-    return [
-      {
-        name: "Overview",
-        href: "/",
-        isActive: segments.length === 0,
-        icon: <LayoutDashboard width={18} />,
-      },
-      {
-        name: "Users",
-        href: "/users",
-        isActive: segments[0] === "users",
-        icon: <Users width={18} />,
-      },
-    ]
-  }, [segments, id])
-
   const pathname = usePathname()
 
   useEffect(() => {
@@ -83,8 +45,8 @@ export default function SidebarMobile() {
   }, [pathname])
 
   return (
-    <div className="absolute left-0 top-0 z-40 flex w-full flex-col items-center md:hidden">
-      <div className="flex w-full items-center justify-between px-6 py-4">
+    <div className="left-0 top-0 z-40 flex  flex-col items-center md:hidden">
+      <div className="flex  items-center justify-between">
         <Sheet open={showSidebar} onOpenChange={setShowSidebar}>
           <SheetTrigger asChild>
             <Button
@@ -104,53 +66,31 @@ export default function SidebarMobile() {
             </div>
             <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-4">
               <div className="pl-1 pr-7">
-                <ul className="flex flex-col gap-1">
-                  {tabs.map(({ name, href, isActive, icon }) => (
-                    <li key={name}>
-                      <Link
-                        className={`flex items-center space-x-3 ${
-                          isActive ? "bg-secondary" : ""
-                        } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
-                        href={href}
-                        onClick={() => setShowSidebar(false)}
-                      >
-                        <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
-                          {icon}
-                          {name}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <SidebarItem onClick={() => setShowSidebar(false)} />
               </div>
             </ScrollArea>
+            <SheetFooter>
+              <div className="flex w-full items-center justify-between px-7 ">
+                <Link
+                  href="/"
+                  className="flex items-center space-x-2 rounded-lg "
+                >
+                  <Image
+                    src="/vercel-logotype-light.png"
+                    width={32}
+                    height={32}
+                    alt="Logo"
+                  />
+                  <span className="max-w-[140px] truncate text-sm font-medium">
+                    {name}
+                  </span>
+                </Link>
+                <LogoutButton />
+              </div>
+            </SheetFooter>
           </SheetContent>
         </Sheet>
-        <div className="flex w-2/5 md:hidden">
-          <Combobox />
-        </div>
-        <Link href={"/"}>
-          <Icons.command />
-        </Link>
       </div>
-      {/* <div
-        className={` ${
-          showSidebar ? "flex" : "hidden"
-        }  w-full px-6 py-4 md:hidden`}
-        id="mobile-menu"
-      >
-        <div className="flex w-full flex-col">
-          {tabs.map(({ name, href, isActive, icon }) => (
-            <Link
-              className="text-md block w-full border-b border-slate-6 py-4 font-semibold text-slate-11 transition duration-200 ease-in-out last:border-none hover:text-slate-12"
-              key={name}
-              href={href}
-            >
-              {name}
-            </Link>
-          ))}
-        </div>
-      </div> */}
     </div>
   )
 }

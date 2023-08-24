@@ -1,27 +1,39 @@
-import { type ReactNode } from "react"
+import { ReactNode } from "react"
+import Link from "next/link"
+import { redirect } from "next/navigation"
 
+import { getSession } from "@/lib/auth"
 import Sidebar from "@/components/Sidebar"
 import SidebarMobile from "@/components/Sidebar-mobile"
 import { Combobox } from "@/components/combobox"
+import { Icons } from "@/components/icons"
 import Profile from "@/components/profile"
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default async function DashboardLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
+  const session = await getSession()
+
+  if (!session?.user) {
+    redirect("/login")
+  }
   return (
-    <div className="flex">
+    <div className="flex w-full flex-col md:flex-row">
       <Sidebar>
         <div className="my-2 border-t border-stone-700"></div>
-        <Profile />
+        <Profile name={session.user.name} />
       </Sidebar>
       <div className="w-full">
-        <div className="border-slate-6 flex h-[60px] items-center justify-end border-b px-6">
-          <SidebarMobile />
-          <div className="hidden w-52 md:flex">
-            <Combobox />
-          </div>
-        </div>
-        <div className="h-[calc(100vh-60px)] overflow-auto pb-10">
-          {children}
-        </div>
+        <header className="border-slate-6 sticky top-0  flex h-[60px] items-center justify-between border-b bg-background px-6 md:justify-end">
+          <SidebarMobile name={session.user.name} />
+          <Combobox />
+          <Link className="md:hidden" href={"/"}>
+            <Icons.command />
+          </Link>
+        </header>
+        <main className="pb-10">{children}</main>
       </div>
     </div>
   )

@@ -107,10 +107,10 @@ export function Combobox() {
   ]
 
   return (
-    <>
+    <div>
       <Button
         variant="outline"
-        className="relative inline-flex h-9 w-full items-center justify-center rounded-lg border bg-secondary p-0 text-sm font-medium transition-colors hover:bg-secondary  hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 md:h-10 md:justify-start md:px-3 md:py-2"
+        className="relative inline-flex h-9 w-52  items-center justify-center rounded-lg border bg-secondary p-0 text-sm font-medium transition-colors hover:bg-secondary  hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 md:h-10 md:justify-start md:px-3 md:py-2"
         onClick={() => setOpen(true)}
       >
         <Icons.search className="mr-2 h-4 w-4" aria-hidden="true" />
@@ -151,6 +151,6 @@ export function Combobox() {
           ))}
         </CommandList>
       </CommandDialog>
-    </>
+    </div>
   )
 }

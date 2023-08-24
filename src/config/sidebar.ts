@@ -4,13 +4,13 @@ export const sidebarConfig: sidebarConfigType[] = [
   {
     name: "Overview",
     href: "/",
-    // isActive: segments.length === 0,
+    segment: 0,
     icon: "layoutDashboard",
   },
   {
     name: "Users",
     href: "/users",
-    // isActive: segments[0] === "users",
+    segment: "users",
     icon: "users",
   },
 ]
@@ -18,5 +18,6 @@ export const sidebarConfig: sidebarConfigType[] = [
 interface sidebarConfigType {
   name: string
   href: string
+  segment: string | number
   icon: keyof typeof Icons
 }
