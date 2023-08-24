@@ -28,18 +28,3 @@ export const deleteUser = async (id: number) => {
   })
   return data
 }
-
-export const getUserDetails = async (id: number) => {
-  const data = "1"
-  return 1
-}
-
-export const getUserAnalytics = async (id: number) => {
-  const data = "1"
-  return 1
-}
-
-export const getUserSettings = async (id: number) => {
-  const data = "1"
-  return 1
-}

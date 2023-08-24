@@ -1,5 +1,5 @@
 import { compare } from "bcrypt"
-import { NextAuthOptions, getServerSession } from "next-auth"
+import { getServerSession, type NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
 import prisma from "@/lib/prisma"
@@ -16,7 +16,7 @@ export const authOptions: NextAuthOptions = {
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials?.username || !credentials.password) {
           return null
         }
@@ -64,7 +64,7 @@ export const authOptions: NextAuthOptions = {
     },
     jwt: ({ token, user }) => {
       if (user) {
-        const u = user as unknown as any
+        const u = user
         return {
           ...token,
           id: u.id,
@@ -76,11 +76,5 @@ export const authOptions: NextAuthOptions = {
 }
 
 export function getSession() {
-  return getServerSession() as Promise<{
-    user: {
-      name: string
-      email: string
-      image: string
-    }
-  } | null>
+  return getServerSession()
 }

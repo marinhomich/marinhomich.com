@@ -1,10 +1,10 @@
 "use server"
 
 import { hash } from "bcrypt"
-import { z } from "zod"
+import { type z } from "zod"
 
 import prisma from "@/lib/prisma"
-import { createUserSchema } from "@/lib/validations/email"
+import { type createUserSchema } from "@/lib/validations/email"
 import NewUserEmail from "@/components/emails/new-user"
 
 import resend from "./resend"

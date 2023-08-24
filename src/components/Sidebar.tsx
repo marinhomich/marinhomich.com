@@ -58,7 +58,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
 
   return (
     <nav>
-      <aside className="hidden h-screen w-[250px] flex-shrink-0 flex-col justify-between border-r border-slate-6 md:flex">
+      <aside className="border-slate-6 hidden h-screen w-[250px] shrink-0 flex-col justify-between border-r md:flex">
         <div>
           <div className="flex h-[60px] items-center p-4">
             <Link className="flex flex-row gap-2" href={"/"}>
@@ -76,7 +76,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
                     } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
                     href={href}
                   >
-                    <span className="flex h-8 items-center gap-2 rounded-md px-2 text-sm bg-slate-6 text-slate-12">
+                    <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
                       {icon}
                       {name}
                     </span>
@@ -91,12 +91,12 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           <ul className="flex flex-col gap-1">
             <li>
               <Link
-                className={`flex justify-between items-center space-x-3 ${
+                className={`flex items-center justify-between space-x-3 ${
                   segments.includes("about") ? "bg-secondary" : ""
                 } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
                 href={"/about"}
               >
-                <span className="flex h-8 items-center gap-2 rounded-md px-2 text-sm bg-slate-6 text-slate-12">
+                <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
                   <Icons.info width={18} />
                   About
                 </span>

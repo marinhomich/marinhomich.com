@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
 import { Toaster } from "@/components/ui/toaster"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
 import { Providers } from "./providers"

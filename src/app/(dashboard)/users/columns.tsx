@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { ColumnDef } from "@tanstack/react-table"
+import { type ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
 
 import { deleteUser } from "@/lib/actions"
@@ -16,7 +16,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import {
@@ -93,11 +92,9 @@ export const columns: ColumnDef<User>[] = [
                     event.preventDefault()
                     setIsDeleteLoading(true)
 
-                    const deleted = await deleteUser(item.id).then(
-                      (res: any) => {
-                        return true
-                      }
-                    )
+                    const deleted = await deleteUser(item.id).then(() => {
+                      return true
+                    })
 
                     if (deleted) {
                       setIsDeleteLoading(false)

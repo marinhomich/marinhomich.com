@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { type ReactNode } from "react"
 
 import Sidebar from "@/components/Sidebar"
 import SidebarMobile from "@/components/Sidebar-mobile"
@@ -13,9 +13,9 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         <Profile />
       </Sidebar>
       <div className="w-full">
-        <div className="flex h-[60px] items-center justify-end border-b border-slate-6 px-6">
+        <div className="border-slate-6 flex h-[60px] items-center justify-end border-b px-6">
           <SidebarMobile />
-          <div className="hidden md:flex w-52">
+          <div className="hidden w-52 md:flex">
             <Combobox />
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { CommandBar } from "@/types"
+import { type CommandBar } from "@/types"
 import { useTheme } from "next-themes"
 
 // import { type Product } from "@/db/schema"
@@ -110,10 +110,10 @@ export function Combobox() {
     <>
       <Button
         variant="outline"
-        className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border bg-secondary  hover:bg-secondary hover:text-accent-foreground relative h-9 p-0 md:h-10 w-full md:justify-start md:px-3 md:py-2"
+        className="relative inline-flex h-9 w-full items-center justify-center rounded-lg border bg-secondary p-0 text-sm font-medium transition-colors hover:bg-secondary  hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 md:h-10 md:justify-start md:px-3 md:py-2"
         onClick={() => setOpen(true)}
       >
-        <Icons.search className="h-4 w-4 mr-2" aria-hidden="true" />
+        <Icons.search className="mr-2 h-4 w-4" aria-hidden="true" />
         <span className="inline-flex">Search here...</span>
         <span className="sr-only">Search here</span>
         <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 md:flex">

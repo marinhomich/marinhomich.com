@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
@@ -50,15 +51,18 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/bcrypt": "^5.0.0",
+    "@types/eslint": "^8.44.2",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
-    "@types/bcrypt": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "autoprefixer": "10.4.14",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-tailwindcss": "^3.11.0",
     "postcss": "8.4.25",
     "prettier": "^3.0.2",

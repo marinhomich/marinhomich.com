@@ -12,8 +12,8 @@ interface ContainerProps {
 export default function Container(props: ContainerProps) {
   return (
     <>
-      <div className="flex mx-auto justify-between max-w-5xl px-6 py-8">
-        <h1 className="text-[28px] leading-[34px] tracking-[-0.416px] text-slate-12 font-bold">
+      <div className="mx-auto flex max-w-5xl justify-between px-6 py-8">
+        <h1 className="text-slate-12 text-[28px] font-bold leading-[34px] tracking-[-0.416px]">
           {props.title}
         </h1>
         {props.link && (

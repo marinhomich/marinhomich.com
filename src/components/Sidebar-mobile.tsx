@@ -17,16 +17,7 @@ import {
 } from "lucide-react"
 
 import { siteConfig } from "@/config/site"
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 import { Combobox } from "./combobox"
 import { Icons } from "./icons"
@@ -93,7 +84,7 @@ export default function SidebarMobile() {
 
   return (
     <div className="absolute left-0 top-0 z-40 flex w-full flex-col items-center md:hidden">
-      <div className="flex w-full justify-between items-center px-6 py-4">
+      <div className="flex w-full items-center justify-between px-6 py-4">
         <Sheet open={showSidebar} onOpenChange={setShowSidebar}>
           <SheetTrigger asChild>
             <Button
@@ -123,7 +114,7 @@ export default function SidebarMobile() {
                         href={href}
                         onClick={() => setShowSidebar(false)}
                       >
-                        <span className="flex h-8 items-center gap-2 rounded-md px-2 text-sm bg-slate-6 text-slate-12">
+                        <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
                           {icon}
                           {name}
                         </span>

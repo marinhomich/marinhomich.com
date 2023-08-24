@@ -14,7 +14,7 @@ export default async function Profile() {
   }
 
   return (
-    <div className="flex px-2 py-1 items-center justify-between ">
+    <div className="flex items-center justify-between px-2 py-1 ">
       <Link href="/" className="flex items-center space-x-2 rounded-lg ">
         <Image
           src="/vercel-logotype-light.png"
@@ -22,7 +22,7 @@ export default async function Profile() {
           height={32}
           alt="Logo"
         />
-        <span className="truncate text-sm max-w-[140px] font-medium">
+        <span className="max-w-[140px] truncate text-sm font-medium">
           {session.user.name}
         </span>
       </Link>
