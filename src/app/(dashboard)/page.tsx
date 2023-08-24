@@ -1,5 +1,5 @@
-import Container from "@/components/Container";
+import Container from "@/components/Container"
 
 export default function Overview() {
-  return <Container title="Overview"></Container>;
+  return <Container title="Overview"></Container>
 }

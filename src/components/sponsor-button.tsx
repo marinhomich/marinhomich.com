@@ -1,6 +1,8 @@
-import { stripeSession } from "@/lib/stripe-actions";
-import { toast } from "react-toastify";
-import { Icons } from "./icons";
+import { toast } from "react-toastify"
+
+import { stripeSession } from "@/lib/stripe-actions"
+
+import { Icons } from "./icons"
 
 export default function ButtonSponsor() {
   return (
@@ -11,7 +13,7 @@ export default function ButtonSponsor() {
           stripeSession()
             .then((res) => (window.location.href = res || ""))
             .catch(() => {
-              toast.error("Something went wrong.");
+              toast.error("Something went wrong.")
             })
         }
       >
@@ -22,5 +24,5 @@ export default function ButtonSponsor() {
         <Icons.arrowUpRight width={18} />
       </button>
     </li>
-  );
+  )
 }

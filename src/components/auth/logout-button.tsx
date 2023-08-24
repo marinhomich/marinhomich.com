@@ -1,7 +1,8 @@
-"use client";
+"use client"
 
-import { Icons } from "@/components/icons";
-import { signOut } from "next-auth/react";
+import { signOut } from "next-auth/react"
+
+import { Icons } from "@/components/icons"
 
 export default function LogoutButton() {
   return (
@@ -12,5 +13,5 @@ export default function LogoutButton() {
     >
       <Icons.logout width={18} />
     </button>
-  );
+  )
 }

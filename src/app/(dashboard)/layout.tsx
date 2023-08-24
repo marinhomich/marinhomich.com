@@ -1,8 +1,9 @@
-import Sidebar from "@/components/Sidebar";
-import SidebarMobile from "@/components/Sidebar-mobile";
-import { Combobox } from "@/components/combobox";
-import Profile from "@/components/profile";
-import { ReactNode } from "react";
+import { ReactNode } from "react"
+
+import Sidebar from "@/components/Sidebar"
+import SidebarMobile from "@/components/Sidebar-mobile"
+import { Combobox } from "@/components/combobox"
+import Profile from "@/components/profile"
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
@@ -23,5 +24,5 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

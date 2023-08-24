@@ -1,11 +1,12 @@
-import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link"
+
+import { buttonVariants } from "@/components/ui/button"
 
 interface ContainerProps {
-  title: string;
-  children?: React.ReactNode;
-  link?: string;
-  linkTitle?: string;
+  title: string
+  children?: React.ReactNode
+  link?: string
+  linkTitle?: string
 }
 
 export default function Container(props: ContainerProps) {
@@ -26,5 +27,5 @@ export default function Container(props: ContainerProps) {
       </div>
       <div className="mx-auto max-w-5xl px-6">{props.children}</div>
     </>
-  );
+  )
 }

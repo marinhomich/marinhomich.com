@@ -1,24 +1,18 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
+import { signIn } from "next-auth/react"
+import { useForm } from "react-hook-form"
+import { toast } from "react-toastify"
+import type { z } from "zod"
 
-import { createUserSchema, emailSchema } from "@/lib/validations/email";
-
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
-
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { createUser } from "@/lib/actions"
+import { createUserSchema, emailSchema } from "@/lib/validations/email"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -26,24 +20,27 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { ToastAction } from "@/components/ui/toast"
+import { useToast } from "@/components/ui/use-toast"
+import { PasswordInput } from "@/components/password-input"
 
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { Loader2 } from "lucide-react";
-import Link from "next/link";
-import { PasswordInput } from "@/components/password-input";
-import { ToastAction } from "@/components/ui/toast";
-import { useToast } from "@/components/ui/use-toast";
-import { createUser } from "@/lib/actions";
-
-type Inputs = z.infer<typeof createUserSchema>;
+type Inputs = z.infer<typeof createUserSchema>
 
 export default function SignUpForm() {
-  const router = useRouter();
-  const { toast } = useToast();
+  const router = useRouter()
+  const { toast } = useToast()
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const form = useForm<Inputs>({
     resolver: zodResolver(createUserSchema),
@@ -52,27 +49,27 @@ export default function SignUpForm() {
       email: "",
       password: "",
     },
-  });
+  })
 
   async function onSubmit(data: Inputs) {
-    setIsLoading(true);
+    setIsLoading(true)
     createUser(data).then((res) => {
       if (res?.error) {
         toast({
           title: "Failed.",
           description: res.error,
           variant: "destructive",
-        });
-        setIsLoading(false);
+        })
+        setIsLoading(false)
       } else {
         toast({
           title: "User Created.",
           description: "User Created.",
-        });
-        router.refresh();
-        router.push(`/login`);
+        })
+        router.refresh()
+        router.push(`/login`)
       }
-    });
+    })
   }
 
   return (
@@ -153,5 +150,5 @@ export default function SignUpForm() {
         </Link> */}
       </CardFooter>
     </Card>
-  );
+  )
 }

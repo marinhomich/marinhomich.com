@@ -1,17 +1,13 @@
-"use client";
+"use client"
 
-import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontal } from "lucide-react";
+import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { ColumnDef } from "@tanstack/react-table"
+import { MoreHorizontal } from "lucide-react"
+import { toast } from "react-toastify"
 
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
+import { deleteUser } from "@/lib/actions"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,22 +18,24 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-
-import Link from "next/link";
-import { deleteUser } from "@/lib/actions";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { Icons } from "@/components/icons";
+} from "@/components/ui/alert-dialog"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 
 export type User = {
-  id: number;
-  name: string | null;
-  email: string;
-  password: string;
-  createdAt: Date;
-};
+  id: number
+  name: string | null
+  email: string
+  password: string
+  createdAt: Date
+}
 
 export const columns: ColumnDef<User>[] = [
   {
@@ -51,10 +49,10 @@ export const columns: ColumnDef<User>[] = [
   {
     id: "actions",
     cell: function Cell({ row }) {
-      const item = row.original;
-      const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false);
-      const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false);
-      const router = useRouter();
+      const item = row.original
+      const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
+      const [isDeleteLoading, setIsDeleteLoading] = useState<boolean>(false)
+      const router = useRouter()
       return (
         <>
           <DropdownMenu>
@@ -92,21 +90,21 @@ export const columns: ColumnDef<User>[] = [
                   disabled
                   className="bg-red-500 focus:ring-red-500"
                   onClick={async (event) => {
-                    event.preventDefault();
-                    setIsDeleteLoading(true);
+                    event.preventDefault()
+                    setIsDeleteLoading(true)
 
                     const deleted = await deleteUser(item.id).then(
                       (res: any) => {
-                        return true;
+                        return true
                       }
-                    );
+                    )
 
                     if (deleted) {
-                      setIsDeleteLoading(false);
-                      setShowDeleteAlert(false);
-                      toast.error("Usuário Deletado com sucesso");
+                      setIsDeleteLoading(false)
+                      setShowDeleteAlert(false)
+                      toast.error("Usuário Deletado com sucesso")
 
-                      router.refresh();
+                      router.refresh()
                     }
                   }}
                 >
@@ -121,7 +119,7 @@ export const columns: ColumnDef<User>[] = [
             </AlertDialogContent>
           </AlertDialog>
         </>
-      );
+      )
     },
   },
-];
+]

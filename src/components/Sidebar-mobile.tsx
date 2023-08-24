@@ -1,4 +1,12 @@
-"use client";
+"use client"
+
+import { useEffect, useMemo, useState } from "react"
+import Link from "next/link"
+import {
+  useParams,
+  usePathname,
+  useSelectedLayoutSegments,
+} from "next/navigation"
 import {
   ArrowLeft,
   BarChart3,
@@ -6,16 +14,9 @@ import {
   Newspaper,
   Settings,
   Users,
-} from "lucide-react";
-import Link from "next/link";
-import {
-  useParams,
-  usePathname,
-  useSelectedLayoutSegments,
-} from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import { Icons } from "./icons";
-import { Combobox } from "./combobox";
+} from "lucide-react"
+
+import { siteConfig } from "@/config/site"
 import {
   Sheet,
   SheetClose,
@@ -25,16 +26,18 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { ScrollArea } from "./ui/scroll-area";
-import { siteConfig } from "@/config/site";
-import { Button } from "./ui/button";
+} from "@/components/ui/sheet"
+
+import { Combobox } from "./combobox"
+import { Icons } from "./icons"
+import { Button } from "./ui/button"
+import { ScrollArea } from "./ui/scroll-area"
 
 export default function SidebarMobile() {
-  const segments = useSelectedLayoutSegments();
-  const [showSidebar, setShowSidebar] = useState(false);
+  const segments = useSelectedLayoutSegments()
+  const [showSidebar, setShowSidebar] = useState(false)
 
-  const { id } = useParams() as { id?: string };
+  const { id } = useParams() as { id?: string }
 
   const tabs = useMemo(() => {
     if (segments[0] === "users" && id) {
@@ -62,7 +65,7 @@ export default function SidebarMobile() {
           isActive: segments.includes("settings"),
           icon: <Settings width={18} />,
         },
-      ];
+      ]
     }
 
     return [
@@ -78,15 +81,15 @@ export default function SidebarMobile() {
         isActive: segments[0] === "users",
         icon: <Users width={18} />,
       },
-    ];
-  }, [segments, id]);
+    ]
+  }, [segments, id])
 
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   useEffect(() => {
     // hide sidebar on path change
-    setShowSidebar(false);
-  }, [pathname]);
+    setShowSidebar(false)
+  }, [pathname])
 
   return (
     <div className="absolute left-0 top-0 z-40 flex w-full flex-col items-center md:hidden">
@@ -158,5 +161,5 @@ export default function SidebarMobile() {
         </div>
       </div> */}
     </div>
-  );
+  )
 }

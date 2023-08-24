@@ -1,13 +1,14 @@
-"use client";
+"use client"
 
-import { useRouter } from "next/navigation";
-import * as React from "react";
+import * as React from "react"
+import { useRouter } from "next/navigation"
+import { CommandBar } from "@/types"
+import { useTheme } from "next-themes"
+
 // import { type Product } from "@/db/schema"
 
-import { isMacOs } from "@/lib/utils";
-// import { useDebounce } from "@/hooks/use-debounce"
-import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { isMacOs } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   CommandDialog,
   CommandEmpty,
@@ -15,36 +16,36 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
-import { CommandBar } from "@/types";
-import { useTheme } from "next-themes";
+} from "@/components/ui/command"
+// import { useDebounce } from "@/hooks/use-debounce"
+import { Icons } from "@/components/icons"
 
 export function Combobox() {
-  const router = useRouter();
-  const { setTheme } = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const router = useRouter()
+  const { setTheme } = useTheme()
+  const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
+        e.preventDefault()
+        setOpen((open) => !open)
       }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [])
 
   const handleSelect = React.useCallback((callback: () => unknown) => {
-    setOpen(false);
-    callback();
-  }, []);
+    setOpen(false)
+    callback()
+  }, [])
 
   React.useEffect(() => {
     if (!open) {
-      console.log("Abriu");
+      console.log("Abriu")
     }
-  }, [open]);
+  }, [open])
 
   const group: CommandBar[] = [
     {
@@ -55,7 +56,7 @@ export function Combobox() {
           icon: "add",
 
           myAction: function () {
-            router.push("/users/new");
+            router.push("/users/new")
           },
           name: "Create New User...",
         },
@@ -68,7 +69,7 @@ export function Combobox() {
           id: 1,
           icon: "chevronRight",
           myAction: function () {
-            router.push("/");
+            router.push("/")
           },
           name: "Go to Home",
         },
@@ -81,7 +82,7 @@ export function Combobox() {
           id: 1,
           icon: "moon",
           myAction: function () {
-            setTheme("dark");
+            setTheme("dark")
           },
           name: "Change Theme to Dark",
         },
@@ -89,7 +90,7 @@ export function Combobox() {
           id: 2,
           icon: "sun",
           myAction: function () {
-            setTheme("light");
+            setTheme("light")
           },
           name: "Change Theme to Light",
         },
@@ -97,13 +98,13 @@ export function Combobox() {
           id: 3,
           icon: "monitor",
           myAction: function () {
-            setTheme("system");
+            setTheme("system")
           },
           name: "Change Theme to System",
         },
       ],
     },
-  ];
+  ]
 
   return (
     <>
@@ -130,13 +131,13 @@ export function Combobox() {
           {group.map((group) => (
             <CommandGroup key={group.category} heading={group.category}>
               {group.items.map((item) => {
-                const Icon = Icons[item.icon];
+                const Icon = Icons[item.icon]
                 return (
                   <CommandItem
                     key={item.id}
                     onSelect={() =>
                       handleSelect(() => {
-                        item.myAction();
+                        item.myAction()
                       })
                     }
                   >
@@ -144,12 +145,12 @@ export function Combobox() {
 
                     {item.name}
                   </CommandItem>
-                );
+                )
               })}
             </CommandGroup>
           ))}
         </CommandList>
       </CommandDialog>
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { type Icons } from "@/components/icons";
+import { type Icons } from "@/components/icons"
 
 export const sidebarConfig: sidebarConfigType[] = [
   {
@@ -13,10 +13,10 @@ export const sidebarConfig: sidebarConfigType[] = [
     // isActive: segments[0] === "users",
     icon: "users",
   },
-];
+]
 
 interface sidebarConfigType {
-  name: string;
-  href: string;
-  icon: keyof typeof Icons;
+  name: string
+  href: string
+  icon: keyof typeof Icons
 }

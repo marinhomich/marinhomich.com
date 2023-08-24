@@ -1,11 +1,11 @@
-import * as z from "zod";
+import * as z from "zod"
 
 export const emailSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
   password: z.string(),
-});
+})
 
 export const createUserSchema = z.object({
   name: z.string().nonempty({
@@ -24,4 +24,4 @@ export const createUserSchema = z.object({
       message:
         "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character",
     }),
-});
+})

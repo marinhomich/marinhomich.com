@@ -1,20 +1,16 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
 
-import { useRouter } from "next/navigation";
-
-import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { createUser } from "@/lib/actions"
+import { createUserSchema } from "@/lib/validations/email"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -22,21 +18,24 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { PasswordInput } from "@/components/password-input";
-import { Input } from "@/components/ui/input";
-import { createUserSchema } from "@/lib/validations/email";
-import { useState } from "react";
-import { createUser } from "@/lib/actions";
-import { Loader2 } from "lucide-react";
-import Link from "next/link";
-import { useToast } from "@/components//ui/use-toast";
+} from "@/components/ui/card"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { useToast } from "@/components//ui/use-toast"
+import { PasswordInput } from "@/components/password-input"
 
-type Inputs = z.infer<typeof createUserSchema>;
+type Inputs = z.infer<typeof createUserSchema>
 
 export default function CreateUserForm() {
-  const router = useRouter();
-  const { toast } = useToast();
+  const router = useRouter()
+  const { toast } = useToast()
 
   const form = useForm<Inputs>({
     resolver: zodResolver(createUserSchema),
@@ -45,31 +44,31 @@ export default function CreateUserForm() {
       email: "",
       password: "",
     },
-  });
+  })
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   function onSubmit(data: Inputs) {
-    setIsLoading(true);
+    setIsLoading(true)
     createUser(data)
       .then(() => {
         toast({
           title: "User Created.",
           description: "User Created.",
-        });
+        })
 
-        router.refresh();
-        router.push(`/users`);
+        router.refresh()
+        router.push(`/users`)
       })
       .catch((err) => {
         toast({
           title: "Failed.",
           description: err.message,
           variant: "destructive",
-        });
+        })
         // console.log(err.message);
-        setIsLoading(false);
-      });
+        setIsLoading(false)
+      })
   }
   return (
     <Form {...form}>
@@ -121,5 +120,5 @@ export default function CreateUserForm() {
         <span className="sr-only">Submit</span>
       </form>
     </Form>
-  );
+  )
 }

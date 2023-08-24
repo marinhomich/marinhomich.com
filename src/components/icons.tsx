@@ -15,6 +15,7 @@ import {
   ChevronsRight,
   ChevronsUpDown,
   Circle,
+  Command,
   Copy,
   CreditCard,
   Crop,
@@ -27,7 +28,9 @@ import {
   Filter,
   Footprints,
   HardHat,
+  Heart,
   Image,
+  Info,
   LayoutDashboard,
   Loader2,
   LogOut,
@@ -63,14 +66,11 @@ import {
   VolumeX,
   Wallet,
   X,
-  Heart,
-  Info,
-  Command,
   type LucideIcon,
   type LucideProps,
-} from "lucide-react";
+} from "lucide-react"
 
-export type Icon = LucideIcon;
+export type Icon = LucideIcon
 
 export const Icons = {
   sun: SunMedium,
@@ -207,4 +207,4 @@ export const Icons = {
       />
     </svg>
   ),
-};
+}

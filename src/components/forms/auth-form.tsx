@@ -1,15 +1,16 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
+import { signIn } from "next-auth/react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
 
-import { emailSchema } from "@/lib/validations/email";
-
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-
-import { Button } from "@/components/ui/button";
+import { emailSchema } from "@/lib/validations/email"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -17,7 +18,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 import {
   Form,
   FormControl,
@@ -25,21 +26,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { useToast } from "@/components/ui/use-toast"
 
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
-import { Loader2 } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
-import { PasswordInput } from "../password-input";
+import { PasswordInput } from "../password-input"
 
-type Inputs = z.infer<typeof emailSchema>;
+type Inputs = z.infer<typeof emailSchema>
 
 export default function AuthForm() {
-  const router = useRouter();
-  const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter()
+  const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const form = useForm<Inputs>({
     resolver: zodResolver(emailSchema),
@@ -47,26 +45,26 @@ export default function AuthForm() {
       email: "",
       password: "",
     },
-  });
+  })
 
   async function onSubmit(data: Inputs) {
-    setIsLoading(true);
+    setIsLoading(true)
 
     const signInResult = await signIn("credentials", {
       username: data.email,
       password: data.password,
       redirect: false,
-    });
+    })
 
     if (signInResult?.error) {
-      setIsLoading(false);
+      setIsLoading(false)
       toast({
         title: "Nome de usuário ou senha incorretos.",
         variant: "destructive",
-      });
+      })
     } else {
-      router.refresh();
-      router.push("/");
+      router.refresh()
+      router.push("/")
     }
   }
 
@@ -129,5 +127,5 @@ export default function AuthForm() {
         </div>
       </CardFooter>
     </Card>
-  );
+  )
 }

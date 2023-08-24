@@ -1,13 +1,15 @@
-"use client";
-import { Icons } from "@/components/icons";
-import ButtonSponsor from "@/components/sponsor-button";
-import Link from "next/link";
-import { useParams, useSelectedLayoutSegments } from "next/navigation";
-import { useMemo } from "react";
+"use client"
+
+import { useMemo } from "react"
+import Link from "next/link"
+import { useParams, useSelectedLayoutSegments } from "next/navigation"
+
+import { Icons } from "@/components/icons"
+import ButtonSponsor from "@/components/sponsor-button"
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
-  const segments = useSelectedLayoutSegments();
-  const { id } = useParams() as { id?: string };
+  const segments = useSelectedLayoutSegments()
+  const { id } = useParams() as { id?: string }
 
   const tabs = useMemo(() => {
     if (segments[0] === "users" && id) {
@@ -35,7 +37,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           isActive: segments.includes("settings"),
           icon: <Icons.settings width={18} />,
         },
-      ];
+      ]
     }
 
     return [
@@ -51,8 +53,8 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         isActive: segments[0] === "users",
         icon: <Icons.users width={18} />,
       },
-    ];
-  }, [segments, id]);
+    ]
+  }, [segments, id])
 
   return (
     <nav>
@@ -107,5 +109,5 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
     </nav>
-  );
+  )
 }

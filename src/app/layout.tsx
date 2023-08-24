@@ -1,11 +1,13 @@
-import "@/styles/globals.css";
-import type { Metadata } from "next";
-import { Providers } from "./providers";
-import { Analytics } from "@vercel/analytics/react";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
-import { siteConfig } from "@/config/site";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
+import "@/styles/globals.css"
+import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
+
+import { siteConfig } from "@/config/site"
+import { Toaster } from "@/components/ui/toaster"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { ThemeProvider } from "@/components/theme-provider"
+
+import { Providers } from "./providers"
 
 export const metadata: Metadata = {
   // metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ""),
@@ -24,12 +26,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
@@ -43,5 +45,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

@@ -1,8 +1,9 @@
-"use client";
+"use client"
 
-import { SessionProvider } from "next-auth/react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { SessionProvider } from "next-auth/react"
+import { ToastContainer } from "react-toastify"
+
+import "react-toastify/dist/ReactToastify.css"
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -18,5 +19,5 @@ export function Providers({ children }: { children: React.ReactNode }) {
         theme="colored"
       />
     </SessionProvider>
-  );
+  )
 }

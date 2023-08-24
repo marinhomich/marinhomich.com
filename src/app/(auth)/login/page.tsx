@@ -1,10 +1,11 @@
-import AuthForm from "@/components/forms/auth-form";
-import { siteConfig } from "@/config/site";
-import Link from "next/link";
+import Link from "next/link"
+
+import { siteConfig } from "@/config/site"
+import AuthForm from "@/components/forms/auth-form"
 
 export const metadata = {
   title: "Login",
-};
+}
 
 export default function LoginPage() {
   return (
@@ -26,5 +27,5 @@ export default function LoginPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
