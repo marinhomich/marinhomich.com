@@ -1,16 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { useSelectedLayoutSegments } from "next/navigation"
 
 import { Icons } from "@/components/icons"
-import ButtonSponsor from "@/components/sponsor-button"
 
+import SidebarFooter from "./Sidebar-footer"
 import SidebarItem from "./Sidebar-item"
 
-export default function Sidebar({ children }: { children: React.ReactNode }) {
-  const segments = useSelectedLayoutSegments()
+interface SidebarProps {
+  name: string | null | undefined
+}
 
+export default function Sidebar({ name }: SidebarProps) {
   return (
     <aside className="border-slate-6 sticky top-0 hidden h-screen w-[250px] shrink-0 flex-col justify-between border-r md:flex">
       <div>
@@ -25,26 +26,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         </nav>
       </div>
 
-      <div className="px-4 py-2">
-        <ul className="flex flex-col gap-1">
-          <li>
-            <Link
-              className={`flex items-center justify-between space-x-3 ${
-                segments.includes("about") ? "bg-secondary" : ""
-              } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
-              href={"/about"}
-            >
-              <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
-                <Icons.info width={18} />
-                About
-              </span>
-            </Link>
-          </li>
-          <ButtonSponsor />
-        </ul>
-
-        {children}
-      </div>
+      <SidebarFooter name={name} />
     </aside>
   )
 }

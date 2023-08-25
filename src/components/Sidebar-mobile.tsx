@@ -1,35 +1,15 @@
 "use client"
 
-import React, { useEffect, useMemo, useState } from "react"
-import Image from "next/image"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import {
-  useParams,
-  usePathname,
-  useSelectedLayoutSegments,
-} from "next/navigation"
-import {
-  ArrowLeft,
-  BarChart3,
-  LayoutDashboard,
-  Newspaper,
-  Settings,
-  Users,
-} from "lucide-react"
+import { usePathname } from "next/navigation"
 
-import { siteConfig } from "@/config/site"
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
+import SidebarFooter from "./Sidebar-footer"
 import SidebarItem from "./Sidebar-item"
-import LogoutButton from "./auth/logout-button"
 import { Icons } from "./icons"
 import { Button } from "./ui/button"
-import { ScrollArea } from "./ui/scroll-area"
 
 interface ProfileProps {
   name: string | null | undefined
@@ -57,37 +37,23 @@ export default function SidebarMobile({ name }: ProfileProps) {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="pl-1 pr-0">
-            <div className="px-7">
-              <Link aria-label="Home" href="/" className="flex items-center">
-                <Icons.command className="mr-2 h-4 w-4" aria-hidden="true" />
-                <span className="font-bold">{siteConfig.name}</span>
-              </Link>
-            </div>
-            <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-4">
-              <div className="pl-1 pr-7">
-                <SidebarItem onClick={() => setShowSidebar(false)} />
+
+          <SheetContent side="left" className="p-0">
+            <aside className="border-slate-6  flex h-screen shrink-0 flex-col justify-between border-r">
+              <div>
+                <div className="flex h-[60px] items-center px-7">
+                  <Link className="flex flex-row gap-2" href={"/"}>
+                    <Icons.command />
+                    <p>Dashboard</p>
+                  </Link>
+                </div>
+                <nav className="sticky px-4">
+                  <SidebarItem />
+                </nav>
               </div>
-            </ScrollArea>
-            <SheetFooter>
-              <div className="flex w-full items-center justify-between px-7 ">
-                <Link
-                  href="/"
-                  className="flex items-center space-x-2 rounded-lg "
-                >
-                  <Image
-                    src="/vercel-logotype-light.png"
-                    width={32}
-                    height={32}
-                    alt="Logo"
-                  />
-                  <span className="max-w-[140px] truncate text-sm font-medium">
-                    {name}
-                  </span>
-                </Link>
-                <LogoutButton />
-              </div>
-            </SheetFooter>
+
+              <SidebarFooter name={name} />
+            </aside>
           </SheetContent>
         </Sheet>
       </div>

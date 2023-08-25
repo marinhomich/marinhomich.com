@@ -21,10 +21,7 @@ export default async function DashboardLayout({
   }
   return (
     <div className="flex w-full flex-col md:flex-row">
-      <Sidebar>
-        <div className="my-2 border-t border-stone-700"></div>
-        <Profile name={session.user.name} />
-      </Sidebar>
+      <Sidebar name={session.user.name} />
       <div className="w-full">
         <header className="border-slate-6 sticky top-0  flex h-[60px] items-center justify-between border-b bg-background px-6 md:justify-end">
           <SidebarMobile name={session.user.name} />
