@@ -1,3 +1,5 @@
+"use client"
+
 import { useMemo } from "react"
 import Link from "next/link"
 import { useParams, useSelectedLayoutSegments } from "next/navigation"
@@ -40,8 +42,8 @@ export default function SidebarItem({ ...props }) {
     return [
       {
         name: "Overview",
-        href: "/",
-        isActive: segments.length === 0,
+        href: "/overview",
+        isActive: segments[0] === "overview",
         icon: <Icons.layoutDashboard width={18} />,
       },
       {
@@ -53,7 +55,7 @@ export default function SidebarItem({ ...props }) {
     ]
   }, [segments, id])
   return (
-    <ul className="flex flex-col gap-1">
+    <ul className="flex flex-col gap-1 px-2">
       {tabs.map(({ name, href, isActive, icon }) => (
         <li key={name}>
           <Link

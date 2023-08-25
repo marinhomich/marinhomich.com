@@ -1,32 +1,21 @@
-"use client"
-
 import Link from "next/link"
 
 import { Icons } from "@/components/icons"
 
-import SidebarFooter from "./Sidebar-footer"
 import SidebarItem from "./Sidebar-item"
 
-interface SidebarProps {
-  name: string | null | undefined
-}
-
-export default function Sidebar({ name }: SidebarProps) {
+export default function Sidebar() {
   return (
-    <aside className="border-slate-6 sticky top-0 hidden h-screen w-[250px] shrink-0 flex-col justify-between border-r md:flex">
-      <div>
-        <div className="flex h-[60px] items-center p-4">
-          <Link className="flex flex-row gap-2" href={"/"}>
-            <Icons.command />
-            <p>Dashboard</p>
-          </Link>
-        </div>
-        <nav className=" sticky px-4">
-          <SidebarItem />
-        </nav>
+    <>
+      <div className="flex h-full max-h-[69px] w-full items-center border-b p-4">
+        <Link className="flex gap-2" href={"/"}>
+          <Icons.command />
+          <p>Dashboard</p>
+        </Link>
       </div>
-
-      <SidebarFooter name={name} />
-    </aside>
+      <div className="mt-6">
+        <SidebarItem />
+      </div>
+    </>
   )
 }

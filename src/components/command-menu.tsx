@@ -3,11 +3,12 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { type CommandBar } from "@/types"
+import { type DialogProps } from "@radix-ui/react-alert-dialog"
 import { useTheme } from "next-themes"
 
 // import { type Product } from "@/db/schema"
 
-import { isMacOs } from "@/lib/utils"
+import { cn, isMacOs } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   CommandDialog,
@@ -20,32 +21,27 @@ import {
 // import { useDebounce } from "@/hooks/use-debounce"
 import { Icons } from "@/components/icons"
 
-export function Combobox() {
+export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter()
   const { setTheme } = useTheme()
   const [open, setOpen] = React.useState(false)
 
   React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
     }
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
+
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
   }, [])
 
-  const handleSelect = React.useCallback((callback: () => unknown) => {
+  const runCommand = React.useCallback((command: () => unknown) => {
     setOpen(false)
-    callback()
+    command()
   }, [])
-
-  React.useEffect(() => {
-    if (!open) {
-      console.log("Abriu")
-    }
-  }, [open])
 
   const group: CommandBar[] = [
     {
@@ -110,19 +106,21 @@ export function Combobox() {
     <div>
       <Button
         variant="outline"
-        className="relative inline-flex h-9 w-52  items-center justify-center rounded-lg border bg-secondary p-0 text-sm font-medium transition-colors hover:bg-secondary  hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 md:h-10 md:justify-start md:px-3 md:py-2"
+        className={cn(
+          "relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+        )}
         onClick={() => setOpen(true)}
+        {...props}
       >
         <Icons.search className="mr-2 h-4 w-4" aria-hidden="true" />
-        <span className="inline-flex">Search here...</span>
-        <span className="sr-only">Search here</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 md:flex">
-          <abbr title={isMacOs() ? "Command" : "Control"}>
-            {isMacOs() ? "⌘" : "Ctrl+"}
-          </abbr>
-          K
+        <span className="hidden lg:inline-flex">Search here...</span>
+        <span className="inline-flex lg:hidden">Search...</span>
+
+        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+          <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
+
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
@@ -136,7 +134,7 @@ export function Combobox() {
                   <CommandItem
                     key={item.id}
                     onSelect={() =>
-                      handleSelect(() => {
+                      runCommand(() => {
                         item.myAction()
                       })
                     }
