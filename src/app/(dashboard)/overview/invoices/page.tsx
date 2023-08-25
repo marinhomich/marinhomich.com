@@ -1,3 +1,3 @@
-export default function InvoicePage() {
-  return <p>Página de Overview - Invoice</p>
+export default function InvoicesPage() {
+  return <p>Overview Page - Invoices</p>
 }

@@ -25,7 +25,7 @@ export default function Container(props: ContainerProps) {
           </Link>
         )}
       </div>
-      <div className="mx-auto max-w-5xl px-6">{props.children}</div>
+      <div className="mx-auto max-w-5xl px-6 pb-6">{props.children}</div>
     </>
   )
 }

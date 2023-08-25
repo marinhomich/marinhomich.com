@@ -16,8 +16,8 @@ export default async function DashboardLayout({
     redirect("/login")
   }
   return (
-    <div className="flex h-screen">
-      <aside className="hidden border-r md:block md:w-[264px]">
+    <div className="relative flex min-h-screen">
+      <aside className="sticky top-0 z-40 hidden h-screen border-r md:block md:w-[264px]">
         <Sidebar />
       </aside>
       <div className="flex flex-1 flex-col">

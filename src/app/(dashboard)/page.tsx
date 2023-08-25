@@ -1,3 +1,7 @@
 export default function DashboardPage() {
-  return <p>Dashboard Root</p>
+  return (
+    <div className="p-4">
+      <p>Dashboard Root</p>
+    </div>
+  )
 }

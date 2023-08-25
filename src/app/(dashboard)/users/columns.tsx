@@ -32,8 +32,6 @@ export type User = {
   id: number
   name: string | null
   email: string
-  password: string
-  createdAt: Date
 }
 
 export const columns: ColumnDef<User>[] = [

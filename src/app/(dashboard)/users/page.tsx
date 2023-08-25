@@ -19,7 +19,13 @@ export default async function UsersPage() {
     redirect("/login")
   }
 
-  const data = await prisma.user.findMany({})
+  const data = await prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+      email: true,
+    },
+  })
 
   return (
     <Container title="Users" link="/users/new" linkTitle="Add User">

@@ -1,3 +1,3 @@
 export default function SubscriptionsPage() {
-  return <p>Página de Overview - Subscriptions</p>
+  return <p>Overview Page - Subscriptions</p>
 }
