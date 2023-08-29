@@ -88,8 +88,8 @@ export default function AccountDropdown() {
                 <DropdownMenuShortcut>⌘D</DropdownMenuShortcut>
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild disabled>
-              <Link href="/dashboard/settings">
+            <DropdownMenuItem asChild>
+              <Link href="/settings">
                 <Icons.settings className="mr-2 h-4 w-4" aria-hidden="true" />
                 Settings
                 <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>

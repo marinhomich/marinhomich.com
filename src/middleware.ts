@@ -1,10 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { getToken } from "next-auth/jwt"
 
-export const config = {
-  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"],
-}
-
+let locales = ["en", "es"]
 export default async function middleware(req: NextRequest) {
   const url = req.nextUrl
   const path = url.pathname
@@ -27,4 +24,8 @@ export default async function middleware(req: NextRequest) {
   // return NextResponse.rewrite(
   //   new URL(`/app${path === "/" ? "" : path}`, req.url),
   // );
+}
+
+export const config = {
+  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"],
 }

@@ -50,7 +50,6 @@ export function CommandMenu({ ...props }: DialogProps) {
         {
           id: 1,
           icon: "add",
-
           myAction: function () {
             router.push("/users/new")
           },
@@ -69,8 +68,25 @@ export function CommandMenu({ ...props }: DialogProps) {
           },
           name: "Go to Home",
         },
+        {
+          id: 2,
+          icon: "chevronRight",
+          myAction: function () {
+            router.push("/users")
+          },
+          name: "Go to Users",
+        },
+        {
+          id: 3,
+          icon: "chevronRight",
+          myAction: function () {
+            router.push("/logs")
+          },
+          name: "Go to Logs",
+        },
       ],
     },
+
     {
       category: "General",
       items: [

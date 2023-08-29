@@ -9,7 +9,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Providers } from "./providers"
 
 export const metadata: Metadata = {
-  // metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || ""),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -40,7 +39,6 @@ export default function RootLayout({
           <Providers>{children}</Providers>
           <Analytics />
           <Toaster />
-          {/* <TailwindIndicator /> */}
         </ThemeProvider>
       </body>
     </html>

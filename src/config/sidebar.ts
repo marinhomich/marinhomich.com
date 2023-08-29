@@ -1,4 +1,4 @@
-import { type Icons } from "@/components/icons"
+import { type sidebarConfigType } from "@/types"
 
 export const sidebarConfig: sidebarConfigType[] = [
   {
@@ -13,11 +13,10 @@ export const sidebarConfig: sidebarConfigType[] = [
     segment: "users",
     icon: "users",
   },
+  {
+    name: "Logs",
+    href: "/logs",
+    segment: "logs",
+    icon: "users",
+  },
 ]
-
-interface sidebarConfigType {
-  name: string
-  href: string
-  segment: string | number
-  icon: keyof typeof Icons
-}

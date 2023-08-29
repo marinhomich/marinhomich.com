@@ -25,6 +25,7 @@ import {
   Eye,
   EyeOff,
   FileTerminal,
+  FileText,
   Filter,
   Footprints,
   HardHat,
@@ -73,6 +74,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  fileText: FileText,
   sun: SunMedium,
   moon: Moon,
   monitor: Monitor,

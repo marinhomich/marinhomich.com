@@ -12,3 +12,10 @@ export interface Item {
   myAction: () => void
   name: string
 }
+
+export interface sidebarConfigType {
+  name: string
+  href: string
+  segment: string | number
+  icon: keyof typeof Icons
+}

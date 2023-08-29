@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
     error: "/login", // Error code passed in query string as ?error=
   },
   callbacks: {
-    session: ({ session, token }) => {
+    async session({ session, token }) {
       return {
         ...session,
         user: {
@@ -62,9 +62,10 @@ export const authOptions: NextAuthOptions = {
         },
       }
     },
-    jwt: ({ token, user }) => {
+    async jwt({ token, user }) {
       if (user) {
         const u = user
+        // console.log("callback", user)
         return {
           ...token,
           id: u.id,

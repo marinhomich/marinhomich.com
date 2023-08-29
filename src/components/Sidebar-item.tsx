@@ -52,6 +52,12 @@ export default function SidebarItem({ ...props }) {
         isActive: segments[0] === "users",
         icon: <Icons.users width={18} />,
       },
+      {
+        name: "Logs",
+        href: "/logs",
+        isActive: segments[0] === "logs",
+        icon: <Icons.fileText width={18} />,
+      },
     ]
   }, [segments, id])
   return (
