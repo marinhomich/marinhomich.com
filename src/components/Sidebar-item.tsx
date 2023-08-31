@@ -25,9 +25,9 @@ export default function SidebarItem({ ...props }) {
           icon: <Icons.newspaper width={18} />,
         },
         {
-          name: "Analytics",
-          href: `/users/${id}/analytics`,
-          isActive: segments.includes("analytics"),
+          name: "Logs",
+          href: `/users/${id}/logs`,
+          isActive: segments.includes("logs"),
           icon: <Icons.chart width={18} />,
         },
         {

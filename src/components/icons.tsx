@@ -5,6 +5,7 @@ import {
   ArrowLeft,
   ArrowUp,
   BarChart3,
+  Bell,
   CalendarDays,
   Check,
   ChevronDown,
@@ -74,6 +75,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  notification: Bell,
   fileText: FileText,
   sun: SunMedium,
   moon: Moon,

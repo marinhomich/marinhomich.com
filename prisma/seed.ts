@@ -12,6 +12,20 @@ async function main() {
       email: "demo@marinhomich.dev",
       name: "Usuário Demo",
       password,
+      docs: {
+        create: [
+          {
+            title: "Follow Prisma on Twitter",
+            content: "https://twitter.com/prisma",
+            published: true,
+          },
+          {
+            title: "Follow Nexus on Twitter",
+            content: "https://twitter.com/nexusgql",
+            published: true,
+          },
+        ],
+      },
     },
   })
   console.log({ user })

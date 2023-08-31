@@ -1,6 +1,7 @@
 import SidebarMobile from "./Sidebar-mobile"
 import AccountDropdown from "./account-dropdown"
 import { CommandMenu } from "./command-menu"
+import NotificationsDropdown from "./notifications-dropdown"
 import { ThemeToggle } from "./theme-toggle"
 
 export default function Header() {
@@ -12,8 +13,11 @@ export default function Header() {
         <div className="w-full flex-1 md:w-auto md:flex-none">
           <CommandMenu />
         </div>
-        <ThemeToggle />
-        <AccountDropdown />
+        <div className="flex items-center space-x-2">
+          <NotificationsDropdown />
+          <ThemeToggle />
+          <AccountDropdown />
+        </div>
       </div>
     </header>
   )

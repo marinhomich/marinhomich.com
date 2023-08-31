@@ -24,7 +24,7 @@ export default async function AnalyticsUserPage({
     notFound()
   }
   return (
-    <Container title="User Analytics">
+    <Container title="User Logs">
       <p>{params.id}</p>
     </Container>
   )
