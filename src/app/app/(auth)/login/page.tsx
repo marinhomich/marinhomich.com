@@ -1,7 +1,7 @@
 import Link from "next/link"
 
-import { siteConfig } from "@/config/site"
 import AuthForm from "@/components/forms/auth-form"
+import { siteConfig } from "@/components/shared/layout/config/site"
 
 export const metadata = {
   title: "Login",
