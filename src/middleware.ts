@@ -1,39 +1,23 @@
-import { NextResponse, type NextRequest } from "next/server"
-import { getToken } from "next-auth/jwt"
+import { NextResponse, type NextRequest } from "next/server";
+import { APP_HOSTNAMES, isHomeHostname } from "./lib/constants";
+import AppMiddleware from "./lib/middleware/app";
+import { parse } from "./lib/middleware/utils";
 
-let locales = ["en", "es"]
 export default async function middleware(req: NextRequest) {
-  const url = req.nextUrl
-  // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
-  const hostname = req.headers
-    .get("host")!
-    .replace(".localhost:3000", `.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
-
-  const path = url.pathname
+  const {domain, path} = parse(req)
+ 
+  if (isHomeHostname(domain)) {
+    return NextResponse.rewrite(new URL(`/home${path}`, req.url));
+  }
 
   // rewrites for app pages
-  if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
-    const session = await getToken({ req })
-    if (!session && path !== "/login") {
-      return NextResponse.redirect(new URL("/login", req.url))
-    } else if (session && path == "/login") {
-      return NextResponse.redirect(new URL("/", req.url))
-    }
-    return NextResponse.rewrite(
-      new URL(`/app${path === "/" ? "" : path}`, req.url)
-    )
+  if (APP_HOSTNAMES.has(domain)) {
+    return AppMiddleware(req);
+  
   }
-
-  // rewrite root application to `/home` folder
-  if (
-    hostname === "localhost:3000" ||
-    hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
-  ) {
-    return NextResponse.rewrite(new URL(`/home${path}`, req.url))
-  }
-
+  
   // rewrite everything else to `/[domain]/[path] dynamic route
-  return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url))
+  return NextResponse.rewrite(new URL(`/${domain}${path}`, req.url))
 }
 
 export const config = {

@@ -42,8 +42,8 @@ export default function AuthForm() {
   const form = useForm<Inputs>({
     resolver: zodResolver(emailSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "demo@marinhomich.dev",
+      password: "demo1234",
     },
   })
 
