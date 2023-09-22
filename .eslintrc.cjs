@@ -7,7 +7,6 @@ const config = {
   plugins: ["@typescript-eslint", "tailwindcss"],
   extends: [
     "next/core-web-vitals",
-    // "plugin:@typescript-eslint/recommended-type-checked",
     "prettier",
     "plugin:tailwindcss/recommended",
   ],
@@ -20,7 +19,14 @@ const config = {
       },
     ],
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-    // "tailwindcss/no-custom-classname": ["off"],
+    "tailwindcss/no-custom-classname": [
+      "error",
+      {
+        callees: ["clsx"],
+        config: "./tailwind.config.ts",
+        skipClassAttribute: true,
+      },
+    ],
   },
   settings: {
     tailwindcss: {
