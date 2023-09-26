@@ -21,12 +21,12 @@ export const createUser = async (data: userData) => {
         password,
       },
     })
-    // await resend.emails.send({
-    //   from: "Michel Marinho <contato@marinhomich.dev>",
-    //   to: [data.email],
-    //   subject: "Bem-Vindo",
-    //   react: NewUserEmail({ userName: data.name }) as React.ReactElement,
-    // })
+    await resend.emails.send({
+      from: "Michel Marinho <contato@marinhomich.dev>",
+      to: [data.email],
+      subject: "Bem-Vindo",
+      react: NewUserEmail({ userName: data.name }) as React.ReactElement,
+    })
   } catch (error: any) {
     if (error.code === "P2002") {
       return {

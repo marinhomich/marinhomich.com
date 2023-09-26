@@ -4,6 +4,7 @@ import {
   Head,
   Hr,
   Html,
+  Img,
   Preview,
   Text,
 } from "@react-email/components"
@@ -11,6 +12,8 @@ import {
 interface NewUserEmailProps {
   userName: string
 }
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
 
 export default function NewUserEmail({
   userName = "Michel Marinho",
@@ -21,6 +24,12 @@ export default function NewUserEmail({
       <Preview>Bem-vindo!</Preview>
       <Body style={main}>
         <Container style={container}>
+          <Img
+            src={`${baseUrl}/_static/stripe-logo.png`}
+            width="49"
+            height="21"
+            alt="Stripe"
+          />
           <Text style={paragraph}>Olá {userName},</Text>
           <Text style={paragraph}>Bem-vindo ao Dashboard</Text>
           <Text style={paragraph}>
