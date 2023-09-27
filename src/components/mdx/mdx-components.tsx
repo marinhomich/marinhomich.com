@@ -20,10 +20,6 @@ type AlertTitleProps = React.ComponentProps<typeof AlertTitle>
 type AlertDescriptionProps = React.ComponentProps<typeof AlertDescription>
 type AspectRatioProps = React.ComponentProps<typeof AspectRatio>
 
-interface MdxProps {
-  code: string
-}
-
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
@@ -175,10 +171,15 @@ const components = {
   Callout,
 }
 
+interface MdxProps {
+  code: string
+}
+
 export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
+    // eslint-disable-next-line tailwindcss/no-custom-classname
     <div className="mdx">
       <Component components={components} />
     </div>
