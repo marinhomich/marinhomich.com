@@ -1,4 +1,7 @@
+import { ThemeProvider } from "@/components/theme-provider"
+
 import "@/styles/globals.css"
+
 import { type Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -12,9 +15,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className="flex h-full w-full" lang="pt-BR">
-      <body className="flex flex-1 items-center justify-center bg-neutral-950 text-neutral-400">
-        {children}
+    <html lang="pt-BR">
+      <body className="min-h-screen bg-background font-sans antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
