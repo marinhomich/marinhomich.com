@@ -46,7 +46,7 @@ export default async function Page({ params }: PostPageProps) {
   return (
     <Shell as="article" variant="markdown">
       <Link
-        href="/blog"
+        href="/articles"
         className={cn(
           buttonVariants({ variant: "ghost" }),
           "absolute left-[-200px] top-14 hidden xl:inline-flex"
@@ -107,11 +107,29 @@ export default async function Page({ params }: PostPageProps) {
           />
         </AspectRatio>
       )}
+      <p>
+        Foto de{" "}
+        <Link
+          className="font-bold"
+          rel="noopener noreferrer"
+          href="https://unsplash.com/pt-br/@karsten116?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >
+          Karsten Winegeart
+        </Link>{" "}
+        na{" "}
+        <Link
+          className="font-bold"
+          rel="noopener noreferrer"
+          href="https://unsplash.com/pt-br/fotografias/um-par-de-sapatos-verdes-e-brancos-voando-pelo-ar-MAV5Tfv6uUA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >
+          Unsplash
+        </Link>
+      </p>
       <Mdx code={post.body.code} />
       <Separator className="my-4" />
       <MdxPager currentItem={post} allItems={allPosts} />
       <Link
-        href="/blog"
+        href="/articles"
         className={cn(
           buttonVariants({ variant: "ghost", className: "mx-auto mt-4 w-fit" })
         )}

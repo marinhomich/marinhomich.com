@@ -8,7 +8,7 @@ import { useTheme } from "next-themes"
 
 // import { type Product } from "@/db/schema"
 
-import { cn, isMacOs } from "@/lib/utils"
+import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   CommandDialog,
