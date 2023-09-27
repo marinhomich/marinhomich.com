@@ -15,6 +15,9 @@ const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
+    description: {
+      type: "string",
+    },
     image: {
       type: "string",
       required: true,
@@ -23,7 +26,7 @@ const Post = defineDocumentType(() => ({
   computedFields: {
     url: {
       type: "string",
-      resolve: (doc) => `/posts/${doc._raw.flattenedPath}`,
+      resolve: (doc) => `/articles/${doc._raw.flattenedPath}`,
     },
     readingTime: {
       type: "number",

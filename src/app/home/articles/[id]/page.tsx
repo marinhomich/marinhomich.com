@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { allPosts } from "contentlayer/generated"
 import { getMDXComponent } from "next-contentlayer/hooks"
 
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -43,7 +43,7 @@ export default async function Page({ params }: PostPageProps) {
   return (
     <Shell as="article" variant="markdown">
       <Link
-        href="/posts"
+        href="/articles"
         className={cn(
           buttonVariants({ variant: "ghost" }),
           "absolute left-[-200px] top-14 hidden xl:inline-flex"
@@ -56,7 +56,7 @@ export default async function Page({ params }: PostPageProps) {
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
           {post.date && (
             <time dateTime={post.date} className="block">
-              Published on data
+              Published on {formatDate(post.date)}
             </time>
           )}
           {post.date ? <div>•</div> : null}
@@ -104,11 +104,29 @@ export default async function Page({ params }: PostPageProps) {
           />
         </AspectRatio>
       )}
+      <p>
+        Foto de{" "}
+        <a
+          className="font-bold"
+          rel="noreferrer"
+          href="https://unsplash.com/pt-br/@karsten116?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >
+          Karsten Winegeart
+        </a>{" "}
+        na{" "}
+        <a
+          className="font-bold"
+          rel="noreferrer"
+          href="https://unsplash.com/pt-br/fotografias/um-par-de-sapatos-verdes-e-brancos-voando-pelo-ar-MAV5Tfv6uUA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >
+          Unsplash
+        </a>
+      </p>
       <Mdx code={post.body.code} />
       <Separator className="my-4" />
       <MdxPager currentItem={post} allItems={allPosts} />
       <Link
-        href="/posts"
+        href="/articles"
         className={cn(
           buttonVariants({ variant: "ghost", className: "mx-auto mt-4 w-fit" })
         )}
