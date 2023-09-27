@@ -53,9 +53,11 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
+COPY --chown=nextjs:nodejs --from=builder /app/ ./
+
 EXPOSE 3000
 
 ENV PORT 3000
-ENV HOSTNAME localhost
+ENV HOSTNAME "0.0.0.0"
 
 CMD ["node", "server.js"]
