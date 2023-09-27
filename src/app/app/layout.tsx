@@ -1,19 +1,20 @@
 import "@/styles/globals.css"
+
 import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
 
+import { siteConfig } from "@/config/site"
 import { Toaster } from "@/components/ui/toaster"
-import { siteConfig } from "@/components/shared/layout/config/site"
 import { ThemeProvider } from "@/components/theme-provider"
 
 import { Providers } from "./providers"
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: siteConfig.app.name,
+    template: `%s - ${siteConfig.app.name}`,
   },
-  description: siteConfig.description,
+  description: siteConfig.app.description,
   authors: [
     {
       name: "marinhomich",
