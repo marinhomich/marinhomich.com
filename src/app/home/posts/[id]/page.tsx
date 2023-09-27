@@ -1,19 +1,16 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
-import { allPosts, type Post } from "contentlayer/generated"
-import { compareDesc, format, parseISO } from "date-fns"
+import { allPosts } from "contentlayer/generated"
 import { getMDXComponent } from "next-contentlayer/hooks"
 
 interface PostPageProps {
   params: {
-    slug: string[]
+    id: string
   }
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
-  const slug = params?.slug?.join("/")
-  const post = allPosts.find((post) => post._raw.flattenedPath === slug)
-
+  const { id } = params
+  const post = allPosts.find((post) => post._raw.flattenedPath === id)
   if (!post) {
     null
   }
@@ -21,7 +18,11 @@ async function getPostFromParams(params: PostPageProps["params"]) {
   return post
 }
 
-export default async function HomePage({ params }: PostPageProps) {
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({ id: post._raw.flattenedPath }))
+}
+
+export default async function Page({ params }: PostPageProps) {
   const post = await getPostFromParams(params)
 
   if (!post) {
