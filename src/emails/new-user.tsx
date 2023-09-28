@@ -25,7 +25,7 @@ export default function NewUserEmail({
       <Body style={main}>
         <Container style={container}>
           <Img
-            src={`${baseUrl}/_static/stripe-logo.png`}
+            src={`${baseUrl}/_static/vercel-logotype-dark`}
             width="49"
             height="21"
             alt="Stripe"
