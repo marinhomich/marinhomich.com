@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { signOut } from "next-auth/react"
 
+import { stripeSession } from "@/lib/stripe-actions"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -28,8 +29,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Icons } from "./icons"
+import { useToast } from "./ui/use-toast"
 
 export default function AccountDropdown({ session }: any) {
+  const { toast } = useToast()
+
   const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -69,6 +73,22 @@ export default function AccountDropdown({ session }: any) {
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
+            <DropdownMenuItem
+              onClick={() =>
+                stripeSession()
+                  .then((res) => (window.location.href = res || ""))
+                  .catch(() => {
+                    toast({
+                      title: "Something went wrong.",
+                      description: "Friday, February 10, 2023 at 5:57 PM",
+                      variant: "destructive",
+                    })
+                  })
+              }
+            >
+              <Icons.heart className="mr-2 h-4 w-4" aria-hidden="true" />
+              <span>Sponsor</span>
+            </DropdownMenuItem>
             <DropdownMenuItem asChild disabled>
               <Link href="/dashboard/account">
                 <Icons.user className="mr-2 h-4 w-4" aria-hidden="true" />
