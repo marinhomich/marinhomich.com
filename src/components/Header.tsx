@@ -1,10 +1,14 @@
-import SidebarMobile from "./Sidebar-mobile"
+import { getSession } from "@/lib/auth"
+
 import AccountDropdown from "./account-dropdown"
 import { CommandMenu } from "./command-menu"
 import NotificationsDropdown from "./notifications-dropdown"
+import SidebarMobile from "./Sidebar-mobile"
 import { ThemeToggle } from "./theme-toggle"
 
-export default function Header() {
+export default async function Header() {
+  const session = await getSession()
+
   return (
     <header className="sticky top-0 z-40  flex  h-full max-h-[69px] w-full items-center border-b  bg-background p-4">
       <SidebarMobile />
@@ -16,7 +20,7 @@ export default function Header() {
         <div className="flex items-center space-x-2">
           <NotificationsDropdown />
           <ThemeToggle />
-          <AccountDropdown />
+          <AccountDropdown session={session} />
         </div>
       </div>
     </header>

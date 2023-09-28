@@ -29,12 +29,7 @@ import {
 
 import { Icons } from "./icons"
 
-export default function AccountDropdown() {
-  // const session = await getSession()
-
-  // if (!session?.user) {
-  //   redirect("/login")
-  // }
+export default function AccountDropdown({ session }: any) {
   const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -54,8 +49,8 @@ export default function AccountDropdown() {
           <Button variant="secondary" className="relative h-8 w-8 rounded-full">
             <Avatar className="h-8 w-8">
               <AvatarImage
-                src="/vercel-logotype-light.png"
-                // alt={session.user.name ?? ""}
+                src="/_static/user.png"
+                alt={session.user.name ?? ""}
               />
               <AvatarFallback>{initials}</AvatarFallback>
             </Avatar>
@@ -65,10 +60,10 @@ export default function AccountDropdown() {
           <DropdownMenuLabel className="font-normal">
             <div className="flex flex-col space-y-1">
               <p className="text-sm font-medium leading-none">
-                {/* {session?.user?.name} */}
+                {session?.user?.name}
               </p>
               <p className="text-xs leading-none text-muted-foreground">
-                {/* {session?.user?.email} */}
+                {session?.user?.email}
               </p>
             </div>
           </DropdownMenuLabel>
