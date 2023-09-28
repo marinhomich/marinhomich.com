@@ -9,23 +9,23 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 import { Providers } from "./providers"
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.app.name,
-    template: `%s - ${siteConfig.app.name}`,
-  },
-  description: siteConfig.app.description,
-  authors: [
-    {
-      name: "marinhomich",
-      url: siteConfig.links.githubAccount,
-    },
-  ],
-  creator: "marinhomich",
-  icons: {
-    icon: "/favicon.ico",
-  },
-}
+// export const metadata: Metadata = {
+//   title: {
+//     default: siteConfig.app.name,
+//     template: `%s - ${siteConfig.app.name}`,
+//   },
+//   description: siteConfig.app.description,
+//   authors: [
+//     {
+//       name: "marinhomich",
+//       url: siteConfig.links.githubAccount,
+//     },
+//   ],
+//   creator: "marinhomich",
+//   icons: {
+//     icon: "/favicon.ico",
+//   },
+// }
 
 export default function RootLayout({
   children,
@@ -33,15 +33,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <head />
-      <body className={"min-h-screen font-sans antialiased"}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Providers>{children}</Providers>
-          <Analytics />
-          <Toaster />
-        </ThemeProvider>
-      </body>
-    </html>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <Providers>{children}</Providers>
+      <Analytics />
+      <Toaster />
+    </ThemeProvider>
   )
 }
