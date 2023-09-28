@@ -4,28 +4,17 @@ import type { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
+import { constructMetadata } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 
 import { Providers } from "./providers"
 
-// export const metadata: Metadata = {
-//   title: {
-//     default: siteConfig.app.name,
-//     template: `%s - ${siteConfig.app.name}`,
-//   },
-//   description: siteConfig.app.description,
-//   authors: [
-//     {
-//       name: "marinhomich",
-//       url: siteConfig.links.githubAccount,
-//     },
-//   ],
-//   creator: "marinhomich",
-//   icons: {
-//     icon: "/favicon.ico",
-//   },
-// }
+export const metadata = constructMetadata({
+  title: siteConfig.app.name,
+  description: siteConfig.app.description,
+  template: siteConfig.app.name,
+})
 
 export default function RootLayout({
   children,

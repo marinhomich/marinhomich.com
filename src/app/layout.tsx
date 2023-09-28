@@ -1,9 +1,5 @@
 import "@/styles/globals.css"
 
-import { constructMetadata } from "@/lib/utils"
-
-export const metadata = constructMetadata()
-
 export default function RootLayout({
   children,
 }: {

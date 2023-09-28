@@ -2,6 +2,8 @@ import { type Metadata } from "next"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
+import { siteConfig } from "@/config/site"
+
 import { HOME_DOMAIN } from "./constants"
 
 export function cn(...inputs: ClassValue[]) {
@@ -28,29 +30,37 @@ export function formatDate(date: Date | string | number) {
     year: "numeric",
   }).format(new Date(date))
 }
-
 export function constructMetadata({
-  title = "Michel Marinho",
-  description = "Frontend Developer",
-  image = "https://dub.co/_static/thumbnail.png",
-  icons = "/favicon.ico",
+  title = "Michel",
+  template,
+  description,
   noIndex = false,
 }: {
   title?: string
+  template?: string
   description?: string
   image?: string
   icons?: string
   noIndex?: boolean
+  root?: boolean
 } = {}): Metadata {
   return {
-    title,
+    title: {
+      default: title,
+      template: `%s // ${template}`,
+    },
     description,
+    creator: "marinhomich",
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "white" },
+      { media: "(prefers-color-scheme: dark)", color: "black" },
+    ],
     openGraph: {
       title,
       description,
       images: [
         {
-          url: image,
+          url: `${siteConfig.url}/og.jpg`,
         },
       ],
     },
@@ -58,12 +68,15 @@ export function constructMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [`${siteConfig.url}/og.jpg`],
       creator: "@marinhomich",
     },
-    icons,
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon-16x16.png",
+      apple: "/apple-touch-icon.png",
+    },
     metadataBase: new URL(HOME_DOMAIN),
-    themeColor: "#000",
     ...(noIndex && {
       robots: {
         index: false,
