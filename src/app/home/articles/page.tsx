@@ -31,9 +31,8 @@ export default function HomePage() {
       >
         <PageHeaderHeading>Articles</PageHeaderHeading>
         <PageHeaderDescription>
-          Here you can find all the 194 articles I wrote. You can read about web
-          development, software engineering, and tech career in both English and
-          Portuguese.
+          Here you can find all the 2 articles I wrote. You can read about web
+          development.
         </PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />

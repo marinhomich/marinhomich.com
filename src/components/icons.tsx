@@ -11,10 +11,10 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  ChevronUp,
   ChevronsLeft,
   ChevronsRight,
   ChevronsUpDown,
+  ChevronUp,
   Circle,
   Command,
   Copy,
@@ -31,6 +31,7 @@ import {
   Footprints,
   HardHat,
   Heart,
+  Home,
   Image,
   Info,
   LayoutDashboard,
@@ -46,6 +47,7 @@ import {
   MoveUpRight,
   Newspaper,
   Package,
+  PenLine,
   Plus,
   PlusCircle,
   RefreshCw,
@@ -75,6 +77,8 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  PenLine: PenLine,
+  home: Home,
   notification: Bell,
   fileText: FileText,
   sun: SunMedium,

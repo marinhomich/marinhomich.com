@@ -1,16 +1,16 @@
 export default function HomePage() {
   return (
-    <main className="flex h-full min-h-screen w-full bg-green-400">
-      <div className="flex flex-1 flex-row items-center justify-center bg-neutral-950 text-center text-neutral-400">
-        <div>
-          <h1 className="text-4xl font-bold text-neutral-50">
-            Site em Manutenção
-          </h1>
-          <p className="mt-6">
-            Estamos atualizando tudo para uma melhor experiência para você.
-          </p>
+    <div className="text-slate-12 selection:bg-red-500 selection:text-green-500">
+      <div className="h-screen-ios relative z-20 mx-auto flex  max-w-7xl flex-col justify-between px-4">
+        <div className="relative mx-auto flex max-w-3xl flex-col justify-center">
+          <div className="max-w-[725px] text-center">
+            <div className="sm:px-20"></div>
+          </div>
+
+          <div className="mt-10 flex items-center justify-center gap-4"></div>
         </div>
+        {/* <Footer /> */}
       </div>
-    </main>
+    </div>
   )
 }

@@ -9,8 +9,8 @@ import {
   Text,
 } from "@react-email/components"
 
-interface NewUserEmailProps {
-  userName: string
+type NewUserEmailProps = {
+  userName?: string
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_URL

@@ -1,7 +1,13 @@
 import "@/styles/globals.css"
 
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
 import { siteConfig } from "@/config/site"
-import { constructMetadata } from "@/lib/utils"
+import { cn, constructMetadata } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons"
+import SideHeader from "@/components/site/header"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = constructMetadata({
@@ -17,7 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      {children}
+      <div className="relative flex min-h-screen flex-col">
+        <SideHeader />
+        <main className="flex-1">{children}</main>
+      </div>
     </ThemeProvider>
   )
 }

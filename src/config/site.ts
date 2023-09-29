@@ -1,4 +1,5 @@
 export const siteConfig = {
+  name: "marinhomich",
   app: {
     name: "Dashboard",
     description: "An open source Dashboard",

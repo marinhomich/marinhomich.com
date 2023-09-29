@@ -8,6 +8,10 @@ export const HOME_HOSTNAMES = new Set([
   "home.localhost:3000",
   "localhost:3000",
 ])
+export const API_HOSTNAMES = new Set([
+  "api.marinhomich.dev",
+  "api.localhost:3000",
+])
 
 export const HOME_DOMAIN =
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
