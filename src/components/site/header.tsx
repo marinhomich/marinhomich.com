@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 
 import { CommandMenuSite } from "../command-menu-site"
 import { Icons } from "../icons"
+import SidebarMobileSite from "../Sidebar-mobile-site"
 import { ThemeToggle } from "../theme-toggle"
 import { buttonVariants } from "../ui/button"
 
@@ -60,6 +61,7 @@ export default function SideHeader() {
         </div>
         {/* <MobileNav /> */}
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <SidebarMobileSite />
           <div className="w-full flex-1 md:w-auto md:flex-none">
             <CommandMenuSite />
           </div>
@@ -94,7 +96,7 @@ export default function SideHeader() {
                   "w-9 px-0"
                 )}
               >
-                <Icons.twitter className="h-4 w-4 fill-current" />
+                <Icons.x className="h-4 w-4 fill-current" />
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>

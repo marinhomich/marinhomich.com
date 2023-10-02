@@ -1,11 +1,7 @@
 import "@/styles/globals.css"
 
-import { Analytics } from "@vercel/analytics/react"
-
 import { siteConfig } from "@/config/site"
 import { constructMetadata } from "@/lib/utils"
-import { Toaster } from "@/components/ui/toaster"
-import { ThemeProvider } from "@/components/theme-provider"
 
 import { Providers } from "./providers"
 
@@ -20,11 +16,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <Providers>{children}</Providers>
-      <Analytics />
-      <Toaster />
-    </ThemeProvider>
-  )
+  return <Providers>{children}</Providers>
 }

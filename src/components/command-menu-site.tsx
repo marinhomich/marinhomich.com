@@ -71,6 +71,14 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           },
           name: "Articles",
         },
+        {
+          id: 4,
+          icon: "code",
+          myAction: function () {
+            router.push("/projects")
+          },
+          name: "Projects",
+        },
       ],
     },
 

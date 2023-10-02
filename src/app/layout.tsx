@@ -1,4 +1,9 @@
+import { Toaster } from "@/components/ui/toaster"
+import { ThemeProvider } from "@/components/theme-provider"
+
 import "@/styles/globals.css"
+
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({
   children,
@@ -9,7 +14,11 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <head />
       <body className="min-h-screen bg-background font-sans antialiased">
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <Analytics />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   )

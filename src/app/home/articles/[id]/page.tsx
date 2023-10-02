@@ -5,10 +5,11 @@ import { Mdx } from "@/components/mdx/mdx-components"
 
 import "@/styles/mdx.css"
 
+import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
-import { cn, formatDate } from "@/lib/utils"
+import { cn, constructMetadata, formatDate } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -30,6 +31,21 @@ async function getPostFromParams(params: PostPageProps["params"]) {
   }
 
   return post
+}
+
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
+  const post = await getPostFromParams(params)
+
+  if (!post) {
+    return {}
+  }
+
+  return {
+    title: post.title,
+    description: post.description,
+  }
 }
 
 export async function generateStaticParams() {
@@ -107,24 +123,6 @@ export default async function Page({ params }: PostPageProps) {
           />
         </AspectRatio>
       )}
-      <p>
-        Foto de{" "}
-        <Link
-          className="font-bold"
-          rel="noopener noreferrer"
-          href="https://unsplash.com/pt-br/@karsten116?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-        >
-          Karsten Winegeart
-        </Link>{" "}
-        na{" "}
-        <Link
-          className="font-bold"
-          rel="noopener noreferrer"
-          href="https://unsplash.com/pt-br/fotografias/um-par-de-sapatos-verdes-e-brancos-voando-pelo-ar-MAV5Tfv6uUA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-        >
-          Unsplash
-        </Link>
-      </p>
       <Mdx code={post.body.code} />
       <Separator className="my-4" />
       <MdxPager currentItem={post} allItems={allPosts} />
