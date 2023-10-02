@@ -1,5 +1,14 @@
 import { NextResponse } from "next/server"
 
-export async function GET(request: Request) {
-  return NextResponse.json({ error: "Internal Server Error" }, { status: 500 })
+export async function POST(request: Request) {
+  const data = await request.json()
+
+  const calculo = parseFloat(
+    (
+      (((data.km / data["km/L"]) * data.precoGasolina) / 2) *
+      data.dias
+    ).toString()
+  ).toFixed(2)
+
+  return NextResponse.json({ resultado: calculo })
 }
