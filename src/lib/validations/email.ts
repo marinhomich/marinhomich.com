@@ -25,3 +25,10 @@ export const createUserSchema = z.object({
         "Password must contain at least 8 characters, one uppercase, one lowercase, one number and one special character",
     }),
 })
+
+export const calculoSchema = z.object({
+  km: z.coerce.number().min(1),
+  "km/L": z.coerce.number().min(1),
+  precoGasolina: z.coerce.number().min(1),
+  dias: z.coerce.number().min(1),
+})
