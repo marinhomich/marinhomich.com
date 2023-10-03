@@ -33,7 +33,7 @@ export default function HomePage() {
         <PageHeaderDescription>
           Here you can find all the{" "}
           <span className="text-white">{allPosts.length}</span> articles I
-          wrote. You can read about web development.
+          wrote.
         </PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />

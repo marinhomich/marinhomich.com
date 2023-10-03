@@ -9,7 +9,6 @@ export default function HomePage() {
 
           <div className="mt-10 flex items-center justify-center gap-4"></div>
         </div>
-        {/* <Footer /> */}
       </div>
     </div>
   )

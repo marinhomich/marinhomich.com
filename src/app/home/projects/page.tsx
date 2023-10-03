@@ -1,12 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
-import { allPosts } from "contentlayer/generated"
-import { compareDesc } from "date-fns"
-
-import { formatDate } from "@/lib/utils"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Separator } from "@/components/ui/separator"
-import { Icons } from "@/components/icons"
+import { DemoGithub } from "@/components/github-card"
 import {
   PageHeader,
   PageHeaderDescription,
@@ -17,11 +10,23 @@ import { Shell } from "@/components/shells/shell"
 export const metadata = {
   title: "Projects",
 }
-
-export default function HomePage() {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
+async function getData() {
+  const res = await fetch(
+    "https://api.github.com/repos/marinhomich/marinhomich.dev"
   )
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data")
+  }
+
+  return res.json()
+}
+
+export default async function HomePage() {
+  const data = await getData()
 
   return (
     <Shell className="md:pb-10">
@@ -30,9 +35,12 @@ export default function HomePage() {
         aria-labelledby="projects-header-heading"
       >
         <PageHeaderHeading>Projects</PageHeaderHeading>
-        <PageHeaderDescription>Description</PageHeaderDescription>
+        <PageHeaderDescription>My Projects</PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        <DemoGithub data={data} />
+      </div>
     </Shell>
   )
 }

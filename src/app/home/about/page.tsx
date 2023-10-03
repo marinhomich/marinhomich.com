@@ -30,7 +30,7 @@ export default function HomePage() {
         aria-labelledby="articles-header-heading"
       >
         <PageHeaderHeading>About</PageHeaderHeading>
-        <PageHeaderDescription>Description</PageHeaderDescription>
+        <PageHeaderDescription>About Description</PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />
       <section
