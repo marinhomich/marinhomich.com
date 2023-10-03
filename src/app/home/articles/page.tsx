@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { allPosts } from "contentlayer/generated"
+import { allArticles } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
 import { formatDate } from "@/lib/utils"
@@ -19,7 +19,7 @@ export const metadata = {
 }
 
 export default function HomePage() {
-  const posts = allPosts.sort((a, b) =>
+  const posts = allArticles.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date))
   )
 
@@ -32,7 +32,7 @@ export default function HomePage() {
         <PageHeaderHeading>Articles</PageHeaderHeading>
         <PageHeaderDescription>
           Here you can find all the{" "}
-          <span className="text-white">{allPosts.length}</span> articles I
+          <span className="text-white">{allArticles.length}</span> articles I
           wrote.
         </PageHeaderDescription>
       </PageHeader>

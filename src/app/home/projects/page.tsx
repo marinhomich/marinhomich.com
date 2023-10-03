@@ -1,3 +1,6 @@
+import { allProjects } from "contentlayer/generated"
+import { compareDesc } from "date-fns"
+
 import { Separator } from "@/components/ui/separator"
 import { DemoGithub } from "@/components/github-card"
 import {

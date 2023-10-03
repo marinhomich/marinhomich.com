@@ -23,7 +23,7 @@ type AspectRatioProps = React.ComponentProps<typeof AspectRatio>
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      className={cn("mt-2 scroll-m-20 text-4xl font-bold", className)}
+      className={cn("my-2 scroll-m-20 text-4xl font-bold", className)}
       {...props}
     />
   ),

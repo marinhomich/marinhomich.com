@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { allPosts } from "contentlayer/generated"
+import { allArticles } from "contentlayer/generated"
 
 import { Mdx } from "@/components/mdx/mdx-components"
 
@@ -23,9 +23,9 @@ interface PostPageProps {
   }
 }
 
-async function getPostFromParams(params: PostPageProps["params"]) {
+async function getArticleFromParams(params: PostPageProps["params"]) {
   const { id } = params
-  const post = allPosts.find((post) => post._raw.flattenedPath === id)
+  const post = allArticles.find((post) => post.param === id)
   if (!post) {
     null
   }
@@ -36,7 +36,7 @@ async function getPostFromParams(params: PostPageProps["params"]) {
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params)
+  const post = await getArticleFromParams(params)
 
   if (!post) {
     return {}
@@ -49,18 +49,18 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({ id: post._raw.flattenedPath }))
+  return allArticles.map((post) => ({ id: post._raw.flattenedPath }))
 }
 
 export default async function Page({ params }: PostPageProps) {
-  const post = await getPostFromParams(params)
+  const post = await getArticleFromParams(params)
 
   if (!post) {
     notFound()
   }
 
   return (
-    <Shell as="article" variant="markdown">
+    <article className="container relative max-w-3xl space-y-2 py-6 lg:py-10">
       <Link
         href="/articles"
         className={cn(
@@ -84,33 +84,6 @@ export default async function Page({ params }: PostPageProps) {
         <h1 className="inline-block text-4xl font-bold leading-tight lg:text-5xl">
           {post.title}
         </h1>
-        {/* {authors?.length ? (
-        <div className="flex items-center space-x-4 pt-4">
-          {authors.map((author) =>
-            author ? (
-              <Link
-                key={author._id}
-                href={`https://twitter.com/${author.twitter}`}
-                className="flex items-center space-x-2 text-sm"
-              >
-                <Image
-                  src={author.avatar}
-                  alt={author.title}
-                  width={40}
-                  height={40}
-                  className="rounded-full bg-white"
-                />
-                <div className="flex-1 text-left leading-tight">
-                  <p className="font-medium">{author.title}</p>
-                  <p className="text-[12px] text-muted-foreground">
-                    @{author.twitter}
-                  </p>
-                </div>
-              </Link>
-            ) : null
-          )}
-        </div>
-      ) : null} */}
       </div>
       {post.image && (
         <AspectRatio ratio={16 / 9}>
@@ -125,17 +98,22 @@ export default async function Page({ params }: PostPageProps) {
       )}
       <Mdx code={post.body.code} />
       <Separator className="my-4" />
-      <MdxPager currentItem={post} allItems={allPosts} />
-      <Link
-        href="/articles"
-        className={cn(
-          buttonVariants({ variant: "ghost", className: "mx-auto mt-4 w-fit" })
-        )}
-      >
-        <Icons.chevronLeft className="mr-2 h-4 w-4" aria-hidden="true" />
-        See all posts
-        <span className="sr-only">See all posts</span>
-      </Link>
-    </Shell>
+      <MdxPager currentItem={post} allItems={allArticles} />
+      <div className="flex justify-center py-6 lg:py-10">
+        <Link
+          href="/articles"
+          className={cn(
+            buttonVariants({
+              variant: "ghost",
+              className: "mx-auto mt-4 w-fit",
+            })
+          )}
+        >
+          <Icons.chevronLeft className="mr-2 h-4 w-4" aria-hidden="true" />
+          See all posts
+          <span className="sr-only">See all posts</span>
+        </Link>
+      </div>
+    </article>
   )
 }

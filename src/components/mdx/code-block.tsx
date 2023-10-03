@@ -15,7 +15,6 @@ type CodeBlockProps = React.DetailedHTMLProps<
 export function CodeBlock({ children, ...props }: CodeBlockProps) {
   return (
     <>
-      {/* <CopyButton value={raw} /> */}
       <pre
         className="relative mb-4 mt-6 max-h-[640px] overflow-x-auto rounded-lg border bg-muted p-4 font-mono text-sm font-semibold text-muted-foreground"
         {...props}
