@@ -14,7 +14,12 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <head />
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
           <Analytics />
           <Toaster />
