@@ -58,7 +58,7 @@ export default async function Page({ params }: PostPageProps) {
   if (!post) {
     notFound()
   }
-
+  console.log(allProjects.flat())
   return (
     <article className="container relative max-w-3xl space-y-2 py-6 lg:py-10">
       <Link
@@ -78,7 +78,9 @@ export default async function Page({ params }: PostPageProps) {
       </div>
 
       <Mdx code={post.body.code} />
-      <hr className="mt-12" />
+
+      <Separator className="my-4" />
+      <MdxPager currentItem={post} allItems={allProjects} />
       <div className="flex justify-center py-6 lg:py-10">
         <Link
           href="/projects"

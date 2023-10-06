@@ -1,8 +1,5 @@
-import { allProjects } from "contentlayer/generated"
-import { compareDesc } from "date-fns"
-
 import { Separator } from "@/components/ui/separator"
-import { DemoGithub } from "@/components/github-card"
+import { CardGithub } from "@/components/github-card"
 import {
   PageHeader,
   PageHeaderDescription,
@@ -14,18 +11,15 @@ export const metadata = {
   title: "Projects",
 }
 async function getData() {
+  const featured = ["marinhomich.dev", "vite-start-template"]
   const res = await fetch(
-    "https://api.github.com/repos/marinhomich/marinhomich.dev"
-  )
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+    "https://api.github.com/users/marinhomich/repos"
+  ).then((res) => res.json())
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data")
-  }
-
-  return res.json()
+  const data = res
+    .filter((project: any) => featured.includes(project.name))
+    .sort()
+  return data
 }
 
 export default async function HomePage() {
@@ -41,8 +35,10 @@ export default async function HomePage() {
         <PageHeaderDescription>My Projects</PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        <DemoGithub data={data} />
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        {data.map((data: any) => (
+          <CardGithub data={data} key={data.id} />
+        ))}
       </div>
     </Shell>
   )

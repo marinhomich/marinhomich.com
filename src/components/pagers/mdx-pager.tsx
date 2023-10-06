@@ -57,6 +57,8 @@ export function MdxPager({
 
 export function getPager(currentItem: MdxPagerItem, allItems: MdxPagerItem[]) {
   const flattenedLinks = allItems.flat()
+
+  // console.log(allItems.flat().findIndex((link) => ))
   const activeIndex = flattenedLinks.findIndex(
     (link) => currentItem.url === link?.url
   )

@@ -32,7 +32,7 @@ export default function HomePage() {
         <PageHeaderHeading>Articles</PageHeaderHeading>
         <PageHeaderDescription>
           Here you can find all the{" "}
-          <span className="text-white">{allArticles.length}</span> articles I
+          <span className="font-bold">{allArticles.length}</span> articles I
           wrote.
         </PageHeaderDescription>
       </PageHeader>
