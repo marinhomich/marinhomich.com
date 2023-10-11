@@ -1,12 +1,10 @@
-import { User } from "@/lib/sequelize/model/user.model"
-
+export const metadata = {
+  title: "Log",
+}
 export default async function LogsPage() {
-  const users = await User.findAll()
-  console.log(JSON.stringify(users, null, 2))
-
   return (
     <div>
-      <p>Página de Log oi </p>
+      <p>Página de Log</p>
     </div>
   )
 }

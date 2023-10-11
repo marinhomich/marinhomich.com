@@ -27,29 +27,33 @@ export function formatDate(date: Date | string | number) {
   }).format(new Date(date))
 }
 export function constructMetadata({
-  title = "Michel",
-  template,
-  description,
+  title = "Michel Marinho",
+  description = "Frontend Developer",
   noIndex = false,
 }: {
   title?: string
   template?: string
+  isRoot?: boolean
   description?: string
   image?: string
   icons?: string
   noIndex?: boolean
-  root?: boolean
 } = {}): Metadata {
   return {
-    title: {
-      default: title,
-      template: `%s // ${template}`,
-    },
+    title,
     description,
-    creator: "marinhomich",
-    themeColor: [
-      { media: "(prefers-color-scheme: light)", color: "white" },
-      { media: "(prefers-color-scheme: dark)", color: "black" },
+    keywords: [
+      "Michel Marinho",
+      "marinhomich",
+      "Tailwind CSS",
+      "Server Components",
+      "Radix UI",
+    ],
+    authors: [
+      {
+        name: "Michel Marinho",
+        url: "https://marinhomich.dev",
+      },
     ],
     openGraph: {
       title,
@@ -72,6 +76,7 @@ export function constructMetadata({
       shortcut: "/favicon-16x16.png",
       apple: "/apple-touch-icon.png",
     },
+    manifest: `${siteConfig.url}/manifest.webmanifest`,
     metadataBase: new URL(HOME_DOMAIN),
     ...(noIndex && {
       robots: {

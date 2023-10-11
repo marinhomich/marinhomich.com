@@ -1,6 +1,7 @@
 import { type ReactNode } from "react"
 import { redirect } from "next/navigation"
 
+import { siteConfig } from "@/config/site"
 import { getSession } from "@/lib/auth"
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"

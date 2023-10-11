@@ -1,14 +1,14 @@
 import "@/styles/globals.css"
 
 import { siteConfig } from "@/config/site"
-import { constructMetadata } from "@/lib/utils"
 import SideHeader from "@/components/site/header"
 
-export const metadata = constructMetadata({
-  title: siteConfig.site.name,
-  description: siteConfig.site.description,
-  template: siteConfig.site.name,
-})
+export const metadata = {
+  title: {
+    default: siteConfig.site.name,
+    template: `%s | ${siteConfig.site.name}`,
+  },
+}
 
 export default function RootLayout({
   children,
