@@ -7,6 +7,12 @@ export const emailSchema = z.object({
   password: z.string(),
 })
 
+export const resetPassSchema = z.object({
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+})
+
 export const createUserSchema = z.object({
   name: z.string().nonempty({
     message: "Required field",

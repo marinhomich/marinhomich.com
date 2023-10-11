@@ -9,7 +9,7 @@ import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
-import { emailSchema } from "@/lib/validations/email"
+import { emailSchema, resetPassSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -34,38 +34,44 @@ import { PasswordInput } from "../password-input"
 
 type Inputs = z.infer<typeof emailSchema>
 
-export default function AuthForm() {
+export default function ResetPassForm() {
   const router = useRouter()
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const form = useForm<Inputs>({
-    resolver: zodResolver(emailSchema),
+    resolver: zodResolver(resetPassSchema),
     defaultValues: {
       email: "demo@marinhomich.dev",
-      password: "demo1234",
     },
   })
 
   async function onSubmit(data: Inputs) {
     setIsLoading(true)
-
-    const signInResult = await signIn("credentials", {
-      username: data.email,
-      password: data.password,
-      redirect: false,
+    toast({
+      title: "Test Mode.",
     })
-
-    if (signInResult?.error) {
-      setIsLoading(false)
-      toast({
-        title: "Nome de usuário ou senha incorretos.",
-        variant: "destructive",
-      })
-    } else {
+    setTimeout(() => {
       router.refresh()
       router.push("/")
-    }
+    }, 1000)
+
+    // const signInResult = await signIn("credentials", {
+    //   username: data.email,
+    //   password: data.password,
+    //   redirect: false,
+    // })
+
+    // if (signInResult?.error) {
+    //   setIsLoading(false)
+    //   toast({
+    //     title: "Nome de usuário ou senha incorretos.",
+    //     variant: "destructive",
+    //   })
+    // } else {
+    //   router.refresh()
+    //   router.push("/")
+    // }
   }
 
   return (
@@ -90,51 +96,15 @@ export default function AuthForm() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <PasswordInput placeholder="demo1234" {...field} />
-                  </FormControl>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
             <Button className="w-full" disabled={isLoading} type="submit">
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Sign in
+              Continue
             </Button>
-            <span className="sr-only">Sign in</span>
+            <span className="sr-only">Continue</span>
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex flex-wrap items-center justify-between gap-2">
-        <div className="text-sm text-muted-foreground">
-          <span className="mr-1 hidden sm:inline-block">
-            Don&apos;t have an account?
-          </span>
-          <Link
-            aria-label="Sign up"
-            href="/signup"
-            className="text-primary underline-offset-4 transition-colors hover:underline"
-          >
-            Sign up
-          </Link>
-        </div>
-        <div className="text-sm text-muted-foreground">
-          <Link
-            aria-label="Sign up"
-            href="/reset-password"
-            className="text-primary underline-offset-4 transition-colors hover:underline"
-          >
-            Reset password
-          </Link>
-        </div>
-      </CardFooter>
     </Card>
   )
 }
