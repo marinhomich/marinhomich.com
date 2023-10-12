@@ -1,13 +1,11 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2 } from "lucide-react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
-import { calculoSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -18,14 +16,12 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useToast } from "@/components//ui/use-toast"
+import { calculoSchema } from "@/lib/validations/email"
 
 type Inputs = z.infer<typeof calculoSchema>
 
 export default function CalculoForm() {
-  const router = useRouter()
-  const { toast } = useToast()
-
+ 
   const form = useForm<Inputs>({
     resolver: zodResolver(calculoSchema),
   })

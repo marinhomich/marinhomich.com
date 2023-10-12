@@ -1,23 +1,19 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2 } from "lucide-react"
-import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
-import { emailSchema, resetPassSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card"
 import {
   Form,
@@ -29,8 +25,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/components/ui/use-toast"
+import { emailSchema, resetPassSchema } from "@/lib/validations/email"
 
-import { PasswordInput } from "../password-input"
 
 type Inputs = z.infer<typeof emailSchema>
 

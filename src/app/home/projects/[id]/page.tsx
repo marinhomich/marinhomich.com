@@ -1,21 +1,18 @@
-import { notFound } from "next/navigation"
 import { allProjects } from "contentlayer/generated"
+import { notFound } from "next/navigation"
 
 import { Mdx } from "@/components/mdx/mdx-components"
 
 import "@/styles/mdx.css"
 
 import { type Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 
-import { cn, formatDate } from "@/lib/utils"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/icons"
 import { MdxPager } from "@/components/pagers/mdx-pager"
-import { Shell } from "@/components/shells/shell"
+import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
+import { cn } from "@/lib/utils"
 
 interface PostPageProps {
   params: {

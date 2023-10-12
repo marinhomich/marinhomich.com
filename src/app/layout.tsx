@@ -1,7 +1,6 @@
-import Script from "next/script"
 
-import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/toaster"
 
 import "@/styles/globals.css"
 
