@@ -38,6 +38,7 @@ import {
   LayoutDashboard,
   Loader2,
   LogOut,
+  Mail,
   Menu,
   MessageSquare,
   Minus,
@@ -78,6 +79,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  mail: Mail,
   code: Code,
   PenLine: PenLine,
   home: Home,

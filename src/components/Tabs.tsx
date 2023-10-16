@@ -5,36 +5,21 @@ import { useRouter } from "next/navigation"
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export default function CustomTabs() {
+interface ITabs {
+  title: string
+  route: string
+}
+interface Props {
+  tabs: ITabs[]
+}
+
+export default function CustomTabs({ tabs }: Props) {
   const [activeTab, setActiveTab] = useState("")
   const router = useRouter()
   const handleTabChange = (value: string) => {
     setActiveTab(value)
     router.push(`/overview/${value}`)
   }
-
-  interface ITabs {
-    title: string
-    route: string
-  }
-  const tabs: ITabs[] = [
-    {
-      title: "Overview",
-      route: "",
-    },
-    {
-      title: "Subscriptions",
-      route: "subscriptions",
-    },
-    {
-      title: "Invoices",
-      route: "invoices",
-    },
-    {
-      title: "Customers",
-      route: "customers",
-    },
-  ]
 
   return (
     <Tabs defaultValue={activeTab} onValueChange={handleTabChange}>

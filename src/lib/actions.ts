@@ -1,5 +1,6 @@
 "use server"
 
+import EmailTemplate from "@/emails/EmailTemplate"
 import NewUserEmail from "@/emails/new-user"
 import { hash } from "bcrypt"
 import { type z } from "zod"
@@ -53,4 +54,19 @@ export const deleteUser = async (id: number) => {
       error: error.message,
     }
   }
+}
+
+interface EmailProps {
+  name: string
+  email: string
+  message: string
+}
+export const sendEmail = async (data: EmailProps) => {
+  await resend.sendEmail({
+    from: "marinhomich.dev <website@marinhomich.dev>",
+    to: "michel.marinho1999@gmail.com",
+    reply_to: data.email,
+    subject: `${data.name} - via marinhomich.dev`,
+    react: EmailTemplate({ ...data }) as React.ReactElement,
+  })
 }

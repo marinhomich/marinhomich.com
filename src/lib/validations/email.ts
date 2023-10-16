@@ -38,3 +38,15 @@ export const calculoSchema = z.object({
   precoGasolina: z.coerce.number().min(1),
   dias: z.coerce.number().min(1),
 })
+
+export const sendEmailSchema = z.object({
+  name: z.string().nonempty({
+    message: "Required field",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address",
+  }),
+  message: z.string().nonempty({
+    message: "Required field",
+  }),
+})

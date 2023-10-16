@@ -87,6 +87,14 @@ export function CommandMenuSite({ ...props }: DialogProps) {
       items: [
         {
           id: 1,
+          icon: "mail",
+          myAction: function () {
+            router.push("/contact")
+          },
+          name: "Send Email",
+        },
+        {
+          id: 2,
           icon: "moon",
           myAction: function () {
             setTheme("dark")
@@ -94,7 +102,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           name: "Change Theme to Dark",
         },
         {
-          id: 2,
+          id: 3,
           icon: "sun",
           myAction: function () {
             setTheme("light")
@@ -102,7 +110,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           name: "Change Theme to Light",
         },
         {
-          id: 3,
+          id: 4,
           icon: "monitor",
           myAction: function () {
             setTheme("system")

@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator"
+import SendEmailForm from "@/components/forms/send-email-form"
 import {
   PageHeader,
   PageHeaderDescription,
@@ -14,15 +15,17 @@ export default function HomePage() {
   return (
     <Shell className="md:pb-10">
       <PageHeader id="contact-header" aria-labelledby="contact-header-heading">
-        <PageHeaderHeading>Email me. Like in the old days.</PageHeaderHeading>
-        <PageHeaderDescription></PageHeaderDescription>
+        <PageHeaderHeading>Contact</PageHeaderHeading>
+        <PageHeaderDescription>Contact Description</PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />
       <section
         id="blog-posts"
         aria-labelledby="blog-posts-heading"
         className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-      ></section>
+      >
+        <SendEmailForm />
+      </section>
     </Shell>
   )
 }

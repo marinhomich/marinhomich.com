@@ -4,6 +4,11 @@ import { redirect } from "next/navigation"
 import { getSession } from "@/lib/auth"
 import CustomTabs from "@/components/Tabs"
 
+interface ITabs {
+  title: string
+  route: string
+}
+
 export default async function OverviewLayout({
   children,
 }: {
@@ -15,9 +20,28 @@ export default async function OverviewLayout({
     redirect("/login")
   }
 
+  const tabs: ITabs[] = [
+    {
+      title: "Overview",
+      route: "",
+    },
+    {
+      title: "Subscriptions",
+      route: "subscriptions",
+    },
+    {
+      title: "Invoices",
+      route: "invoices",
+    },
+    {
+      title: "Customers",
+      route: "customers",
+    },
+  ]
+
   return (
     <div className="p-4">
-      <CustomTabs />
+      <CustomTabs tabs={tabs} />
       <div className="p-4">{children}</div>
     </div>
   )

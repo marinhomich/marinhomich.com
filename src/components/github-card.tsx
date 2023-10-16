@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { formatDate } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -26,7 +26,14 @@ export function CardGithub({ data }: any) {
       </CardHeader>
       <CardContent className="flex  space-x-4 text-sm text-muted-foreground">
         <div className="flex items-center">
-          <Icons.circle className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
+          <Icons.circle
+            className={cn(
+              "mr-1 h-3 w-3 ",
+              data.language === "TypeScript"
+                ? "fill-sky-400 text-sky-400"
+                : "fill-yellow-400 text-yellow-400"
+            )}
+          />
           {data.language}
         </div>
         <div className="flex items-center">
