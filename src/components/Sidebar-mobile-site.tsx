@@ -6,7 +6,14 @@ import { useRouter } from "next/navigation"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 import { Icons } from "./icons"
 import { ScrollArea } from "./ui/scroll-area"
@@ -19,14 +26,18 @@ export default function SidebarMobileSite() {
       <SheetTrigger asChild>
         <Icons.menu className="mr-4 md:hidden" size={20} />
       </SheetTrigger>
-      <SheetContent className="pr-0" side="left">
-        <MobileLink
-          href="/"
-          className="flex items-center"
-          onOpenChange={setIsOpen}
-        >
-          <span className="font-bold">{siteConfig.name}</span>
-        </MobileLink>
+      <SheetContent side="left">
+        <SheetHeader className="pr-8">
+          <MobileLink
+            href="/"
+            className="flex items-center"
+            onOpenChange={setIsOpen}
+          >
+            <Icons.command className="h-6 w-6" />
+            <span className="ml-2 font-bold">{siteConfig.name}</span>
+          </MobileLink>
+        </SheetHeader>
+
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
             <MobileLink href={"/about"} onOpenChange={setIsOpen}>
