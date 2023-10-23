@@ -6,7 +6,8 @@ export const siteConfig = {
   },
   site: {
     name: "Michel Marinho",
-    description: "Frontend Developer",
+    description:
+      "Hi there I'm Michel Marinho. I'm a Front-end Engineer based in Brazil. A young Frontend developer who wants to share his knowledge.",
   },
   url: "https://marinhomich.dev",
   links: {

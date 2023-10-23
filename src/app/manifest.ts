@@ -5,7 +5,6 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Michel Marinho",
     short_name: "Michel Marinho",
     description: "Michel Marinho",
-    start_url: "/",
     display: "standalone",
     background_color: "#000",
     theme_color: "#000",
