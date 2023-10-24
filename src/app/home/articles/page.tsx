@@ -23,8 +23,6 @@ export default function HomePage() {
     compareDesc(new Date(a.date), new Date(b.date))
   )
 
-  console.log(posts)
-
   return (
     <Shell className="md:pb-10">
       <PageHeader

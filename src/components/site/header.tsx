@@ -12,7 +12,7 @@ import SidebarMobileSite from "../Sidebar-mobile-site"
 import { ThemeToggle } from "../theme-toggle"
 import { buttonVariants } from "../ui/button"
 
-export default function SideHeader() {
+export default function SiteHeader() {
   const pathname = usePathname()
 
   return (

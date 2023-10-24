@@ -55,7 +55,7 @@ export default async function Page({ params }: PostPageProps) {
   if (!post) {
     notFound()
   }
-  console.log(allProjects.flat())
+  
   return (
     <article className="container relative max-w-3xl space-y-2 py-6 lg:py-10">
       <Link
