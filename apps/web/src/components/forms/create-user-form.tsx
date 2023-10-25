@@ -44,8 +44,8 @@ export default function CreateUserForm() {
     createUser(data)
       .then(() => {
         toast({
-          title: "User Created.",
-          description: "User Created.",
+          title: "Email sent :D",
+          description: "Thanks for taking the time to write it.",
         })
 
         router.refresh()
@@ -58,8 +58,8 @@ export default function CreateUserForm() {
           variant: "destructive",
         })
         // console.log(err.message);
-        setIsLoading(false)
       })
+    setIsLoading(false)
   }
   return (
     <Form {...form}>

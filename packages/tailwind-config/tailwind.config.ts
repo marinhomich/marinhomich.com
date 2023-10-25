@@ -114,7 +114,7 @@ const config: Config = {
     },
   },
   // plugins: [tailwindcss-animate, @tailwindcss/typography],
-  plugins: [forms, typography, radix, animate],
+  plugins: [typography, animate],
 
 
 };

@@ -3,8 +3,14 @@ export const APP_HOSTNAMES = new Set([
   "app.localhost:3000",
 ])
 
+export const JOAO_HOSTNAMES = new Set([
+  "joao.marinhomich.dev",
+  "joao.localhost:3000",
+])
+
 export const HOME_HOSTNAMES = new Set([
   "marinhomich.dev",
+  "home.marinhomich.dev",
   "home.localhost:3000",
   "localhost:3000",
 ])
