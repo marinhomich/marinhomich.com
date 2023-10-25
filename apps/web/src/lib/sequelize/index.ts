@@ -12,5 +12,5 @@ export const sequelize = new Sequelize({
   port: 3306,
   username: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
-  database: "playground",
+  database: process.env.DATABASE_NAME,
 })
