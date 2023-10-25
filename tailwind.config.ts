@@ -52,13 +52,24 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        fade: {
+          "0%": {
+            opacity: "0",
+          },
+          "80%": {
+            opacity: "0.8",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
         "fade-up": {
           "0%": {
             opacity: "0",
             transform: "translateY(10px)",
           },
           "80%": {
-            opacity: "0.6",
+            opacity: "0.8",
           },
           "100%": {
             opacity: "1",
@@ -88,6 +99,7 @@ module.exports = {
         },
       },
       animation: {
+        fade: "fade 0.5s",
         "fade-up": "fade-up 0.5s",
         "fade-down": "fade-down 0.5s",
         "accordion-down": "accordion-down 0.2s ease-out",

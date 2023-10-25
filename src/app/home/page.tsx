@@ -23,14 +23,15 @@ export default function HomePage() {
         >
           <Balancer>Michel Marinho</Balancer>
         </h1>
+
         <p
-          className="animate-fade-up mt-6  text-muted-foreground/80 opacity-0 md:text-xl"
+          className="mt-6 animate-fade-up  text-muted-foreground/80 opacity-0 md:text-xl"
           style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
         >
           <Balancer>Frontend Developer</Balancer>
         </p>
         <div
-          className="animate-fade-up mx-auto mt-6 flex items-center justify-center space-x-5 opacity-0"
+          className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: "0.40s", animationFillMode: "forwards" }}
         ></div>
       </div>

@@ -16,7 +16,14 @@ function PageHeader({
   ...props
 }: PageHeaderProps) {
   return (
-    <Comp className={cn("grid gap-1", className)} {...props}>
+    <Comp
+      className={cn(
+        "grid animate-fade-up gap-1 text-4xl font-bold opacity-0",
+        className
+      )}
+      style={{ animationDelay: "0.20s", animationFillMode: "forwards" }}
+      {...props}
+    >
       {children}
     </Comp>
   )
