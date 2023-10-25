@@ -36,6 +36,7 @@ import {
   Image,
   Info,
   LayoutDashboard,
+  Link,
   Loader2,
   LogOut,
   Mail,
@@ -79,6 +80,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  link: Link,
   mail: Mail,
   code: Code,
   PenLine: PenLine,

@@ -17,7 +17,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandShortcut,
 } from "@/components/ui/command"
+import { toast } from "@/components/ui/use-toast"
 // import { useDebounce } from "@/hooks/use-debounce"
 import { Icons } from "@/components/icons"
 
@@ -31,6 +33,14 @@ export function CommandMenuSite({ ...props }: DialogProps) {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
+      }
+      if (e.key === "l" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        navigator.clipboard.writeText(window.location.href)
+      }
+      if (e.key === "h" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        router.push("/")
       }
     }
 
@@ -87,6 +97,18 @@ export function CommandMenuSite({ ...props }: DialogProps) {
       items: [
         {
           id: 1,
+          icon: "link",
+          myAction: function () {
+            navigator.clipboard.writeText(window.location.href)
+            toast({
+              title: "Copied :D",
+              description: "You can now share it with anyone.",
+            })
+          },
+          name: "Copy Link",
+        },
+        {
+          id: 2,
           icon: "mail",
           myAction: function () {
             router.push("/contact")
@@ -94,7 +116,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           name: "Send Email",
         },
         {
-          id: 2,
+          id: 3,
           icon: "moon",
           myAction: function () {
             setTheme("dark")
@@ -102,7 +124,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           name: "Change Theme to Dark",
         },
         {
-          id: 3,
+          id: 4,
           icon: "sun",
           myAction: function () {
             setTheme("light")
@@ -110,7 +132,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           name: "Change Theme to Light",
         },
         {
-          id: 4,
+          id: 5,
           icon: "monitor",
           myAction: function () {
             setTheme("system")
