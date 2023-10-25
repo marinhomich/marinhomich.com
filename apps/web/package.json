@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.1",
-    "@marinhomich/tailwind-config": "workspace:*",
+    "tailwind-config": "workspace:*",
     "@prisma/client": "^5.3.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
