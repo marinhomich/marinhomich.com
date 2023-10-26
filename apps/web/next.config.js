@@ -2,11 +2,7 @@ const { withContentlayer } = require("next-contentlayer")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
   reactStrictMode: false,
-
   output: "standalone",
   async headers() {
     return [

@@ -6,9 +6,9 @@ import { type CommandBar } from "@/types"
 import { type DialogProps } from "@radix-ui/react-alert-dialog"
 import { useTheme } from "next-themes"
 
+import { cn } from "@/lib/utils"
 // import { type Product } from "@/db/schema"
 
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   CommandDialog,
@@ -17,7 +17,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandShortcut,
 } from "@/components/ui/command"
 import { toast } from "@/components/ui/use-toast"
 // import { useDebounce } from "@/hooks/use-debounce"
@@ -148,7 +147,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
       <Button
         variant="outline"
         className={cn(
-          "relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64"
+          "text-muted-foreground relative w-full justify-start text-sm sm:pr-12 md:w-40 lg:w-64"
         )}
         onClick={() => setOpen(true)}
         {...props}
@@ -157,7 +156,7 @@ export function CommandMenuSite({ ...props }: DialogProps) {
         <span className="hidden lg:inline-flex">Search here...</span>
         <span className="inline-flex lg:hidden">Search...</span>
 
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <kbd className="bg-muted pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>

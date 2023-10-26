@@ -1,11 +1,19 @@
+import { type Viewport } from "next"
 import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
-import { constructMetadata } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+}
+
 export const metadata = {
+  metadataBase: new URL("https://marinhomich.dev"),
   title: {
     default: siteConfig.site.name,
     template: `%s - ${siteConfig.site.name}`,
@@ -25,10 +33,7 @@ export const metadata = {
     },
   ],
   creator: "marinhomich",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -66,7 +71,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="bg-background min-h-screen font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

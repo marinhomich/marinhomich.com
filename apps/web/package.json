@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "email": "email dev --dir ./src/emails -p 3001",
     "clean": "rm -rf node_modules .next .react-email .contentlayer",
     "build": "next build",

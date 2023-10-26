@@ -1,4 +1,3 @@
-import { Interface } from "readline"
 import { Html } from "@react-email/html"
 
 interface Props {
