@@ -31,7 +31,7 @@ export class UsersController {
     isArray: true,
   })
   @Get()
-  findAll(): Promise<User[]> {
+  findAll() {
     return this.usersService.findAll();
   }
 

@@ -22,8 +22,20 @@ export class UsersService {
     });
   }
 
-  findAll() {
-    return this.usersRepository.find();
+  async findAll() {
+    const [items, itemsCount] = await this.usersRepository.findAndCount({
+      select: ['id', 'name', 'email'],
+    });
+
+    const data = {
+      items,
+      meta: {
+        total: itemsCount,
+      },
+    };
+    console.log(items);
+
+    return data;
   }
 
   async findOne(userId: number): Promise<User> {

@@ -4,9 +4,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { databaseProviders } from './infra/db/database.providers';
 import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forRootAsync(databaseProviders), UsersModule],
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRootAsync(databaseProviders),
+    UsersModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

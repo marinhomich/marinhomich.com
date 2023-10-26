@@ -1,25 +1,23 @@
 import * as z from "zod"
 
+const email = z.string().email({
+  message: "Please enter a valid email address.",
+})
+
 export const emailSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
+  email,
   password: z.string(),
 })
 
 export const resetPassSchema = z.object({
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
+  email,
 })
 
 export const createUserSchema = z.object({
   name: z.string().nonempty({
     message: "Required field",
   }),
-  email: z.string().email({
-    message: "Please enter a valid email address",
-  }),
+  email,
   password: z
     .string()
     .min(8, {
@@ -43,9 +41,7 @@ export const sendEmailSchema = z.object({
   name: z.string().nonempty({
     message: "Required field",
   }),
-  email: z.string().email({
-    message: "Please enter a valid email address",
-  }),
+  email,
   message: z.string().nonempty({
     message: "Required field",
   }),
