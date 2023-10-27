@@ -5,20 +5,16 @@
   "scripts": {
     "dev": "next dev",
     "email": "email dev --dir ./src/emails -p 3001",
-    "clean": "rm -rf node_modules .next .react-email .contentlayer",
+    "clean": "rimraf node_modules .next .react-email .contentlayer .turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "shadcn:add": "pnpm dlx shadcn-ui@latest add",
-    "postinstall": "prisma generate",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
-  },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
-    "@prisma/client": "^5.5.2",
+    "database": "workspace:*",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-avatar": "^1.0.4",
@@ -86,11 +82,11 @@
     "postcss": "8.4.31",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
-    "prisma": "^5.5.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.5",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "rimraf": "^3.0.2",
     "tailwindcss": "3.3.5",
     "ts-node": "^10.9.1",
     "typescript": "5.2.2"

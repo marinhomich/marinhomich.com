@@ -16,3 +16,8 @@ model User {
   theme     String   @default("dark")
   createdAt DateTime @default(now())
 }
+
+model Theme {
+  id        Int      @id @default(autoincrement())
+  theme     String
+}

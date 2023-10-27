@@ -12,9 +12,14 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "clean": "turbo run clean && rimraf node_modules .turbo",
+    "generate": "turbo run generate",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   },
   "packageManager": "pnpm@8.6.10"
 }
