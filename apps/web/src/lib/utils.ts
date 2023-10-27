@@ -15,6 +15,12 @@ export function isMacOs() {
   return window.navigator.userAgent.includes("Mac")
 }
 
+export function isMobileOs() {
+  if (typeof window === "undefined") return false
+
+  return window.navigator.userAgent.includes("mobile")
+}
+
 export function truncate(str: string, length: number) {
   return str.length > length ? `${str.substring(0, length)}...` : str
 }
