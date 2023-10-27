@@ -83,6 +83,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ThemeProvider
+          themes={["light", "dark", "pink"]}
           attribute="class"
           defaultTheme="system"
           enableSystem

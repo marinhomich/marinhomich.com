@@ -7,10 +7,10 @@ import prisma from "@/lib/prisma"
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
-    maxAge: 3600,
   },
   providers: [
     CredentialsProvider({
+      name: "Login",
       type: "credentials",
       credentials: {
         username: { label: "Username", type: "text" },
@@ -36,12 +36,12 @@ export const authOptions: NextAuthOptions = {
         if (!isPasswordValid) {
           return null
         }
-
         return {
-          id: user.id + "",
+          id: user.id,
           email: user.email,
           name: user.name,
-          randomKey: "Hey",
+          theme: user.theme,
+          randomKey: "Hey Cool",
         }
       },
     }),
@@ -52,23 +52,25 @@ export const authOptions: NextAuthOptions = {
     error: "/login", // Error code passed in query string as ?error=
   },
   callbacks: {
-    async session({ session, token }) {
+    session: ({ session, token }) => {
       return {
         ...session,
         user: {
           ...session.user,
           id: token.id,
           randomKey: token.randomKey,
+          theme: token.theme,
         },
       }
     },
-    async jwt({ token, user }) {
+    jwt: ({ token, user }) => {
       if (user) {
-        const u = user
-        // console.log("callback", user)
+        const u = user as unknown as any
         return {
           ...token,
           id: u.id,
+          randomKey: u.randomKey,
+          theme: u.theme,
         }
       }
       return token

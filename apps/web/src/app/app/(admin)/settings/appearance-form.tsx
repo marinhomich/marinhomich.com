@@ -1,10 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Loader2 } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
+import { updateSettingsUser } from "@/lib/actions"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -29,66 +32,51 @@ const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
     required_error: "Please select a theme.",
   }),
-  font: z.enum(["inter", "manrope", "system"], {
-    invalid_type_error: "Select a font",
-    required_error: "Please select a font.",
-  }),
 })
 
 type AppearanceFormValues = z.infer<typeof appearanceFormSchema>
 
-export function AppearanceForm() {
-  const { theme, setTheme } = useTheme()
+export function AppearanceForm({ data }: any) {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  const { setTheme } = useTheme()
 
   const form = useForm<AppearanceFormValues>({
     resolver: zodResolver(appearanceFormSchema),
-    defaultValues: {
-      font: "inter",
-      theme: "dark",
-    },
+    defaultValues: data,
   })
 
   function onSubmit(data: AppearanceFormValues) {
-    setTheme(data.theme)
-    // alert(data.theme)
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+    setIsLoading(true)
+
+    updateSettingsUser(data.theme).then((res) => {
+      if (res?.error) {
+        toast({
+          title: "Failed.",
+          description: res.error,
+          variant: "destructive",
+        })
+      } else {
+        setTheme(data.theme)
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                {JSON.stringify(data, null, 2)}
+              </code>
+            </pre>
+          ),
+        })
+      }
     })
+
+    setIsLoading(false)
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="font"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Font</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a Font" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="inter">Inter</SelectItem>
-                  <SelectItem value="manrope">Manrope</SelectItem>
-                  <SelectItem value="system">System</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormDescription>
-                Set the font you want to use in the dashboard.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="theme"
@@ -160,8 +148,10 @@ export function AppearanceForm() {
             </FormItem>
           )}
         />
-
-        <Button type="submit">Update preferences</Button>
+        <Button disabled={isLoading} type="submit">
+          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Update preferences
+        </Button>
         <span className="sr-only">Submit</span>
       </form>
     </Form>

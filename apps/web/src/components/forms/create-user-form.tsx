@@ -57,7 +57,6 @@ export default function CreateUserForm() {
           description: err.message,
           variant: "destructive",
         })
-        // console.log(err.message);
       })
     setIsLoading(false)
   }

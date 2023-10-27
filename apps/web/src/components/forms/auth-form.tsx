@@ -5,7 +5,8 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2 } from "lucide-react"
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
+import { useTheme } from "next-themes"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
@@ -57,7 +58,6 @@ export default function AuthForm() {
     })
 
     if (signInResult?.error) {
-      setIsLoading(false)
       toast({
         title: "Nome de usuário ou senha incorretos.",
         variant: "destructive",
@@ -66,6 +66,7 @@ export default function AuthForm() {
       router.refresh()
       router.push("/")
     }
+    setIsLoading(false)
   }
 
   return (
@@ -113,7 +114,7 @@ export default function AuthForm() {
         </Form>
       </CardContent>
       <CardFooter className="flex flex-wrap items-center justify-between gap-2">
-        <div className="text-sm text-muted-foreground">
+        <div className="text-muted-foreground text-sm">
           <span className="mr-1 hidden sm:inline-block">
             Don&apos;t have an account?
           </span>
@@ -125,7 +126,7 @@ export default function AuthForm() {
             Sign up
           </Link>
         </div>
-        <div className="text-sm text-muted-foreground">
+        <div className="text-muted-foreground text-sm">
           <Link
             aria-label="Sign up"
             href="/reset-password"

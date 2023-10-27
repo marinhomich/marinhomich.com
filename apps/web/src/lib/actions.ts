@@ -41,6 +41,29 @@ export const createUser = async (data: userData) => {
   }
 }
 
+export const updateSettingsUser = async (theme: any) => {
+  try {
+    await prisma.user.update({
+      where: {
+        email: "demo@marinhomich.dev",
+      },
+      data: {
+        theme: theme,
+      },
+    })
+  } catch (error: any) {
+    if (error.code === "P2002") {
+      return {
+        error: `This user is already exists`,
+      }
+    } else {
+      return {
+        error: error.message,
+      }
+    }
+  }
+}
+
 export const deleteUser = async (id: number) => {
   try {
     const response = await prisma.user.delete({
