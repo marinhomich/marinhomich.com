@@ -1,7 +1,9 @@
 import { type Viewport } from "next"
+import { Inter as FontSans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -66,12 +68,20 @@ export const metadata = {
 interface RootLayoutProps {
   children: React.ReactNode
 }
-
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className="bg-background min-h-screen font-sans antialiased">
+      <body
+        className={cn(
+          "bg-background min-h-screen font-sans antialiased",
+          fontSans.variable
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

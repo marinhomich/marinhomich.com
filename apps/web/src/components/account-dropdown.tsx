@@ -66,7 +66,7 @@ export default function AccountDropdown({ session }: any) {
               <p className="text-sm font-medium leading-none">
                 {session?.user?.name}
               </p>
-              <p className="text-xs leading-none text-muted-foreground">
+              <p className="text-muted-foreground text-xs leading-none">
                 {session?.user?.email}
               </p>
             </div>
@@ -89,8 +89,8 @@ export default function AccountDropdown({ session }: any) {
               <Icons.heart className="mr-2 h-4 w-4" aria-hidden="true" />
               <span>Sponsor</span>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild disabled>
-              <Link href="/dashboard/account">
+            <DropdownMenuItem asChild>
+              <Link href="/account">
                 <Icons.user className="mr-2 h-4 w-4" aria-hidden="true" />
                 Account
                 <DropdownMenuShortcut>⇧⌘A</DropdownMenuShortcut>

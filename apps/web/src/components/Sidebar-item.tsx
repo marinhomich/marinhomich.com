@@ -41,22 +41,28 @@ export default function SidebarItem({ ...props }) {
 
     return [
       {
+        name: "Home",
+        href: "/",
+        isActive: segments[0] === "home",
+        icon: <Icons.home width={18} />,
+      },
+      {
         name: "Overview",
         href: "/overview",
         isActive: segments[0] === "overview",
-        icon: <Icons.layoutDashboard width={18} />,
+        icon: <Icons.dog width={18} />,
       },
       {
-        name: "Users",
+        name: "Analytics",
         href: "/users",
         isActive: segments[0] === "users",
-        icon: <Icons.users width={18} />,
+        icon: <Icons.chart width={18} />,
       },
       {
-        name: "Logs",
-        href: "/logs",
-        isActive: segments[0] === "logs",
-        icon: <Icons.fileText width={18} />,
+        name: "Settings",
+        href: "/settings",
+        isActive: segments[0] === "settings",
+        icon: <Icons.horizontalSliders width={18} />,
       },
     ]
   }, [segments, id])
@@ -67,7 +73,7 @@ export default function SidebarItem({ ...props }) {
           <Link
             className={`flex items-center space-x-3 ${
               isActive ? "bg-secondary" : ""
-            } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
+            } hover:bg-secondary/80 active:bg-secondary rounded-lg px-2 py-1 transition-all  duration-150 ease-in-out`}
             href={href}
             {...props}
           >

@@ -50,6 +50,7 @@ import {
   MoveUpRight,
   Newspaper,
   Package,
+  PawPrint,
   PenLine,
   Plus,
   PlusCircle,
@@ -80,6 +81,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  dog: PawPrint,
   link: Link,
   mail: Mail,
   code: Code,
