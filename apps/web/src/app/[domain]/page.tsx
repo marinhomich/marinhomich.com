@@ -1,9 +1,19 @@
-export default function CustomDomainPage({
+import { notFound } from "next/navigation"
+
+import { getSiteData } from "@/lib/fetchers"
+
+export default async function CustomDomainPage({
   params,
 }: {
-  params: { domain: string; key: string }
+  params: { domain: string }
 }) {
-  console.log(params.domain)
+  const domain = decodeURIComponent(params.domain)
 
-  return <p>{params.domain}</p>
+  const data = await getSiteData(domain)
+
+  if (!data) {
+    notFound()
+  }
+
+  return <p>{domain}</p>
 }

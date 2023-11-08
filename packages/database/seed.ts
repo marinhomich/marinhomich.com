@@ -15,7 +15,16 @@ async function main() {
       password,
     },
   })
-  console.log({ user })
+  const siteNayane = await prisma.site.upsert({
+    where: { id: "1" },
+    update: {},
+    create: {
+      name: "Usuário Demo",
+      subdomain: 'nayane',
+      userId: 1
+    },
+  })
+  console.log({ user, siteNayane})
 }
 main()
   .then(async () => await prisma.$disconnect())
