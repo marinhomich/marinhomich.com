@@ -1,16 +1,15 @@
-import { NextResponse, type NextRequest } from "next/server"
-
 import {
-  API_HOSTNAMES,
-  APP_HOSTNAMES,
-  isHomeHostname,
-  JOAO_HOSTNAMES,
-} from "./lib/constants"
+  NextResponse,
+  type NextFetchEvent,
+  type NextRequest,
+} from "next/server"
+
+import { API_HOSTNAMES, APP_HOSTNAMES, isHomeHostname } from "./lib/constants"
 import ApiMiddleware from "./lib/middleware/api"
 import AppMiddleware from "./lib/middleware/app"
 import { parse } from "./lib/middleware/utils"
 
-export default async function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest, ev: NextFetchEvent) {
   const { domain, path } = parse(req)
 
   if (isHomeHostname(domain)) {
@@ -25,9 +24,6 @@ export default async function middleware(req: NextRequest) {
   // for API
   if (API_HOSTNAMES.has(domain)) {
     return ApiMiddleware(req)
-  }
-  if (JOAO_HOSTNAMES.has(domain)) {
-    return NextResponse.rewrite(new URL(`/joao${path}`, req.url))
   }
 
   // rewrite everything else to `/[domain]/[path] dynamic route

@@ -1,11 +1,6 @@
 export const APP_HOSTNAMES = new Set([
   "app.marinhomich.dev",
-  "app.localhost:3001",
-])
-
-export const JOAO_HOSTNAMES = new Set([
-  "joao.marinhomich.dev",
-  "joao.localhost:3000",
+  "app.localhost:3000",
 ])
 
 export const HOME_HOSTNAMES = new Set([
