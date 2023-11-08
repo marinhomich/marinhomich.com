@@ -15,5 +15,9 @@ export default async function CustomDomainPage({
     notFound()
   }
 
-  return <p>{domain}</p>
+  return (
+    <div>
+      <p>{domain}</p>
+    </div>
+  )
 }
