@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { notFound } from "next/navigation"
 
 import { getSiteData } from "@/lib/fetchers"
@@ -17,6 +18,7 @@ export default async function CustomDomainPage({
 
   return (
     <div>
+      <Image src={data.logo || ""} width={200} height={200} alt="logo" />
       <p>{domain}</p>
     </div>
   )

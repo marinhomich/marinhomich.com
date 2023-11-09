@@ -4,6 +4,14 @@ const { withContentlayer } = require("next-contentlayer")
 const nextConfig = {
   reactStrictMode: false,
   output: "standalone",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "public.blob.vercel-storage.com",
+      },
+    ],
+  },
   async headers() {
     return [
       {
