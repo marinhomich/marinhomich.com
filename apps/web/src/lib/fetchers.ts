@@ -1,3 +1,5 @@
+import { unstable_cache } from "next/cache"
+
 import prisma from "@/lib/prisma"
 
 export async function getSiteData(domain: string) {
@@ -5,7 +7,16 @@ export async function getSiteData(domain: string) {
     ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
     : null
 
-  return await prisma.site.findUnique({
-    where: { subdomain: subdomain! },
-  })
+  return await unstable_cache(
+    async () => {
+      return prisma.site.findUnique({
+        where: { subdomain: subdomain! },
+      })
+    },
+    [`${domain}-metadata`],
+    {
+      revalidate: 3600,
+      tags: [`${domain}-metadata`],
+    }
+  )()
 }
