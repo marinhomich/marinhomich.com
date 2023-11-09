@@ -15,7 +15,7 @@ export default function HomePage() {
           className="animate-fade-up text-muted-foreground/80  mt-6 opacity-0 md:text-xl"
           style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
         >
-          <Balancer>Frontend Developer</Balancer>
+          <Balancer>Frontend Developer.</Balancer>
         </p>
         <div
           className="animate-fade-up mx-auto mt-6 flex items-center justify-center space-x-5 opacity-0"

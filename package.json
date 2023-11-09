@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "clean": "turbo run clean && rimraf node_modules .turbo",
+    "clean": "turbo run clean && rimraf node_modules .turbo out",
     "generate": "turbo run generate",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",

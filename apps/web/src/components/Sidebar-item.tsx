@@ -10,6 +10,7 @@ export default function SidebarItem({ ...props }) {
   const segments = useSelectedLayoutSegments()
   const { id } = useParams() as { id?: string }
 
+  console.log(segments)
   const tabs = useMemo(() => {
     if (segments[0] === "users" && id) {
       return [
@@ -43,7 +44,7 @@ export default function SidebarItem({ ...props }) {
       {
         name: "Home",
         href: "/",
-        isActive: segments[0] === "home",
+        isActive: segments.length === 0,
         icon: <Icons.home width={18} />,
       },
       {
@@ -53,9 +54,15 @@ export default function SidebarItem({ ...props }) {
         icon: <Icons.dog width={18} />,
       },
       {
-        name: "Analytics",
+        name: "Users",
         href: "/users",
         isActive: segments[0] === "users",
+        icon: <Icons.users width={18} />,
+      },
+      {
+        name: "Analytics",
+        href: "/analytics",
+        isActive: segments[0] === "analytics",
         icon: <Icons.chart width={18} />,
       },
       {
@@ -64,6 +71,12 @@ export default function SidebarItem({ ...props }) {
         isActive: segments[0] === "settings",
         icon: <Icons.horizontalSliders width={18} />,
       },
+      // {
+      //   name: "Help Center",
+      //   href: "/settings",
+      //   isActive: segments[0] === "settings",
+      //   icon: <Icons.horizontalSliders width={18} />,
+      // },
     ]
   }, [segments, id])
   return (
