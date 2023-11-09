@@ -16,7 +16,6 @@ export default async function CustomDomainPage({
     notFound()
   }
 
-  console.log(blobs)
   return (
     <div>
       <Image src={data.logo || ""} width={200} height={200} alt="logo" />

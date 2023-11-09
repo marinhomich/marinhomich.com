@@ -3,7 +3,7 @@
   "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build","^db:generate"],
+      "dependsOn": ["^build","^db:generate", "^db:push","^db:seed"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "dev": {
@@ -18,6 +18,9 @@
       "cache": false
     },
     "db:push": {
+      "cache": false
+    },
+    "db:seed": {
       "cache": false
     }
   }

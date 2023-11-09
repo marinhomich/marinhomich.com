@@ -10,7 +10,6 @@ export default function SidebarItem({ ...props }) {
   const segments = useSelectedLayoutSegments()
   const { id } = useParams() as { id?: string }
 
-  console.log(segments)
   const tabs = useMemo(() => {
     if (segments[0] === "users" && id) {
       return [
