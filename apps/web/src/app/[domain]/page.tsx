@@ -9,10 +9,15 @@ export default async function CustomDomainPage({
 }) {
   const domain = decodeURIComponent(params.domain)
   // const data = await getSiteData(domain)
+  const subdomain = domain.endsWith(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    ? domain.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
+    : null
   const { blobs } = await list()
-  // if (!data) {
-  //   notFound()
-  // }
+
+  console.log(subdomain)
+  if (subdomain === "erro") {
+    notFound()
+  }
 
   return (
     <div>
