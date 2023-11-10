@@ -1,3 +1,5 @@
+import "@/styles/globals.css"
+
 import { type Viewport } from "next"
 import { Inter as FontSans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"

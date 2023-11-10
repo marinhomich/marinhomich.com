@@ -1,5 +1,3 @@
-import "@/styles/globals.css"
-
 import { siteConfig } from "@/config/site"
 
 import { Providers } from "./providers"
