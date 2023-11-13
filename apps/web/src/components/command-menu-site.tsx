@@ -114,29 +114,34 @@ export function CommandMenuSite({ ...props }: DialogProps) {
           },
           name: "Send Email",
         },
+      ],
+    },
+    {
+      category: "Theme",
+      items: [
         {
-          id: 3,
+          id: 1,
           icon: "moon",
           myAction: function () {
             setTheme("dark")
           },
-          name: "Change Theme to Dark",
+          name: "Dark",
         },
         {
-          id: 4,
+          id: 2,
           icon: "sun",
           myAction: function () {
             setTheme("light")
           },
-          name: "Change Theme to Light",
+          name: "Light",
         },
         {
-          id: 5,
+          id: 3,
           icon: "monitor",
           myAction: function () {
             setTheme("system")
           },
-          name: "Change Theme to System",
+          name: "System",
         },
       ],
     },

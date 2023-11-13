@@ -37,6 +37,10 @@ export default async function Sitemap() {
             url: `https://${domain}/projects`,
             lastModified: new Date(),
           },
+          {
+            url: `https://${domain}/contact`,
+            lastModified: new Date(),
+          },
           ...articles,
           ...projects,
         ]
