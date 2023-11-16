@@ -2,6 +2,15 @@ const { withContentlayer } = require("next-contentlayer")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        "app.localhost:3000",
+        "localhost:3000",
+        "app.marinhomich.dev",
+      ],
+    },
+  },
   reactStrictMode: false,
   output: "standalone",
   images: {

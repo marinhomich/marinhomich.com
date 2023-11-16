@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently --kill-others \"prisma generate && next dev --port 3000\" \"prisma studio --browser none\"",
-    "email": "email dev --dir ./src/emails -p 3001",
+    "dev": "concurrently --kill-others \"prisma generate && next dev --port 3000\" \"prisma studio --browser none\" \"email preview ./src/emails\"",
     "clean": "rimraf node_modules .next .react-email .contentlayer .turbo",
     "build": "prisma generate & next build",
     "start": "next start",
@@ -12,8 +11,12 @@
     "shadcn:add": "pnpm dlx shadcn-ui@latest add",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
+    "@jsx-email/all": "^2.0.0",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -51,7 +54,6 @@
     "pg-hstore": "^2.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-email": "1.9.5",
     "react-hook-form": "^7.47.0",
     "react-wrap-balancer": "^1.1.0",
     "resend": "^1.1.0",

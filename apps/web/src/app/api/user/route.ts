@@ -1,15 +1,20 @@
 import { NextResponse } from "next/server"
-import { getServerSession } from "next-auth"
 
-import { authOptions } from "@/lib/auth"
-import { User } from "@/lib/sequelize/model/user.model"
+import prisma from "@/lib/prisma"
+import { getCurrentUser } from "@/lib/session"
 
 export async function GET() {
-  const session = await getServerSession(authOptions)
-  const users = await User.findAndCountAll()
+  const session = await getCurrentUser()
   if (!session) {
     return NextResponse.json("Unauthorized", { status: 401 })
   }
+
+  const users = await prisma.user.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
+  })
 
   return NextResponse.json(users)
 }

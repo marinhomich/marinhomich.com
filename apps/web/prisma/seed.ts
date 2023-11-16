@@ -9,26 +9,18 @@ async function main() {
     where: { email: "demo@marinhomich.dev" },
     update: {},
     create: {
-      email: "demo@marinhomich.dev",
+      username: "marinhomich",
       name: "Usuário Demo",
+      email: "demo@marinhomich.dev",
       password,
     },
   })
-  const siteNayane = await prisma.site.upsert({
-    where: { id: "1" },
-    update: {},
-    create: {
-      name: "Usuário Demo",
-      subdomain: 'nayane',
-      userId: 1
-    },
-  })
-  console.log({ user, siteNayane})
+
+  console.log({ user })
 }
 main()
   .then(async () => await prisma.$disconnect())
   .catch(async (e) => {
     console.error(e)
     await prisma.$disconnect()
-   
   })

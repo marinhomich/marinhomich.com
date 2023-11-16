@@ -8,16 +8,17 @@ import {
   Preview,
   Text,
 } from "@react-email/components"
+import * as z from "zod"
 
-type NewUserEmailProps = {
-  userName?: string
-}
+const emailSchema = z.object({
+  userName: z.string(),
+})
+
+type EmailProps = z.infer<typeof emailSchema>
 
 const baseUrl = process.env.NEXT_PUBLIC_URL
 
-export default function NewUserEmail({
-  userName = "Michel Marinho",
-}: NewUserEmailProps) {
+export default function NewUserEmail({ userName }: EmailProps) {
   return (
     <Html>
       <Head />
@@ -27,10 +28,10 @@ export default function NewUserEmail({
           <Img
             src={`${baseUrl}/_static/vercel-logotype-dark.png`}
             height="21"
-            alt="Stripe"
+            alt="Logo"
           />
           <Text style={paragraph}>Olá {userName},</Text>
-          <Text style={paragraph}>Bem-vindo ao Dashboard</Text>
+          <Text style={paragraph}>Bem-vindo ao Dashboard {baseUrl}</Text>
           <Text style={paragraph}>
             Atenciosamente,
             <br />

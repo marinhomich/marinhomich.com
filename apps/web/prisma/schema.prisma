@@ -15,15 +15,14 @@ enum Role {
 
 model User {
   id        Int      @id @default(autoincrement())
-  name      String?
-  username  String?
+  name      String
+  username  String   @unique
   email     String   @unique
-  image     String?
+  image     String?  @default("https://public.blob.vercel-storage.com/eEZHAoPTOBSYGBE3/JRajRyC-PhBHEinQkupt02jqfKacBVHLWJq7Iy.png")
   password  String
   theme     String   @default("dark")
   createdAt DateTime @default(now()) @db.Timestamp(4)
   updatedAt DateTime @updatedAt @db.Timestamp(4)
-  Site      Site[]
 }
 
 model Theme {
@@ -31,19 +30,4 @@ model Theme {
   theme String
 }
 
-model Site {
-  id        String   @id @default(cuid())
-  name      String?
-  logo      String?  @default("https://public.blob.vercel-storage.com/eEZHAoPTOBSYGBE3/JRajRyC-PhBHEinQkupt02jqfKacBVHLWJq7Iy.png")
-  subdomain String?  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt 
-  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  userId    Int
 
-  @@index([userId])
-}
-
-model Teste {
-  id String @id @default(cuid())
-}

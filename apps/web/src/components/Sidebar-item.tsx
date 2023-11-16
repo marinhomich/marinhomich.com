@@ -50,7 +50,7 @@ export default function SidebarItem({ ...props }) {
         name: "Overview",
         href: "/overview",
         isActive: segments[0] === "overview",
-        icon: <Icons.dog width={18} />,
+        icon: <Icons.layoutDashboard width={18} />,
       },
       {
         name: "Users",

@@ -7,7 +7,6 @@ import { useTheme } from "next-themes"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { updateSettingsUser } from "@/lib/actions"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -19,14 +18,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { toast } from "@/components/ui/use-toast"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {
@@ -49,27 +40,7 @@ export function AppearanceForm({ data }: any) {
   function onSubmit(data: AppearanceFormValues) {
     setIsLoading(true)
 
-    updateSettingsUser(data.theme).then((res) => {
-      if (res?.error) {
-        toast({
-          title: "Failed.",
-          description: res.error,
-          variant: "destructive",
-        })
-      } else {
-        setTheme(data.theme)
-        toast({
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">
-                {JSON.stringify(data, null, 2)}
-              </code>
-            </pre>
-          ),
-        })
-      }
-    })
+    setTheme(data.theme)
 
     setIsLoading(false)
   }

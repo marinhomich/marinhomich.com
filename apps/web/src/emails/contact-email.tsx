@@ -6,7 +6,7 @@ interface Props {
   message: string
 }
 
-export default function EmailTemplate(props: Props) {
+export default function ContactEmail(props: Props) {
   const { name, email, message } = props
 
   return (

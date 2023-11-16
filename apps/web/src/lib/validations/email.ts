@@ -14,6 +14,9 @@ export const resetPassSchema = z.object({
 })
 
 export const createUserSchema = z.object({
+  username: z.string().nonempty({
+    message: "Required field",
+  }),
   name: z.string().nonempty({
     message: "Required field",
   }),

@@ -1,6 +1,6 @@
 "use server"
 
-import EmailTemplate from "@/emails/EmailTemplate"
+import ContactEmail from "@/emails/contact-email"
 import NewUserEmail from "@/emails/new-user"
 import { hash } from "bcrypt"
 import { type z } from "zod"
@@ -17,6 +17,7 @@ export const createUser = async (data: userData) => {
   try {
     await prisma.user.create({
       data: {
+        username: data.username,
         name: data.name,
         email: data.email,
         password,
@@ -26,7 +27,7 @@ export const createUser = async (data: userData) => {
       from: "Michel Marinho <contato@marinhomich.dev>",
       to: [data.email],
       subject: "Bem-Vindo",
-      react: NewUserEmail({ userName: data.name }) as React.ReactElement,
+      react: NewUserEmail({ userName: data.name }),
     })
   } catch (error: any) {
     if (error.code === "P2002") {
@@ -41,15 +42,13 @@ export const createUser = async (data: userData) => {
   }
 }
 
-export const updateSettingsUser = async (theme: any) => {
+export const updateSettingsUser = async (data: any) => {
   try {
     await prisma.user.update({
       where: {
-        email: "demo@marinhomich.dev",
+        email: data.email,
       },
-      data: {
-        theme: theme,
-      },
+      data,
     })
   } catch (error: any) {
     if (error.code === "P2002") {
@@ -85,11 +84,11 @@ interface EmailProps {
   message: string
 }
 export const sendEmail = async (data: EmailProps) => {
-  await resend.sendEmail({
+  await resend.emails.send({
     from: "marinhomich.dev <website@marinhomich.dev>",
-    to: "michel.marinho1999@gmail.com",
+    to: "marinhomich@gmail.com",
     reply_to: data.email,
     subject: `${data.name} - via marinhomich.dev`,
-    react: EmailTemplate({ ...data }) as React.ReactElement,
+    react: ContactEmail({ ...data }) as React.ReactElement,
   })
 }
