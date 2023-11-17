@@ -85,7 +85,7 @@ export default function SidebarItem({ ...props }) {
           <Link
             className={`flex items-center space-x-3 ${
               isActive ? "bg-secondary" : ""
-            } hover:bg-secondary/80 active:bg-secondary rounded-lg px-2 py-1 transition-all  duration-150 ease-in-out`}
+            } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
             href={href}
             {...props}
           >

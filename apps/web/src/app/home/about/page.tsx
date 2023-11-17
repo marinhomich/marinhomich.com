@@ -27,7 +27,7 @@ export default function HomePage() {
       </PageHeader>
       <Separator className="mb-2.5" />
       <section id="about-section" aria-labelledby="about-section-heading">
-        <p className="text-muted-foreground text-base sm:text-lg">
+        <p className="text-base text-muted-foreground sm:text-lg">
           I am passionate about programming and design. I love working on
           projects that challenge my skills and allow me to learn something new.
           Throughout my career, I have developed skills in interface design and

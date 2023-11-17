@@ -4,7 +4,7 @@ import { HOME_DOMAIN } from "../constants"
 import { parse } from "./utils"
 
 export default async function ApiMiddleware(req: NextRequest) {
-  const { path, fullPath, domain } = parse(req)
+  const { fullPath } = parse(req)
   if (fullPath === "/") {
     return NextResponse.redirect(`${HOME_DOMAIN}/article/marinhomich-api`, {
       status: 301,

@@ -1,14 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
 import { sendEmail } from "@/lib/actions"
-import { createUserSchema, sendEmailSchema } from "@/lib/validations/email"
+import { sendEmailSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -21,12 +20,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components//ui/use-toast"
-import { PasswordInput } from "@/components/password-input"
 
 type Inputs = z.infer<typeof sendEmailSchema>
 
 export default function SendEmailForm() {
-  const router = useRouter()
   const { toast } = useToast()
 
   const form = useForm<Inputs>({

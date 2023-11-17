@@ -28,7 +28,7 @@ export default async function SettingPage() {
     <div className="space-y-6 p-10 pb-16 md:block">
       <div>
         <h2 className="text-2xl font-bold tracking-tight">Account</h2>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-sm text-muted-foreground">
           This is how others will see you on the site.
         </p>
       </div>

@@ -7,7 +7,7 @@
     "clean": "rimraf node_modules .next .react-email .contentlayer .turbo",
     "build": "prisma generate & next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --fix",
     "shadcn:add": "pnpm dlx shadcn-ui@latest add",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache"
   },
@@ -85,7 +85,6 @@
     "eslint-plugin-tailwindcss": "^3.13.0",
     "postcss": "8.4.31",
     "prettier": "^3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.6",
     "prisma": "^5.5.2",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.5",

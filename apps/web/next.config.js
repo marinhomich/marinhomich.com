@@ -40,7 +40,8 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "",
+            value:
+              "camera=(), microphone=(), geolocation=(), browsing-topics=()",
           },
           {
             key: "X-Content-Type-Options",
