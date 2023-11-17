@@ -17,6 +17,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
     "@jsx-email/all": "^2.0.0",
+    "@jsx-email/cli": "^1.0.9",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
