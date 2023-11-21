@@ -3,7 +3,7 @@ export const metadata = {
 }
 export default async function AnalyticsPage() {
   return (
-    <div>
+    <div className="p-4">
       <p>Página de Analytics</p>
     </div>
   )

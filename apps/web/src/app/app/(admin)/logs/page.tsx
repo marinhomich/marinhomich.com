@@ -3,7 +3,7 @@ export const metadata = {
 }
 export default async function LogsPage() {
   return (
-    <div>
+    <div className="p-4">
       <p>Página de Log</p>
     </div>
   )
