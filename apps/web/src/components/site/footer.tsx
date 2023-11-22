@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site"
+import { social } from "@/config/social"
 
 export default function SiteFooter() {
   return (
@@ -7,7 +7,7 @@ export default function SiteFooter() {
         <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
           Built by{" "}
           <a
-            href={siteConfig.links.twitter}
+            href={social.twitter}
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"

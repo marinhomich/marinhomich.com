@@ -70,12 +70,6 @@ export default function SidebarItem({ ...props }) {
         isActive: segments[0] === "settings",
         icon: <Icons.horizontalSliders width={18} />,
       },
-      // {
-      //   name: "Help Center",
-      //   href: "/settings",
-      //   isActive: segments[0] === "settings",
-      //   icon: <Icons.horizontalSliders width={18} />,
-      // },
     ]
   }, [segments, id])
   return (

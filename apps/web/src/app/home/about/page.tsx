@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { format, intervalToDuration, parseISO } from "date-fns"
 
 import items from "@/config/about"
 import { Separator } from "@/components/ui/separator"
@@ -14,6 +15,25 @@ export const metadata = {
 }
 
 const description = "Hey, I'm Michel Marinho."
+
+const getDuration = (startDate: string, endDate: string | undefined) => {
+  const durationObj = intervalToDuration({
+    start: parseISO(startDate),
+    end: endDate ? parseISO(endDate) : new Date(),
+  })
+
+  let durationStr = ""
+
+  if (durationObj.years! > 1) {
+    durationStr = `${durationObj.years} yrs `
+  } else if (durationObj.years === 1) {
+    durationStr = `${durationObj.years} yr `
+  }
+
+  durationStr += `${durationObj.months} mos`
+
+  return durationStr
+}
 
 export default function HomePage() {
   return (
@@ -56,11 +76,15 @@ export default function HomePage() {
               <span className="text-muted-foreground"> • {item.location}</span>
             </div>
             <div className="text-muted-foreground">
-              <span>Set 2023</span>
+              <span>{format(parseISO(item.startDate), "LLL yyyy")}</span>
               <span> – </span>
-              <span>Present</span>
+              <span>
+                {item.endDate
+                  ? format(parseISO(item.endDate), "LLL yyyy")
+                  : "Present"}
+              </span>
               <span> • </span>
-              <span>4 mos</span>
+              <span>{getDuration(item.startDate, item.endDate)}</span>
             </div>
           </div>
         ))}

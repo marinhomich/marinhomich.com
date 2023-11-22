@@ -16,7 +16,7 @@ export default function HomePage() {
     <Shell className="md:pb-10">
       <PageHeader id="contact-header" aria-labelledby="contact-header-heading">
         <PageHeaderHeading>Contact</PageHeaderHeading>
-        <PageHeaderDescription>Contact Description</PageHeaderDescription>
+        <PageHeaderDescription>Send Me an Email</PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />
       <section

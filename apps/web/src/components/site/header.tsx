@@ -15,6 +15,21 @@ import { buttonVariants } from "../ui/button"
 export default function SiteHeader() {
   const pathname = usePathname()
 
+  const tabs = [
+    {
+      name: "About",
+      href: "/about",
+    },
+    {
+      name: "Articles",
+      href: "/articles",
+    },
+    {
+      name: "Projects",
+      href: "/projects",
+    },
+  ]
+
   return (
     <header className="supports-backdrop-blur:bg-background/60 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
       <div className="container flex h-14 items-center">
@@ -26,40 +41,20 @@ export default function SiteHeader() {
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link
-              href="/about"
-              className={cn(
-                "transition-colors hover:text-foreground/80",
-                pathname === "/about" ? "text-foreground" : "text-foreground/60"
-              )}
-            >
-              About
-            </Link>
-            <Link
-              href="/articles"
-              className={cn(
-                "transition-colors hover:text-foreground/80",
-                pathname === "/articles"
-                  ? "text-foreground"
-                  : "text-foreground/60"
-              )}
-            >
-              Articles
-            </Link>
-            <Link
-              href="/projects"
-              className={cn(
-                "transition-colors hover:text-foreground/80",
-                pathname === "/projects"
-                  ? "text-foreground"
-                  : "text-foreground/60"
-              )}
-            >
-              Projects
-            </Link>
+            {tabs.map(({ name, href }) => (
+              <Link
+                key={name}
+                href={href}
+                className={cn(
+                  "transition-colors hover:text-foreground/80",
+                  pathname === href ? "text-foreground" : "text-foreground/60"
+                )}
+              >
+                {name}
+              </Link>
+            ))}
           </nav>
         </div>
-        {/* <MobileNav /> */}
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <SidebarMobileSite />
           <div className="w-full flex-1 md:w-auto md:flex-none">

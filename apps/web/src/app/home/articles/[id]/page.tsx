@@ -83,6 +83,9 @@ export default async function Page({ params }: PostPageProps) {
         <h1 className="inline-block text-4xl font-bold leading-tight lg:text-5xl">
           {post.title}
         </h1>
+        <p className="text-base text-muted-foreground sm:text-lg">
+          {post.description}
+        </p>
       </div>
       {post.image && (
         <AspectRatio ratio={16 / 9}>
