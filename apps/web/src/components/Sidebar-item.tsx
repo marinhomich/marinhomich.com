@@ -59,6 +59,12 @@ export default function SidebarItem({ ...props }) {
         icon: <Icons.users width={18} />,
       },
       {
+        name: "Notes",
+        href: "/notes",
+        isActive: segments[0] === "notes",
+        icon: <Icons.scroll width={18} />,
+      },
+      {
         name: "Analytics",
         href: "/analytics",
         isActive: segments[0] === "analytics",

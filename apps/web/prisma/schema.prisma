@@ -9,25 +9,57 @@ datasource db {
 }
 
 enum Role {
-  owner
+  admin
   member
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
+  role      Role        @default(member)
   name      String
-  username  String   @unique
-  email     String   @unique
-  image     String?  @default("https://public.blob.vercel-storage.com/eEZHAoPTOBSYGBE3/JRajRyC-PhBHEinQkupt02jqfKacBVHLWJq7Iy.png")
+  username  String      @unique
+  email     String      @unique
+  posts     Post[]
+  analytics Analytics[]
+  notes     Note[]
+  image     String?     @default("https://public.blob.vercel-storage.com/eEZHAoPTOBSYGBE3/JRajRyC-PhBHEinQkupt02jqfKacBVHLWJq7Iy.png")
   password  String
-  theme     String   @default("dark")
-  createdAt DateTime @default(now()) @db.Timestamp(4)
-  updatedAt DateTime @updatedAt @db.Timestamp(4)
+  theme     String      @default("dark")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id       Int  @id @default(autoincrement())
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int // relation scalar field  (used in the `@relation` attribute above)
+
+  @@index([authorId])
+}
+
+model Note {
+  id       Int  @id @default(autoincrement())
+  message  String
+  author   User @relation(fields: [authorId], references: [id])
+  authorId Int // relation scalar field  (used in the `@relation` attribute above)
+
+  @@index([authorId])
+}
+
+model Analytics {
+  id       String @id @default(cuid())
+  name     String
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId Int // relation scalar field  (used in the `@relation` attribute above)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([authorId])
 }
 
 model Theme {
   id    Int    @id @default(autoincrement())
   theme String
 }
-
-

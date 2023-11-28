@@ -55,6 +55,7 @@ import {
   Plus,
   PlusCircle,
   RefreshCw,
+  Scroll,
   Search,
   Send,
   Settings,
@@ -81,6 +82,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  scroll: Scroll,
   dog: PawPrint,
   link: Link,
   mail: Mail,

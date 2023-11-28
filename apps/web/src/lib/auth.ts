@@ -78,6 +78,15 @@ export const authOptions: NextAuthOptions = {
   },
 }
 
-export function getSession() {
-  return getServerSession()
+export interface Session {
+  user: {
+    email: string
+    id: number
+    name: string
+    image?: string
+  }
+}
+
+export const getSession = async () => {
+  return getServerSession(authOptions) as Promise<Session>
 }

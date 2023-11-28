@@ -2,8 +2,11 @@ import Link from "next/link"
 
 import { buttonVariants } from "@/components/ui/button"
 
+import { Separator } from "./ui/separator"
+
 interface ContainerProps {
   title: string
+  subtitle?: string
   children?: React.ReactNode
   link?: string
   linkTitle?: string
@@ -12,20 +15,26 @@ interface ContainerProps {
 export default function Container(props: ContainerProps) {
   return (
     <>
-      <div className="mx-auto flex max-w-5xl justify-between px-6 py-8">
-        <h1 className="text-slate-12 text-[28px] font-bold leading-[34px] tracking-[-0.416px]">
-          {props.title}
-        </h1>
-        {props.link && (
-          <Link
-            href={props.link}
-            className={buttonVariants({ variant: "outline" })}
-          >
-            {props.linkTitle}
-          </Link>
-        )}
+      <div className="space-y-6 p-10 pb-16 md:block">
+        <div className="flex justify-between">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight">{props.title}</h2>
+            <p className="text-sm text-muted-foreground">{props.subtitle}</p>
+          </div>
+          {props.link && (
+            <Link
+              href={props.link}
+              className={buttonVariants({ variant: "outline" })}
+            >
+              {props.linkTitle}
+            </Link>
+          )}
+        </div>
+        <Separator className="my-6" />
+        <div className="flex flex-col space-y-8  lg:flex-row lg:space-x-12 lg:space-y-0">
+          <div className="flex-1 ">{props.children}</div>
+        </div>
       </div>
-      <div className="mx-auto max-w-5xl px-6 pb-6">{props.children}</div>
     </>
   )
 }
