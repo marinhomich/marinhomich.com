@@ -2,6 +2,7 @@ import { type ReactNode } from "react"
 import { redirect } from "next/navigation"
 
 import { getSession } from "@/lib/auth"
+import Container from "@/components/Container"
 import CustomTabs from "@/components/Tabs"
 
 interface ITabs {
@@ -40,9 +41,9 @@ export default async function OverviewLayout({
   ]
 
   return (
-    <div className="p-4">
+    <Container title="Overview">
       <CustomTabs tabs={tabs} />
       <div className="p-4">{children}</div>
-    </div>
+    </Container>
   )
 }

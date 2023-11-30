@@ -40,21 +40,23 @@ export function NoteForm() {
   })
 
   function onSubmit(data: NoteFormValues) {
-    createNote(data).then((res) => {
-      if (res?.error) {
-        toast({
-          title: "Failed.",
-          description: res.error,
-          variant: "destructive",
-        })
-        setIsLoading(false)
-      } else {
-        toast({
-          title: "Nota Salva.",
-        })
-        router.refresh()
-      }
-    })
+    setIsLoading(true)
+    createNote(data)
+      .then((res) => {
+        if (res?.error) {
+          toast({
+            title: "Failed.",
+            description: res.error,
+            variant: "destructive",
+          })
+        } else {
+          toast({
+            title: "Nota Salva.",
+          })
+          router.refresh()
+        }
+      })
+      .finally(() => setIsLoading(false))
   }
 
   return (

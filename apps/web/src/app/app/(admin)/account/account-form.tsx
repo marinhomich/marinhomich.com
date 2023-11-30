@@ -40,6 +40,8 @@ export function ProfileForm({ user }: { user: ProfileFormValues }) {
   })
 
   function onSubmit(data: ProfileFormValues) {
+    setIsLoading(true)
+
     updateSettingsUser(data).then((res) => {
       if (res?.error) {
         toast({
@@ -52,6 +54,7 @@ export function ProfileForm({ user }: { user: ProfileFormValues }) {
         toast({
           title: "Successfully saved profile changes.",
         })
+        setIsLoading(false)
       }
     })
   }

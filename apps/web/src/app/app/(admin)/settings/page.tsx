@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/session"
 import { Separator } from "@/components/ui/separator"
+import Container from "@/components/Container"
 
 import { AppearanceForm } from "./appearance-form"
 
@@ -16,14 +17,8 @@ export default async function SettingPage() {
     theme: user?.theme,
   }
   return (
-    <div className="space-y-6 p-10 pb-16 md:block">
-      <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
-      <Separator className="my-6" />
-      <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-        <div className="flex-1 lg:max-w-2xl">
-          <AppearanceForm data={data} />
-        </div>
-      </div>
-    </div>
+    <Container title="Settings" subtitle="Manage your account settings.">
+      <AppearanceForm data={data} />
+    </Container>
   )
 }

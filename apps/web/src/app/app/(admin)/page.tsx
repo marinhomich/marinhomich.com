@@ -1,7 +1,10 @@
+import Container from "@/components/Container"
+import { Overview } from "@/components/Overview"
+
 export default function DashboardPage() {
   return (
-    <div className="p-4">
-      <p>Dashboard Root</p>
-    </div>
+    <Container title="Home" subtitle="Home Root">
+      <Overview />
+    </Container>
   )
 }

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation"
 
 import { getSession } from "@/lib/auth"
 import prisma from "@/lib/prisma"
+import Container from "@/components/Container"
 
 export const metadata = {
   title: "Analytics",
@@ -19,11 +20,9 @@ export default async function AnalyticsPage() {
     },
   })
 
-  console.log(data)
   return (
-    <div className="p-4">
+    <Container title="Analytics">
       {data && data.map((data) => <div key={data.name}>{data.name}</div>)}
-      <p>Página de Analytics</p>
-    </div>
+    </Container>
   )
 }

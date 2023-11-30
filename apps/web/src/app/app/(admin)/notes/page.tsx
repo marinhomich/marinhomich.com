@@ -1,5 +1,6 @@
 import { getSession } from "@/lib/auth"
 import prisma from "@/lib/prisma"
+import Container from "@/components/Container"
 
 import NotesData from "./data"
 import { NoteForm } from "./form"
@@ -18,10 +19,9 @@ export default async function LogsPage() {
   })
 
   return (
-    <div className="p-4">
-      <p>Página de Anotações</p>
+    <Container title="Notes">
       <NoteForm />
       <NotesData data={data} />
-    </div>
+    </Container>
   )
 }

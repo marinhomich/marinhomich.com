@@ -28,7 +28,12 @@ export default async function UsersPage() {
   })
 
   return (
-    <Container title="Users" link="/users/new" linkTitle="Add User">
+    <Container
+      title="Users"
+      subtitle="User List"
+      link="/users/new"
+      linkTitle="Add User"
+    >
       <DataTable columns={columns} data={data} />
     </Container>
   )

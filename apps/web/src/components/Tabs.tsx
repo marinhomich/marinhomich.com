@@ -23,7 +23,7 @@ export default function CustomTabs({ tabs }: Props) {
 
   return (
     <Tabs defaultValue={activeTab} onValueChange={handleTabChange}>
-      <TabsList className="flex w-full items-center justify-start">
+      <TabsList className="flex w-full items-center justify-start rounded-none border-b-2">
         {tabs.map(({ title, route }) => (
           <TabsTrigger key={title} value={route}>
             {title}

@@ -11,7 +11,6 @@ import { type NoteFormValues } from "@/app/app/(admin)/notes/form"
 
 import { getSession } from "./auth"
 import resend from "./resend"
-import { getCurrentUser } from "./session"
 
 type userData = z.infer<typeof createUserSchema>
 
@@ -72,7 +71,7 @@ export const updateSettingsUser = async (data: any) => {
   try {
     await prisma.user.update({
       where: {
-        email: data.email,
+        username: data.username,
       },
       data,
     })
