@@ -1,6 +1,5 @@
 import prisma from "@/lib/prisma"
 import { getCurrentUser } from "@/lib/session"
-import { Separator } from "@/components/ui/separator"
 import Container from "@/components/Container"
 
 import { AppearanceForm } from "./appearance-form"

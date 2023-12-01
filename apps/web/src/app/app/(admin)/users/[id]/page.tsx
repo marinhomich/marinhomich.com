@@ -1,8 +1,6 @@
 import { notFound } from "next/navigation"
 
 import prisma from "@/lib/prisma"
-import { getUserByID } from "@/lib/prisma/user"
-import { Separator } from "@/components/ui/separator"
 import Container from "@/components/Container"
 
 import { ProfileForm } from "../../account/account-form"

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { getServerSession } from "next-auth"
 
 import { authOptions } from "@/lib/auth"
-import { User } from "@/lib/sequelize/model/user.model"
+import prisma from "@/lib/prisma"
 
 export async function GET(
   req: Request,
@@ -15,15 +15,18 @@ export async function GET(
     return NextResponse.json("Unauthorized", { status: 401 })
   }
 
-  const users = await User.findOne({
+  const user = await prisma.user.findUnique({
     where: {
-      id: id,
+      id: +id,
+    },
+    include: {
+      analytics: true,
     },
   })
 
-  if (!users) {
+  if (!user) {
     return NextResponse.json("Not Found", { status: 404 })
   }
 
-  return NextResponse.json(session)
+  return NextResponse.json(user)
 }

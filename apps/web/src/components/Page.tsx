@@ -1,7 +1,3 @@
-import Link from "next/link"
-import { format, intervalToDuration, parseISO } from "date-fns"
-
-import items from "@/config/about"
 import { Separator } from "@/components/ui/separator"
 import {
   PageHeader,
