@@ -1,5 +1,5 @@
-import { allProjects } from "contentlayer/generated"
 import { notFound } from "next/navigation"
+import { allProjects } from "contentlayer/generated"
 
 import { Mdx } from "@/components/mdx/mdx-components"
 
@@ -8,11 +8,11 @@ import "@/styles/mdx.css"
 import { type Metadata } from "next"
 import Link from "next/link"
 
-import { Icons } from "@/components/icons"
-import { MdxPager } from "@/components/pagers/mdx-pager"
+import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
+import { MdxPager } from "@/components/pagers/mdx-pager"
 
 interface PostPageProps {
   params: {
@@ -55,7 +55,7 @@ export default async function Page({ params }: PostPageProps) {
   if (!post) {
     notFound()
   }
-  
+
   return (
     <article className="container relative max-w-3xl space-y-2 py-6 lg:py-10">
       <Link
@@ -85,6 +85,7 @@ export default async function Page({ params }: PostPageProps) {
         >
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
           See all projects
+          <span className="sr-only">See all projects</span>
         </Link>
       </div>
     </article>

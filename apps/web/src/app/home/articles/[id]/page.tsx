@@ -8,6 +8,7 @@ import "@/styles/mdx.css"
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { format } from "date-fns"
 
 import { cn, formatDate } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
@@ -68,7 +69,7 @@ export default async function Page({ params }: PostPageProps) {
         )}
       >
         <Icons.chevronLeft className="mr-2 h-4 w-4" />
-        See all posts
+        See all articles
       </Link>
       <div className="space-y-2">
         <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -112,8 +113,8 @@ export default async function Page({ params }: PostPageProps) {
           )}
         >
           <Icons.chevronLeft className="mr-2 h-4 w-4" aria-hidden="true" />
-          See all posts
-          <span className="sr-only">See all posts</span>
+          See all articles
+          <span className="sr-only">See all articles</span>
         </Link>
       </div>
     </article>
