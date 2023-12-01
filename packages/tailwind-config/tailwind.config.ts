@@ -1,8 +1,6 @@
-import forms from "@tailwindcss/forms"
 import typography from "@tailwindcss/typography"
 import type { Config } from "tailwindcss"
 import animate from "tailwindcss-animate"
-import radix from "tailwindcss-radix"
 import { fontFamily } from "tailwindcss/defaultTheme"
 
 const config: Config = {
@@ -116,7 +114,6 @@ const config: Config = {
       },
     },
   },
-  // plugins: [tailwindcss-animate, @tailwindcss/typography],
   plugins: [typography, animate],
 }
 
