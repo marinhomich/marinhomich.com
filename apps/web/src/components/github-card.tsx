@@ -12,9 +12,9 @@ import { Icons } from "@/components/icons"
 
 async function getData() {
   const featured = ["marinhomich.dev", "AmaTec-Mobile", "vite-start-template"]
-  const res = await fetch(
-    "https://api.github.com/users/marinhomich/repos"
-  ).then((res) => res.json())
+  const res = await fetch("https://api.github.com/users/marinhomich/repos", {
+    next: { revalidate: 86400 },
+  }).then((res) => res.json())
 
   const data = res
     .filter((project: any) => featured.includes(project.name))

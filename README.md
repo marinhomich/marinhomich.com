@@ -5,7 +5,7 @@
 >
 > Feel free to leave feature suggestions but please don't open issues for bugs or support requests just yet.
 
-[![Dashboard](./public/_static/screenshot/login-page-screenshot.png)](https://marinhomich.dev/)
+[![Dashboard](./apps/web/public/_static/screenshot/login-page-screenshot.png)](https://marinhomich.dev/)
 
 ## Tech Stack
 
