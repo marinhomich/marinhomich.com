@@ -9,7 +9,7 @@ import { DataTable } from "@/components/data-table/data-table"
 import { columns } from "./columns"
 
 export const metadata: Metadata = {
-  title: "Users",
+  title: "Products",
 }
 
 export default async function UsersPage({
@@ -54,12 +54,16 @@ export default async function UsersPage({
 
   return (
     <Container
-      title="Users"
-      subtitle="User List"
-      link="/users/new"
-      linkTitle="Add User"
+      title="Products"
+      subtitle="Product List"
+      link="/products/new"
+      linkTitle="Add"
     >
-      <DataTable placeholder="Filter users..." columns={columns} data={data} />
+      <DataTable
+        placeholder="Filter products..."
+        columns={columns}
+        data={data}
+      />
     </Container>
   )
 }

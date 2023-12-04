@@ -6,6 +6,7 @@ import prisma from "@/lib/prisma"
 
 export const authOptions: NextAuthOptions = {
   session: {
+    maxAge: 3600,
     strategy: "jwt",
   },
   providers: [

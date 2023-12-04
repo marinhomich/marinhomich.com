@@ -53,6 +53,12 @@ export default function SidebarItem({ ...props }) {
         icon: <Icons.layoutDashboard width={18} />,
       },
       {
+        name: "Products",
+        href: "/products",
+        isActive: segments[0] === "products",
+        icon: <Icons.product width={18} />,
+      },
+      {
         name: "Users",
         href: "/users",
         isActive: segments[0] === "users",

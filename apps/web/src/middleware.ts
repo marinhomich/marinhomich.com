@@ -23,7 +23,7 @@ export default async function middleware(req: NextRequest) {
   }
 
   // rewrite everything else to `/[domain]/[path] dynamic route
-  return NextResponse.rewrite(new URL(`/${domain}${path}`, req.url))
+  // return NextResponse.rewrite(new URL(`/${domain}${path}`, req.url))
 }
 
 export const config = {
