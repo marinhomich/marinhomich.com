@@ -38,6 +38,33 @@ export default function SidebarItem({ ...props }) {
         },
       ]
     }
+    if (segments[0] === "products" && id) {
+      return [
+        {
+          name: "Back to All Products",
+          href: "/products",
+          icon: <Icons.arrowLeft width={18} />,
+        },
+        {
+          name: "Details",
+          href: `/products/${id}`,
+          isActive: segments.length === 2,
+          icon: <Icons.newspaper width={18} />,
+        },
+        {
+          name: "Logs",
+          href: `/products/${id}/logs`,
+          isActive: segments.includes("logs"),
+          icon: <Icons.chart width={18} />,
+        },
+        {
+          name: "Settings",
+          href: `/products/${id}/settings`,
+          isActive: segments.includes("settings"),
+          icon: <Icons.settings width={18} />,
+        },
+      ]
+    }
 
     return [
       {

@@ -76,14 +76,9 @@ export const columns: ColumnDef<User>[] = [
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
-              <Link href={`/users/${item.id}`}>
-                <DropdownMenuItem>View User</DropdownMenuItem>
+              <Link href={`/products/${item.id}`}>
+                <DropdownMenuItem>View Product</DropdownMenuItem>
               </Link>
-              {item.email !== "demo@marinhomich.dev" && (
-                <DropdownMenuItem onSelect={() => setShowDeleteAlert(true)}>
-                  Delete User
-                </DropdownMenuItem>
-              )}
             </DropdownMenuContent>
           </DropdownMenu>
           <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>

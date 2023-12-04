@@ -14,7 +14,7 @@ interface ContainerProps {
 
 export default function Container(props: ContainerProps) {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="mx-auto max-w-7xl px-4 py-8">
       <div className="flex justify-between">
         <div>
           <h2 className="text-2xl font-bold tracking-tight">{props.title}</h2>
