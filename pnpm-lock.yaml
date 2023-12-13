@@ -86,6 +86,9 @@ importers:
       '@vercel/blob':
         specifier: ^0.15.1
         version: 0.15.1
+      '@vercel/speed-insights':
+        specifier: ^1.0.1
+        version: 1.0.1
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1
@@ -4308,6 +4311,11 @@ packages:
       - canvas
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /@vercel/speed-insights@1.0.1:
+    resolution: {integrity: sha512-cm8KTTsDgS1AbWsgIEZuMoyPUjclzeqJihyLp0tnA21B/x9iTE8hu2S5zM+/DBzihuHxWL1dx9pCWk22ctMFWQ==}
+    requiresBuild: true
     dev: false
 
   /@vitejs/plugin-react@4.2.0(vite@4.5.0):

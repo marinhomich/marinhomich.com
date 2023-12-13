@@ -3,6 +3,7 @@ import "@/styles/globals.css"
 import { type Viewport } from "next"
 import { Inter as FontSans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           disableTransitionOnChange
         >
           {children}
+          <SpeedInsights />
           <Analytics />
           <Toaster />
         </ThemeProvider>
