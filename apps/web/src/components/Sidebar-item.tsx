@@ -1,12 +1,23 @@
 "use client"
 
-import { useMemo } from "react"
+import { useMemo, useState } from "react"
 import Link from "next/link"
 import { useParams, useSelectedLayoutSegments } from "next/navigation"
 
 import { Icons } from "@/components/icons"
 
-export default function SidebarItem({ ...props }) {
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip"
+
+interface SidebarItemProps {
+  isCollapsed: boolean
+}
+
+export default function SidebarItem({ isCollapsed }: SidebarItemProps) {
   const segments = useSelectedLayoutSegments()
   const { id } = useParams() as { id?: string }
 
@@ -112,23 +123,49 @@ export default function SidebarItem({ ...props }) {
     ]
   }, [segments, id])
   return (
-    <ul className="flex flex-col gap-1 px-2">
-      {tabs.map(({ name, href, isActive, icon }) => (
-        <li key={name}>
-          <Link
-            className={`flex items-center space-x-3 ${
-              isActive ? "bg-secondary" : ""
-            } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
-            href={href}
-            {...props}
-          >
-            <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
-              {icon}
-              {name}
-            </span>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <TooltipProvider delayDuration={0}>
+      <ul className="flex flex-col gap-1 px-2">
+        {tabs.map(({ name, href, isActive, icon }) =>
+          isCollapsed ? (
+            <li key={name}>
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <Link
+                    className={`flex items-center space-x-3 ${
+                      isActive ? "bg-secondary" : ""
+                    } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
+                    href={href}
+                  >
+                    <span className="bg-slate-6 text-slate-12 mx-auto flex h-8  items-center rounded-md text-sm">
+                      {icon}
+                    </span>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="right"
+                  className="flex items-center gap-4"
+                >
+                  {name}
+                </TooltipContent>
+              </Tooltip>
+            </li>
+          ) : (
+            <li key={name}>
+              <Link
+                className={`flex items-center space-x-3 ${
+                  isActive ? "bg-secondary" : ""
+                } rounded-lg px-2 py-1 transition-all duration-150 ease-in-out  hover:bg-secondary/80 active:bg-secondary`}
+                href={href}
+              >
+                <span className="bg-slate-6 text-slate-12 flex h-8 items-center gap-2 rounded-md px-2 text-sm">
+                  {icon}
+                  {name}
+                </span>
+              </Link>
+            </li>
+          )
+        )}
+      </ul>
+    </TooltipProvider>
   )
 }

@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation"
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
-import Sidebar from "./Sidebar"
 import { Icons } from "./icons"
+import Sidebar from "./Sidebar"
 
 export default function SidebarMobile() {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,7 +23,7 @@ export default function SidebarMobile() {
         <Icons.menu className="mr-4 md:hidden" size={20} />
       </SheetTrigger>
       <SheetContent className="p-0" side="left">
-        <Sidebar />
+        <Sidebar defaultCollapsed={false} />
       </SheetContent>
     </Sheet>
   )
