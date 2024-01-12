@@ -1,8 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server"
 
-import { API_HOSTNAMES, APP_HOSTNAMES, isHomeHostname } from "./lib/constants"
+import {
+  API_HOSTNAMES,
+  APP_HOSTNAMES,
+  isHomeHostname,
+  TESTE_HOSTNAMES,
+} from "./lib/constants"
 import ApiMiddleware from "./lib/middleware/api"
 import AppMiddleware from "./lib/middleware/app"
+import TesteMiddleware from "./lib/middleware/teste"
 import { parse } from "./lib/middleware/utils"
 
 export default async function middleware(req: NextRequest) {
@@ -22,8 +28,12 @@ export default async function middleware(req: NextRequest) {
     return ApiMiddleware(req)
   }
 
+  // if (TESTE_HOSTNAMES.has(domain)) {
+  //   return TesteMiddleware(req)
+  // }
+  // console.log(domain)
   // rewrite everything else to `/[domain]/[path] dynamic route
-  // return NextResponse.rewrite(new URL(`/${domain}${path}`, req.url))
+  return NextResponse.rewrite(new URL(`/${domain}${path}`, req.url))
 }
 
 export const config = {
