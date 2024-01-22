@@ -1,13 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2 } from "lucide-react"
-import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
-import { sendEmail } from "@/lib/actions"
+import { sendContactEmail } from "@/lib/api/contact"
 import { sendEmailSchema } from "@/lib/validations/email"
+import { useZodForm } from "@/hooks/useZodForm"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -21,13 +19,15 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/components//ui/use-toast"
 
+import { Icons } from "../icons"
+
 type Inputs = z.infer<typeof sendEmailSchema>
 
 export default function SendEmailForm() {
   const { toast } = useToast()
 
-  const form = useForm<Inputs>({
-    resolver: zodResolver(sendEmailSchema),
+  const form = useZodForm({
+    schema: sendEmailSchema,
     defaultValues: {
       name: "",
       email: "",
@@ -39,21 +39,13 @@ export default function SendEmailForm() {
 
   function onSubmit(data: Inputs) {
     setIsLoading(true)
-    sendEmail(data)
-      .then(() => {
-        toast({
-          title: "User Created.",
-          description: "User Created.",
-        })
+    sendContactEmail(data).then(() => {
+      toast({
+        title: "Email sent :D",
+        description: "Thanks for taking the time to write it.",
       })
-      .catch((err) => {
-        toast({
-          title: "Failed.",
-          description: err.message,
-          variant: "destructive",
-        })
-        setIsLoading(false)
-      })
+      setIsLoading(false)
+    })
   }
   return (
     <Form {...form}>
@@ -103,7 +95,7 @@ export default function SendEmailForm() {
         />
 
         <Button disabled={isLoading} type="submit">
-          {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
           Send
         </Button>
         <span className="sr-only">Send</span>

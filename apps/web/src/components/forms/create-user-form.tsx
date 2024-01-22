@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
-import { createUser } from "@/lib/actions"
+import { createUser } from "@/lib/api/users"
 import { createUserSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
@@ -31,6 +31,7 @@ export default function CreateUserForm() {
   const form = useForm<Inputs>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
+      username: "",
       name: "",
       email: "",
       password: "",
@@ -44,10 +45,9 @@ export default function CreateUserForm() {
     createUser(data)
       .then(() => {
         toast({
-          title: "Email sent :D",
-          description: "Thanks for taking the time to write it.",
+          title: "User Created.",
+          description: "User Created.",
         })
-
         router.refresh()
         router.push(`/users`)
       })
@@ -58,11 +58,26 @@ export default function CreateUserForm() {
           variant: "destructive",
         })
       })
-    setIsLoading(false)
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder="marinhomich" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="name"

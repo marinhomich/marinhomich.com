@@ -1,5 +1,6 @@
 "use client"
 
+import { error } from "console"
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -8,7 +9,7 @@ import { Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import type { z } from "zod"
 
-import { createUser } from "@/lib/actions"
+import { createUser } from "@/lib/api/users"
 import { createUserSchema } from "@/lib/validations/email"
 import { Button } from "@/components/ui/button"
 import {
@@ -41,6 +42,7 @@ export default function SignUpForm() {
   const form = useForm<Inputs>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
+      username: "",
       name: "",
       email: "",
       password: "",
@@ -49,23 +51,25 @@ export default function SignUpForm() {
 
   async function onSubmit(data: Inputs) {
     setIsLoading(true)
-    createUser(data).then((res) => {
-      if (res?.error) {
-        toast({
-          title: "Failed.",
-          description: res.error,
-          variant: "destructive",
-        })
-        setIsLoading(false)
-      } else {
+    createUser(data)
+      .then(() => {
         toast({
           title: "User Created.",
           description: "User Created.",
         })
         router.refresh()
         router.push(`/login`)
-      }
-    })
+      })
+      .catch((error) => {
+        toast({
+          title: "Failed.",
+          description: error.message,
+          variant: "destructive",
+        })
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   return (
@@ -77,6 +81,19 @@ export default function SignUpForm() {
       <CardContent className="grid gap-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input placeholder="marinhomich" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="name"
