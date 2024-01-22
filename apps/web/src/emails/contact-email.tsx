@@ -1,4 +1,4 @@
-import { Body, Container, Hr, Html, Text } from "@react-email/components"
+import { Body, Container, Hr, Html, Img, Text } from "@react-email/components"
 
 interface Props {
   name: string
@@ -8,11 +8,17 @@ interface Props {
 
 export default function ContactEmail(props: Props) {
   const { name, email, message } = props
+  const baseUrl = process.env.NEXT_PUBLIC_URL
 
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
+          <Img
+            src={`${baseUrl}/_static/vercel-logotype-dark.png`}
+            height="21"
+            alt="Logo"
+          />
           <ul>
             <li>
               <strong>Name:</strong> {name}
