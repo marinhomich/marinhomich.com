@@ -2,12 +2,12 @@ import "@/styles/globals.css"
 
 import { type Viewport } from "next"
 import { Inter as FontSans } from "next/font/google"
+import { Toaster } from "@marinhomich/ui/toaster"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const viewport: Viewport = {
