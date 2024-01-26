@@ -1,10 +1,13 @@
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@marinhomich/ui/separator"
+import { Shell } from "@marinhomich/ui/shell"
+
+// import { Shell } from "@/components/shells/shell"
+
 import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { Shell } from "@/components/shells/shell"
 
 interface PageProps {
   title: string
@@ -29,6 +32,7 @@ export default function Page({
         <PageHeaderDescription>{description}</PageHeaderDescription>
       </PageHeader>
       <Separator className="mb-2.5" />
+
       <section
         id={`${title}-section`}
         aria-labelledby={`${title}-section-heading`}
