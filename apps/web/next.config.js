@@ -2,6 +2,7 @@ const { withContentlayer } = require("next-contentlayer")
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["@marinhomich/ui"],
   experimental: {
     serverActions: {
       allowedOrigins: [

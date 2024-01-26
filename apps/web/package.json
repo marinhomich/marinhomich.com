@@ -67,6 +67,7 @@
     "@marinhomich/eslint-config": "workspace:*",
     "@marinhomich/tailwind-config": "workspace:*",
     "@marinhomich/typescript-config": "workspace:*",
+    "@marinhomich/ui": "workspace:*",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/bcrypt": "^5.0.2",
