@@ -1,37 +1,18 @@
 {
   "name": "@marinhomich/tailwind-config",
-  "description": "Tailwindcss config for Dub.co",
   "version": "0.0.0",
-  "main": "index.ts",
-  "types": "index.ts",
-  "scripts": {
-    "clean": "rimraf node_modules"
-  },
-  "devDependencies": {
-    "tailwindcss": "^3.3.5",
-    "rimraf": "^5.0.5"
+  "private": true,
+  "exports": {
+    ".": "./tailwind.config.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-radix": "^2.8.0"
   },
-  "author": "Steven Tey <stevensteel97@gmail.com>",
-  "homepage": "https://dub.co",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/steven-tey/dub.git"
-  },
-  "bugs": {
-    "url": "https://github.com/steven-tey/dub/issues"
-  },
-  "keywords": [
-    "dub",
-    "dub.co",
-    "tailwind",
-    "tailwindcss"
-  ],
-  "publishConfig": {
-    "access": "public"
+  "devDependencies": {
+    "@marinhomich/typescript-config": "workspace:*",
+    "tailwindcss": "^3.3.5",
+    "rimraf": "^5.0.5"
   }
 }
