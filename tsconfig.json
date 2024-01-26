@@ -1,0 +1,3 @@
+{
+  "extends": "@marinhomich/typescript-config/base.json"
+}

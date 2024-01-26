@@ -4,11 +4,16 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev --parallel",
-    "clean": "turbo clean && rimraf node_modules .turbo out",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "rimraf": "^5.0.5",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "@marinhomich/typescript-config": "workspace:*",
     "turbo": "^1.11.3"
   },
   "packageManager": "pnpm@8.9.0",
