@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-config",
+  "name": "@marinhomich/tailwind-config",
   "description": "Tailwindcss config for Dub.co",
   "version": "0.0.0",
   "main": "index.ts",
