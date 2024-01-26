@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "version": "0.1.0",
+  "version": "0.0.30",
   "private": true,
   "scripts": {
     "dev": "concurrently --kill-others \"prisma generate && next dev --port 3000\" \"prisma studio --browser none\" \"email dev --dir src/emails -p 3002\"",

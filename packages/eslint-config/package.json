@@ -1,6 +1,6 @@
 {
   "name": "@marinhomich/eslint-config",
-  "version": "0.0.0",
+  "version": "0.0.30",
   "private": true,
   "devDependencies": {
     "@vercel/style-guide": "^5.1.0",
