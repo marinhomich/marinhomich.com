@@ -186,6 +186,9 @@ importers:
       '@marinhomich/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@marinhomich/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@tailwindcss/typography':
         specifier: ^0.5.10
         version: 0.5.10(tailwindcss@3.4.1)

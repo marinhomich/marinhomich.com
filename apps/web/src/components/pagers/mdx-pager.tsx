@@ -1,6 +1,6 @@
 import Link from "next/link"
+import { cn, truncate } from "@marinhomich/utils"
 
-import { cn, truncate } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 

@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { cn } from "@marinhomich/utils"
 
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
 
 import { CommandMenuSite } from "../command-menu-site"
 import { Icons } from "../icons"

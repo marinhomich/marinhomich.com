@@ -3,11 +3,11 @@ import "@/styles/globals.css"
 import { type Viewport } from "next"
 import { Inter as FontSans } from "next/font/google"
 import { Toaster } from "@marinhomich/ui/toaster"
+import { cn } from "@marinhomich/utils"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const viewport: Viewport = {
@@ -71,7 +71,7 @@ export const metadata = {
 interface RootLayoutProps {
   children: React.ReactNode
 }
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 })

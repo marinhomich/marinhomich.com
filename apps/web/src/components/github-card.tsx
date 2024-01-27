@@ -1,6 +1,6 @@
 import Link from "next/link"
+import { cn, formatDate } from "@marinhomich/utils"
 
-import { cn, formatDate } from "@/lib/utils"
 import {
   Card,
   CardContent,

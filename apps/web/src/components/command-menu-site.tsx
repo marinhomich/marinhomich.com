@@ -3,10 +3,10 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { type CommandBar } from "@/types"
+import { cn } from "@marinhomich/utils"
 import { type DialogProps } from "@radix-ui/react-alert-dialog"
 import { useTheme } from "next-themes"
 
-import { cn } from "@/lib/utils"
 // import { type Product } from "@/db/schema"
 
 import { Button } from "@/components/ui/button"

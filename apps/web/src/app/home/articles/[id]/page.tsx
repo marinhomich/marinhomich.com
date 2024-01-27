@@ -9,8 +9,8 @@ import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { buttonVariants } from "@marinhomich/ui/button"
+import { cn, formatDate } from "@marinhomich/utils"
 
-import { cn, formatDate } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/icons"
@@ -63,7 +63,7 @@ export default async function Page({ params }: PostPageProps) {
       <Link
         href="/articles"
         className={cn(
-          buttonVariants({ variant: "destructive" }),
+          buttonVariants({ variant: "ghost" }),
           "absolute left-[-200px] top-14 hidden xl:inline-flex"
         )}
       >

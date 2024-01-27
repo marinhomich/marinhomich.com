@@ -70,6 +70,7 @@
     "@marinhomich/tailwind-config": "workspace:*",
     "@marinhomich/typescript-config": "workspace:*",
     "@marinhomich/ui": "workspace:*",
+    "@marinhomich/utils": "workspace:*",
     "@tailwindcss/typography": "^0.5.10",
     "@types/bcrypt": "^5.0.2",
     "@types/eslint": "^8.56.0",

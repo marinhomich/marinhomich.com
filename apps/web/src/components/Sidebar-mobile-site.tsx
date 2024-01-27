@@ -3,9 +3,9 @@
 import { useState } from "react"
 import Link, { type LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
+import { cn } from "@marinhomich/utils"
 
 import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
 import {
   Sheet,
   SheetContent,

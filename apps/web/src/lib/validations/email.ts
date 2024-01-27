@@ -33,13 +33,6 @@ export const createUserSchema = z.object({
     }),
 })
 
-export const calculoSchema = z.object({
-  km: z.coerce.number().min(1),
-  "km/L": z.coerce.number().min(1),
-  precoGasolina: z.coerce.number().min(1),
-  dias: z.coerce.number().min(1),
-})
-
 export const sendEmailSchema = z.object({
   name: z.string().nonempty({
     message: "Required field",

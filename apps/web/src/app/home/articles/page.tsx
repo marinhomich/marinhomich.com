@@ -1,9 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
+import { formatDate } from "@marinhomich/utils"
 import { allArticles } from "contentlayer/generated"
 import { compareDesc } from "date-fns"
 
-import { formatDate } from "@/lib/utils"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Icons } from "@/components/icons"
 import Page from "@/components/Page"

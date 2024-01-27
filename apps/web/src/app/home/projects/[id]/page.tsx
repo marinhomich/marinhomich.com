@@ -7,8 +7,8 @@ import "@/styles/mdx.css"
 
 import { type Metadata } from "next"
 import Link from "next/link"
+import { cn } from "@marinhomich/utils"
 
-import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/icons"

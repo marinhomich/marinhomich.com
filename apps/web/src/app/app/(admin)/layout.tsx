@@ -1,9 +1,9 @@
 import { type PropsWithChildren } from "react"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import { cn } from "@marinhomich/utils"
 
 import { getSession } from "@/lib/auth"
-import { cn } from "@/lib/utils"
 import Header from "@/components/Header"
 import Sidebar from "@/components/Sidebar"
 
