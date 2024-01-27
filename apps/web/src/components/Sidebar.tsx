@@ -1,20 +1,18 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 
-import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 
 import SidebarItem from "./Sidebar-item"
-import { Button } from "./ui/button"
 
 interface SidebarProps {
   defaultCollapsed: boolean
 }
 
 export default function Sidebar({ defaultCollapsed }: SidebarProps) {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(defaultCollapsed)
+  const isCollapsed = defaultCollapsed
+  // const [isCollapsed, setIsCollapsed] = useState<boolean>(defaultCollapsed)
 
   return (
     <>

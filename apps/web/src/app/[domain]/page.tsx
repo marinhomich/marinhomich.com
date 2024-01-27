@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation"
 
-import prisma from "@/lib/prisma"
-
 const domains = [{ domain: "michel" }, { domain: "company" }]
 
 export async function generateStaticParams() {

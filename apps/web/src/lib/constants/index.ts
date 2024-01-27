@@ -1,8 +1,3 @@
-export const TESTE_HOSTNAMES = new Set([
-  "teste.marinhomich.dev",
-  "teste.localhost:3000",
-])
-
 export const APP_HOSTNAMES = new Set([
   "app.marinhomich.dev",
   "app.localhost:3000",

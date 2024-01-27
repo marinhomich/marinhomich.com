@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 import Link from "next/link"
 import { useParams, useSelectedLayoutSegments } from "next/navigation"
 
@@ -49,33 +49,6 @@ export default function SidebarItem({ isCollapsed }: SidebarItemProps) {
         },
       ]
     }
-    if (segments[0] === "products" && id) {
-      return [
-        {
-          name: "Back to All Products",
-          href: "/products",
-          icon: <Icons.arrowLeft width={18} />,
-        },
-        {
-          name: "Details",
-          href: `/products/${id}`,
-          isActive: segments.length === 2,
-          icon: <Icons.newspaper width={18} />,
-        },
-        {
-          name: "Logs",
-          href: `/products/${id}/logs`,
-          isActive: segments.includes("logs"),
-          icon: <Icons.chart width={18} />,
-        },
-        {
-          name: "Settings",
-          href: `/products/${id}/settings`,
-          isActive: segments.includes("settings"),
-          icon: <Icons.settings width={18} />,
-        },
-      ]
-    }
 
     return [
       {
@@ -85,35 +58,12 @@ export default function SidebarItem({ isCollapsed }: SidebarItemProps) {
         icon: <Icons.home width={18} />,
       },
       {
-        name: "Overview",
-        href: "/overview",
-        isActive: segments[0] === "overview",
-        icon: <Icons.layoutDashboard width={18} />,
-      },
-      {
-        name: "Products",
-        href: "/products",
-        isActive: segments[0] === "products",
-        icon: <Icons.product width={18} />,
-      },
-      {
         name: "Users",
         href: "/users",
         isActive: segments[0] === "users",
         icon: <Icons.users width={18} />,
       },
-      {
-        name: "Notes",
-        href: "/notes",
-        isActive: segments[0] === "notes",
-        icon: <Icons.scroll width={18} />,
-      },
-      {
-        name: "Analytics",
-        href: "/analytics",
-        isActive: segments[0] === "analytics",
-        icon: <Icons.chart width={18} />,
-      },
+
       {
         name: "Settings",
         href: "/settings",

@@ -3,8 +3,6 @@ import { notFound } from "next/navigation"
 import prisma from "@/lib/prisma"
 import Container from "@/components/Container"
 
-import { ProfileForm } from "../../account/account-form"
-
 export default async function userId({ params }: { params: { id: string } }) {
   const user = await prisma.user.findUnique({
     where: {
@@ -22,7 +20,7 @@ export default async function userId({ params }: { params: { id: string } }) {
   }
   return (
     <Container title="User Details">
-      <ProfileForm user={user} />
+      {/* <ProfileForm user={user} /> */}
     </Container>
   )
 }

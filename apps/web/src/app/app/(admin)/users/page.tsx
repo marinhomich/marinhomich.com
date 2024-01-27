@@ -59,7 +59,7 @@ export default async function UsersPage({
       link="/users/new"
       linkTitle="Add User"
     >
-      <DataTable placeholder="Filter users..." columns={columns} data={data} />
+      {/* <DataTable placeholder="Filter users..." columns={columns} data={data} /> */}
     </Container>
   )
 }

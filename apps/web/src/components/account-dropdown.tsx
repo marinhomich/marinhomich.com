@@ -89,7 +89,7 @@ export default function AccountDropdown({ session }: any) {
               <Icons.heart className="mr-2 h-4 w-4" aria-hidden="true" />
               <span>Sponsor</span>
             </DropdownMenuItem>
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem asChild disabled>
               <Link href="/account">
                 <Icons.user className="mr-2 h-4 w-4" aria-hidden="true" />
                 Account
