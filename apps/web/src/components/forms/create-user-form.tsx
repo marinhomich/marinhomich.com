@@ -3,13 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2 } from "lucide-react"
-import { useForm } from "react-hook-form"
-import type { z } from "zod"
-
-import { createUser } from "@/lib/api/users"
-import { createUserSchema } from "@/lib/validations/email"
-import { Button } from "@/components/ui/button"
+import { Button } from "@marinhomich/ui/button"
 import {
   Form,
   FormControl,
@@ -17,8 +11,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@marinhomich/ui/form"
+import { Input } from "@marinhomich/ui/input"
+import { Loader2 } from "lucide-react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
+
+import { createUser } from "@/lib/api/users"
+import { createUserSchema } from "@/lib/validations/email"
 import { useToast } from "@/components//ui/use-toast"
 import { PasswordInput } from "@/components/password-input"
 

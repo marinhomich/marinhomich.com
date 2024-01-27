@@ -7,11 +7,11 @@ import "@/styles/mdx.css"
 
 import { type Metadata } from "next"
 import Link from "next/link"
+import { buttonVariants } from "@marinhomich/ui/button"
+import { Icons } from "@marinhomich/ui/icons"
+import { Separator } from "@marinhomich/ui/separator"
 import { cn } from "@marinhomich/utils"
 
-import { buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Icons } from "@/components/icons"
 import { MdxPager } from "@/components/pagers/mdx-pager"
 
 interface PostPageProps {

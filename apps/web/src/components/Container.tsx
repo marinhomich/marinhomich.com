@@ -1,8 +1,6 @@
 import Link from "next/link"
-
-import { buttonVariants } from "@/components/ui/button"
-
-import { Separator } from "./ui/separator"
+import { buttonVariants } from "@marinhomich/ui/button"
+import { Separator } from "@marinhomich/ui/separator"
 
 interface ContainerProps {
   title: string

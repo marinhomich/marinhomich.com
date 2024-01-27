@@ -1,6 +1,23 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@marinhomich/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@marinhomich/ui/dropdown-menu"
+import { Input } from "@marinhomich/ui/input"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@marinhomich/ui/table"
 import { MixerHorizontalIcon } from "@radix-ui/react-icons"
 import {
   flexRender,
@@ -14,24 +31,6 @@ import {
   type SortingState,
   type VisibilityState,
 } from "@tanstack/react-table"
-
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]

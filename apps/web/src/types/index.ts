@@ -1,4 +1,4 @@
-import { type Icons } from "@/components/icons"
+import { type Icons } from "@marinhomich/ui/icons"
 
 export interface CommandBar {
   category: string

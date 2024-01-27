@@ -2,12 +2,7 @@
 
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2 } from "lucide-react"
-import { useTheme } from "next-themes"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@marinhomich/ui/button"
 import {
   Form,
   FormControl,
@@ -16,8 +11,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+} from "@marinhomich/ui/form"
+import { RadioGroup, RadioGroupItem } from "@marinhomich/ui/radio-group"
+import { Loader2 } from "lucide-react"
+import { useTheme } from "next-themes"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"], {

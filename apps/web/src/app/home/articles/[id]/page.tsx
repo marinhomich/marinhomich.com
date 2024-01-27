@@ -8,12 +8,12 @@ import "@/styles/mdx.css"
 import { type Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { AspectRatio } from "@marinhomich/ui/aspect-ratio"
 import { buttonVariants } from "@marinhomich/ui/button"
+import { Icons } from "@marinhomich/ui/icons"
+import { Separator } from "@marinhomich/ui/separator"
 import { cn, formatDate } from "@marinhomich/utils"
 
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { Separator } from "@/components/ui/separator"
-import { Icons } from "@/components/icons"
 import { MdxPager } from "@/components/pagers/mdx-pager"
 
 interface PostPageProps {

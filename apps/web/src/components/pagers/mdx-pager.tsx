@@ -1,8 +1,7 @@
 import Link from "next/link"
+import { buttonVariants } from "@marinhomich/ui/button"
+import { Icons } from "@marinhomich/ui/icons"
 import { cn, truncate } from "@marinhomich/utils"
-
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/icons"
 
 interface MdxPagerItem {
   title: string

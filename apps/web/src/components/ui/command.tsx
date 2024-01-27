@@ -1,12 +1,11 @@
 "use client"
 
 import * as React from "react"
+import { Dialog, DialogContent } from "@marinhomich/ui/dialog"
 import { cn } from "@marinhomich/utils"
 import { type DialogProps } from "@radix-ui/react-dialog"
 import { Command as CommandPrimitive } from "cmdk"
 import { Search } from "lucide-react"
-
-import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -62,10 +61,7 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn(
-      "no-scrollbar max-h-[300px] overflow-y-auto overflow-x-hidden",
-      className
-    )}
+    className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
     {...props}
   />
 ))

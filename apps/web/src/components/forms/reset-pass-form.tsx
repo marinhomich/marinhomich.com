@@ -3,19 +3,14 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2 } from "lucide-react"
-import { useForm } from "react-hook-form"
-import type { z } from "zod"
-
-import { resetPassSchema, type emailSchema } from "@/lib/validations/email"
-import { Button } from "@/components/ui/button"
+import { Button } from "@marinhomich/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@marinhomich/ui/card"
 import {
   Form,
   FormControl,
@@ -23,9 +18,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useToast } from "@/components/ui/use-toast"
+} from "@marinhomich/ui/form"
+import { Input } from "@marinhomich/ui/input"
+import { useToast } from "@marinhomich/ui/use-toast"
+import { Loader2 } from "lucide-react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
+
+import { resetPassSchema, type emailSchema } from "@/lib/validations/email"
 
 type Inputs = z.infer<typeof emailSchema>
 

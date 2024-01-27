@@ -3,10 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { type ColumnDef } from "@tanstack/react-table"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
-
-import { deleteUser } from "@/lib/actions"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,17 +12,21 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
+} from "@marinhomich/ui/alert-dialog"
+import { Button } from "@marinhomich/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { toast } from "@/components/ui/use-toast"
-import { Icons } from "@/components/icons"
+} from "@marinhomich/ui/dropdown-menu"
+import { Icons } from "@marinhomich/ui/icons"
+import { toast } from "@marinhomich/ui/use-toast"
+import { type ColumnDef } from "@tanstack/react-table"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+
+import { deleteUser } from "@/lib/actions"
 
 export type User = {
   id: number

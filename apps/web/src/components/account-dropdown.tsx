@@ -2,9 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { signOut } from "next-auth/react"
-
-import { stripeSession } from "@/lib/stripe-actions"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,9 +11,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+} from "@marinhomich/ui/alert-dialog"
+import { Avatar, AvatarFallback, AvatarImage } from "@marinhomich/ui/avatar"
+import { Button } from "@marinhomich/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,7 +23,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@marinhomich/ui/dropdown-menu"
+import { signOut } from "next-auth/react"
+
+import { stripeSession } from "@/lib/stripe-actions"
 
 import { Icons } from "./icons"
 import { useToast } from "./ui/use-toast"

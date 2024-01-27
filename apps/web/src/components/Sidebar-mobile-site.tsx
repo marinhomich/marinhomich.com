@@ -3,15 +3,15 @@
 import { useState } from "react"
 import Link, { type LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
-import { cn } from "@marinhomich/utils"
-
-import { siteConfig } from "@/config/site"
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@marinhomich/ui/sheet"
+import { cn } from "@marinhomich/utils"
+
+import { siteConfig } from "@/config/site"
 
 import { Icons } from "./icons"
 import { ScrollArea } from "./ui/scroll-area"

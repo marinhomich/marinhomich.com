@@ -4,13 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Loader2 } from "lucide-react"
-import { useForm } from "react-hook-form"
-import type { z } from "zod"
-
-import { createUser } from "@/lib/api/users"
-import { createUserSchema } from "@/lib/validations/email"
-import { Button } from "@/components/ui/button"
+import { Button } from "@marinhomich/ui/button"
 import {
   Card,
   CardContent,
@@ -18,7 +12,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@marinhomich/ui/card"
 import {
   Form,
   FormControl,
@@ -26,9 +20,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
+} from "@marinhomich/ui/form"
+import { Input } from "@marinhomich/ui/input"
+import { toast } from "@marinhomich/ui/use-toast"
+import { Loader2 } from "lucide-react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
+
+import { createUser } from "@/lib/api/users"
+import { createUserSchema } from "@/lib/validations/email"
 import { PasswordInput } from "@/components/password-input"
 
 type Inputs = z.infer<typeof createUserSchema>

@@ -1,4 +1,5 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from "@marinhomich/ui/skeleton"
+
 import Container from "@/components/Container"
 
 export default function UsersLoading() {

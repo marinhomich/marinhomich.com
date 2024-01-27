@@ -1,5 +1,6 @@
+import { toast } from "@marinhomich/ui/use-toast"
+
 import { stripeSession } from "@/lib/stripe-actions"
-import { toast } from "@/components/ui/use-toast"
 
 import { Icons } from "./icons"
 

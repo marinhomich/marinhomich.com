@@ -16,7 +16,7 @@ module.exports = {
     "^@/config/(.*)$",
     "^@/lib/(.*)$",
     "^@/hooks/(.*)$",
-    "^@/components/ui/(.*)$",
+    "^@marinhomich/ui/(.*)$",
     "^@/components/(.*)$",
     "^@/styles/(.*)$",
     "^@/app/(.*)$",
@@ -24,7 +24,5 @@ module.exports = {
     "^[./]",
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
-  plugins: [
-    "@ianvs/prettier-plugin-sort-imports",
-  ],
+  plugins: ["@ianvs/prettier-plugin-sort-imports"],
 }

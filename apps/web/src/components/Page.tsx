@@ -1,8 +1,6 @@
 import { Separator } from "@marinhomich/ui/separator"
 import { Shell } from "@marinhomich/ui/shell"
 
-// import { Shell } from "@/components/shells/shell"
-
 import {
   PageHeader,
   PageHeaderDescription,

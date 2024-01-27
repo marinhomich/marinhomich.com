@@ -3,8 +3,7 @@
 import { useMemo } from "react"
 import Link from "next/link"
 import { useParams, useSelectedLayoutSegments } from "next/navigation"
-
-import { Icons } from "@/components/icons"
+import { Icons } from "@marinhomich/ui/icons"
 
 import {
   Tooltip,

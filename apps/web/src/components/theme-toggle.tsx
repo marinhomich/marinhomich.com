@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
+import { Button } from "@marinhomich/ui/button"
 import { useTheme } from "next-themes"
-
-import { Button } from "@/components/ui/button"
 
 import { Icons } from "./icons"
 import {

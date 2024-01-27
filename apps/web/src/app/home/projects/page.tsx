@@ -1,6 +1,6 @@
 import { Suspense } from "react"
+import { Skeleton } from "@marinhomich/ui/skeleton"
 
-import { Skeleton } from "@/components/ui/skeleton"
 import { CardGithub } from "@/components/github-card"
 import Page from "@/components/Page"
 

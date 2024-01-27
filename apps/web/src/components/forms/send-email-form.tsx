@@ -1,12 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import type { z } from "zod"
-
-import { sendContactEmail } from "@/lib/api/contact"
-import { sendEmailSchema } from "@/lib/validations/email"
-import { useZodForm } from "@/hooks/useZodForm"
-import { Button } from "@/components/ui/button"
+import { Button } from "@marinhomich/ui/button"
 import {
   Form,
   FormControl,
@@ -14,9 +9,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+} from "@marinhomich/ui/form"
+import { Input } from "@marinhomich/ui/input"
+import { Textarea } from "@marinhomich/ui/textarea"
+import type { z } from "zod"
+
+import { sendContactEmail } from "@/lib/api/contact"
+import { sendEmailSchema } from "@/lib/validations/email"
+import { useZodForm } from "@/hooks/useZodForm"
 import { useToast } from "@/components//ui/use-toast"
 
 import { Icons } from "../icons"

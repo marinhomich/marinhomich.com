@@ -1,9 +1,9 @@
 import Image from "next/image"
+import { Alert, AlertDescription, AlertTitle } from "@marinhomich/ui/alert"
+import { AspectRatio } from "@marinhomich/ui/aspect-ratio"
 import { cn } from "@marinhomich/utils"
 import { useMDXComponent } from "next-contentlayer/hooks"
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Callout } from "@/components/mdx/callout"
 import { CodeBlock } from "@/components/mdx/code-block"
 import { MdxCard } from "@/components/mdx/mdx-card"

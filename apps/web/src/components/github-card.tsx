@@ -1,14 +1,13 @@
 import Link from "next/link"
-import { cn, formatDate } from "@marinhomich/utils"
-
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Icons } from "@/components/icons"
+} from "@marinhomich/ui/card"
+import { Icons } from "@marinhomich/ui/icons"
+import { cn, formatDate } from "@marinhomich/utils"
 
 async function getData() {
   const featured = ["marinhomich.dev", "AmaTec-Mobile", "vite-start-template"]

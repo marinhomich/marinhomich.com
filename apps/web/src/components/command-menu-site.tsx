@@ -3,13 +3,9 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { type CommandBar } from "@/types"
-import { cn } from "@marinhomich/utils"
-import { type DialogProps } from "@radix-ui/react-alert-dialog"
-import { useTheme } from "next-themes"
-
 // import { type Product } from "@/db/schema"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@marinhomich/ui/button"
 import {
   CommandDialog,
   CommandEmpty,
@@ -17,10 +13,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
-import { toast } from "@/components/ui/use-toast"
+} from "@marinhomich/ui/command"
 // import { useDebounce } from "@/hooks/use-debounce"
-import { Icons } from "@/components/icons"
+import { Icons } from "@marinhomich/ui/icons"
+import { toast } from "@marinhomich/ui/use-toast"
+import { cn } from "@marinhomich/utils"
+import { type DialogProps } from "@radix-ui/react-alert-dialog"
+import { useTheme } from "next-themes"
 
 export function CommandMenuSite({ ...props }: DialogProps) {
   const router = useRouter()

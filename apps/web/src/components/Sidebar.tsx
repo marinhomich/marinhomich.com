@@ -1,8 +1,7 @@
 "use client"
 
 import Link from "next/link"
-
-import { Icons } from "@/components/icons"
+import { Icons } from "@marinhomich/ui/icons"
 
 import SidebarItem from "./Sidebar-item"
 

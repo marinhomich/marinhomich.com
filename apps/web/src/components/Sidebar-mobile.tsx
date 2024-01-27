@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
-
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "@marinhomich/ui/sheet"
 
 import { Icons } from "./icons"
 import Sidebar from "./Sidebar"

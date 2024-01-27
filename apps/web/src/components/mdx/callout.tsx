@@ -2,7 +2,7 @@
  * @link https://github.com/shadcn/ui/blob/main/apps/www/components/callout.tsx
  */
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@marinhomich/ui/alert"
 
 interface CalloutProps {
   icon?: string

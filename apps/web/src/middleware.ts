@@ -25,7 +25,7 @@ export default async function middleware(req: NextRequest) {
   // if (TESTE_HOSTNAMES.has(domain)) {
   //   return TesteMiddleware(req)
   // }
-  // console.log(domain)
+
   // rewrite everything else to `/[domain]/[path] dynamic route
   return NextResponse.rewrite(new URL(`/${domain}${path}`, req.url))
 }
