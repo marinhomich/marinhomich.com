@@ -6,9 +6,10 @@ import { cn } from "@/lib/utils";
 
 import { siteConfig } from "@/config/site";
 
-import { CommandMenuSite } from "../command-menu-site";
+import { CommandMenu } from "../command-menu";
+
 import { Icons } from "../icons";
-import SidebarMobileSite from "../Sidebar-mobile-site";
+import SidebarMobile from "../Sidebar-mobile";
 import { ThemeToggle } from "../theme-toggle";
 import { buttonVariants } from "../ui/button";
 
@@ -56,9 +57,9 @@ export default function SiteHeader() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <SidebarMobileSite />
+          <SidebarMobile />
           <div className="w-full flex-1 md:w-auto md:flex-none">
-            <CommandMenuSite />
+            <CommandMenu />
           </div>
           <nav className="flex items-center">
             <Link

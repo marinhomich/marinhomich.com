@@ -1,12 +1,9 @@
-import { type MetadataRoute } from "next"
-import { headers } from "next/headers"
-
-import { isHomeHostname } from "@/lib/constants"
+import { type MetadataRoute } from "next";
+import { headers } from "next/headers";
 
 export default function robots(): MetadataRoute.Robots {
-  const headersList = headers()
-  let domain = headersList.get("host") as string
-  if (isHomeHostname(domain)) domain = "marinhomich.dev"
+  const headersList = headers();
+  let domain = headersList.get("host") as string;
 
   return {
     rules: {
@@ -15,5 +12,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/api/og/",
     },
     sitemap: `https://${domain}/sitemap.xml`,
-  }
+  };
 }

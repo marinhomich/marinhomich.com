@@ -1,9 +1,18 @@
 const items = [
   {
+    jobTitle: "Software Analyst Junior",
+    company: "Eldorado Research Institute",
+    companyUrl:
+      "https://www.linkedin.com/company/instituto-de-pesquisas-eldorado",
+    startDate: "2023-05-13",
+    location: "Manaus, Amazonas",
+  },
+  {
     jobTitle: "Frontend Developer",
     company: "Amazonas Inovare",
     companyUrl: "https://www.linkedin.com/company/amazonasinovare",
     startDate: "2023-09-21",
+    endDate: "2024-05-03",
     location: "Manaus, Amazonas",
   },
   {
@@ -38,6 +47,6 @@ const items = [
     endDate: "2020-12-31",
     location: "Manaus, Amazonas",
   },
-]
+];
 
-export default items
+export default items;
