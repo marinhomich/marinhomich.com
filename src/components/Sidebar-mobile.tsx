@@ -41,9 +41,6 @@ export default function SidebarMobile() {
             <MobileLink href={"/about"} onOpenChange={setIsOpen}>
               About
             </MobileLink>
-            <MobileLink href={"/articles"} onOpenChange={setIsOpen}>
-              Articles
-            </MobileLink>
             <MobileLink href={"/projects"} onOpenChange={setIsOpen}>
               Projects
             </MobileLink>

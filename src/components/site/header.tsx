@@ -22,10 +22,6 @@ export default function SiteHeader() {
       href: "/about",
     },
     {
-      name: "Articles",
-      href: "/articles",
-    },
-    {
       name: "Projects",
       href: "/projects",
     },

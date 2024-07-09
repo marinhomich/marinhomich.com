@@ -63,14 +63,6 @@ export function CommandMenu() {
         },
         {
           id: 3,
-          icon: "PenLine",
-          myAction: function () {
-            router.push("/articles");
-          },
-          name: "Articles",
-        },
-        {
-          id: 4,
           icon: "code",
           myAction: function () {
             router.push("/projects");

@@ -1,4 +1,4 @@
-import Balancer from "react-wrap-balancer"
+import Balancer from "react-wrap-balancer";
 
 export default function HomePage() {
   return (
@@ -15,7 +15,7 @@ export default function HomePage() {
           className="mt-6 animate-fade-up  text-muted-foreground/80 opacity-0 md:text-xl"
           style={{ animationDelay: "0.30s", animationFillMode: "forwards" }}
         >
-          <Balancer>Frontend Developer.</Balancer>
+          <Balancer>Software Analyst.</Balancer>
         </p>
         <div
           className="mx-auto mt-6 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
@@ -23,5 +23,5 @@ export default function HomePage() {
         ></div>
       </div>
     </main>
-  )
+  );
 }
