@@ -1,9 +1,0 @@
-{
-  "name": "@marinhomich/typescript-config",
-  "version": "0.0.30",
-  "private": true,
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  }
-}
